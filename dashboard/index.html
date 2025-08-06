@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Blacnova Management Console</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #d4611c;
+            --primary-dark: #b35116;
+            --primary-light: #e67a35;
+            --dark-bg: #1a1a1a;
+            --card-bg: rgba(26, 26, 26, 0.9);
+            --surface: rgba(38, 38, 38, 0.7);
+            --text-primary: #EEEEEE;
+            --text-secondary: #a1a1aa;
+            --bn-soft: #FAF9EE;
+            --bn-green: #1A1A1a;
+            --bn-white: #EEEEEE;
+            --bn-black: #010101;
+            --bn-dark: #1A1A1A;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .glass-card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover:not(.no-hover) {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+            border-color: rgba(212, 97, 28, 0.3);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.3);
+            background: var(--primary-light);
+        }
+        
+        .btn-secondary {
+            background: rgba(38, 38, 38, 0.7);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(48, 48, 48, 0.7);
+            border-color: rgba(212, 97, 28, 0.3);
+        }
+
+        .btn-primary:disabled, .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .btn-primary:disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
+            background: var(--primary);
+        }
+         .btn-secondary:disabled:hover {
+            transform: none;
+            background: rgba(38, 38, 38, 0.7);
+        }
+        
+        .dashboard-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+        
+        .dashboard-item:hover:not(.no-hover) {
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .active-nav {
+            background: linear-gradient(90deg, rgba(212, 97, 28, 0.15) 0%, rgba(212, 97, 28, 0.05) 100%);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .fade-in { animation: fadeIn 0.3s ease-in forwards; }
+        .slide-in { animation: slideIn 0.3s ease-out forwards; }
+        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        input, textarea, select {
+            transition: all 0.3s ease;
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 97, 28, 0.2);
+            outline: none;
+        }
+        
+        .tooltip { position: relative; }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(26, 26, 26, 0.9);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+        
+        .empty-state { opacity: 0.6; transition: all 0.3s ease; }
+        .empty-state:hover { opacity: 1; transform: scale(1.02); }
+        
+        @media (max-width: 768px) { .glass-card { backdrop-filter: blur(8px); } }
+
+        .image-preview { max-width: 100px; max-height: 100px; border-radius: 8px; margin-top: 8px; display: none; }
+        
+        #toast-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 100;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        #toast-notification.show { transform: translateX(-50%) translateY(0); }
+        #toast-notification.success { background-color: var(--primary); }
+        #toast-notification.error { background-color: var(--primary-dark); }
+        #toast-notification.info { background-color: var(--primary); }
+        
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            background-color: rgba(212, 97, 28, 0.15);
+            color: var(--primary);
+        }
+        
+        .progress-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 10px;
+        }
+        .progress-bar-fill {
+            background-color: var(--primary);
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Dashboard specific styles */
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.1);
+        }
+        
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background-color: rgba(212, 97, 28, 0.2);
+            color: var(--primary);
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: var(--surface);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-body {
+            padding: 24px;
+        }
+        
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        
+        /* Page styles */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+
+        /* Content editor styles */
+        .content-editor {
+            min-height: 200px;
+            padding: 16px;
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(212, 97, 28, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 97, 28, 0.7);
+        }
+
+        /* Blacnova specific styling */
+        .bn-bg-gradient {
+            background: linear-gradient(135deg, rgba(212, 97, 28, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
+        }
+
+        .bn-border {
+            border-color: rgba(212, 97, 28, 0.3);
+        }
+
+        .bn-text-gradient {
+            background: linear-gradient(90deg, #d4611c, #e67a35);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .bn-rounded {
+            border-radius: 12px;
+        }
+
+        .bn-rounded-lg {
+            border-radius: 16px;
+        }
+
+        .bn-rounded-xl {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+    <div class="flex h-screen">
+        <!-- Sidebar Navigation -->
+        <div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:block">
+            <div class="flex items-center space-x-3 mb-8">
+                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+                <h1 class="text-xl font-medium">Dashboard</h1>
+            </div>
+            
+            <nav class="space-y-1">
+                <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
+                    <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
+                    <i class="fas fa-file-alt w-5 text-center"></i>
+                    <span>Content</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
+                    <i class="fas fa-images w-5 text-center"></i>
+                    <span>Media</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
+                    <i class="fas fa-blog w-5 text-center"></i>
+                    <span>Blog</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
+                    <i class="fas fa-shopping-cart w-5 text-center"></i>
+                    <span>E-commerce</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
+                    <i class="fas fa-cog w-5 text-center"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
+                    <i class="fas fa-question-circle w-5 text-center"></i>
+                    <span>Support</span>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Mobile Header -->
+        <div class="md:hidden fixed top-0 left-0 right-0 bg-dark-bg border-b border-white/10 p-4 z-10 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <button id="mobile-menu-button" class="text-slate-400 hover:text-primary">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="text-xl font-bold">Blacnova</h1>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="text-right">
+                    <p class="font-medium text-sm">User</p>
+                    <p class="text-xs text-slate-400">client@example.com</p>
+                </div>
+                <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
+            </div>
+        </div>
+        
+        <!-- Mobile Sidebar (Hidden by default) -->
+        <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
+            <div class="w-64 h-full bg-dark-bg border-r border-white/10 p-4">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-3">
+                        <img src="img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+                        <h1 class="text-xl font-bold">Blacnova</h1>
+                    </div>
+                    <button id="close-mobile-menu" class="text-slate-400 hover:text-primary">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <nav class="space-y-1 mb-8">
+                    <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
+                        <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                        <span>Overview</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
+                        <i class="fas fa-file-alt w-5 text-center"></i>
+                        <span>Content</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
+                        <i class="fas fa-images w-5 text-center"></i>
+                        <span>Media</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
+                        <i class="fas fa-blog w-5 text-center"></i>
+                        <span>Blog</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
+                        <i class="fas fa-shopping-cart w-5 text-center"></i>
+                        <span>E-commerce</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
+                        <i class="fas fa-cog w-5 text-center"></i>
+                        <span>Settings</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
+                        <i class="fas fa-question-circle w-5 text-center"></i>
+                        <span>Support</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="flex-1 overflow-y-auto pt-16 md:pt-0">
+            <!-- Desktop Header -->
+            <div class="hidden md:flex justify-between items-center bg-dark-bg border-b border-white/10 p-4">
+                <h1 id="page-title" class="text-2xl font-bold">Overview</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="font-medium">User</p>
+                        <p class="text-sm text-slate-400">client@example.com</p>
+                    </div>
+                    <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-10 h-10 rounded-full">
+                    <button id="logout-btn" class="text-slate-400 hover:text-primary">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pages Container -->
+            <div id="pages-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Overview Page -->
+                <div id="overview-page" class="page active">
+                    <!-- Stats Overview -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="stat-card glass-card p-6 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-1">Total Visitors</p>
+                                    <p class="text-2xl font-bold">1,248</p>
+                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5% from last week</p>
+                                </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-card p-6 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-1">Page Views</p>
+                                    <p class="text-2xl font-bold">5,672</p>
+                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 8.3% from last week</p>
+                                </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-card p-6 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-1">Conversion Rate</p>
+                                    <p class="text-2xl font-bold">3.2%</p>
+                                    <p class="text-xs text-primary-dark mt-1"><i class="fas fa-arrow-down mr-1"></i> 1.1% from last week</p>
+                                </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-card p-6 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-1">Avg. Session</p>
+                                    <p class="text-2xl font-bold">2m 45s</p>
+                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 15s from last week</p>
+                                </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Left Column -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <!-- Traffic Chart -->
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h2 class="text-xl font-bold">Website Traffic</h2>
+                                    <select class="text-sm bg-dark-bg/50 border border-white/10 rounded-lg px-3 py-1">
+                                        <option>Last 7 days</option>
+                                        <option>Last 30 days</option>
+                                        <option>Last 90 days</option>
+                                    </select>
+                                </div>
+                                <div class="h-64">
+                                    <!-- Chart placeholder - would be replaced with Chart.js or similar -->
+                                    <div class="w-full h-full flex items-center justify-center bg-dark-bg/30 rounded-lg">
+                                        <p class="text-slate-400">Traffic chart will appear here</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Activity -->
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h2 class="text-xl font-bold">Recent Activity</h2>
+                                    <button class="text-sm text-primary hover:underline">View All</button>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                        <div class="stat-icon w-10 h-10 text-lg">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium">Homepage content updated</p>
+                                            <p class="text-sm text-slate-400">You updated the hero section text</p>
+                                            <p class="text-xs text-slate-500 mt-1">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                        <div class="stat-icon w-10 h-10 text-lg">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium">New image uploaded</p>
+                                            <p class="text-sm text-slate-400">"team-photo.jpg" added to About page</p>
+                                            <p class="text-xs text-slate-500 mt-1">1 day ago</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                        <div class="stat-icon w-10 h-10 text-lg">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium">New order received</p>
+                                            <p class="text-sm text-slate-400">Order #4567 for "Premium Package"</p>
+                                            <p class="text-xs text-slate-500 mt-1">2 days ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column -->
+                        <div class="lg:col-span-1 space-y-6">
+                            <!-- Quick Actions -->
+                            <div class="glass-card p-6">
+                                <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-page-btn">
+                                        <i class="fas fa-file-alt text-xl mb-2"></i>
+                                        <span class="text-sm">New Page</span>
+                                    </button>
+                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="upload-media-btn">
+                                        <i class="fas fa-image text-xl mb-2"></i>
+                                        <span class="text-sm">Upload Media</span>
+                                    </button>
+                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-blog-btn">
+                                        <i class="fas fa-blog text-xl mb-2"></i>
+                                        <span class="text-sm">New Post</span>
+                                    </button>
+                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="settings-btn">
+                                        <i class="fas fa-cog text-xl mb-2"></i>
+                                        <span class="text-sm">Settings</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Website Status -->
+                            <div class="glass-card p-6">
+                                <h2 class="text-xl font-bold mb-4">Website Status</h2>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                            <span>Website Online</span>
+                                        </div>
+                                        <span class="status-badge">Active</span>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                            <span>SSL Certificate</span>
+                                        </div>
+                                        <span class="status-badge">Valid</span>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-primary-light"></div>
+                                            <span>Storage Usage</span>
+                                        </div>
+                                        <div class="w-24">
+                                            <div class="progress-bar">
+                                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                            <span>Backup Status</span>
+                                        </div>
+                                        <span class="text-sm text-slate-400">Last: Today 2:00 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Comments -->
+                            <div class="glass-card p-6">
+                                <h2 class="text-xl font-bold mb-4">Recent Comments</h2>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium">John D.</p>
+                                            <p class="text-sm text-slate-400">"Great article! Very helpful information."</p>
+                                            <p class="text-xs text-slate-500 mt-1">On "10 Tips for Better SEO"</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium">Sarah M.</p>
+                                            <p class="text-sm text-slate-400">"When will the new products be available?"</p>
+                                            <p class="text-xs text-slate-500 mt-1">On "Upcoming Product Line"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="w-full btn-secondary mt-4 py-2 rounded-lg text-sm">
+                                    View All Comments
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Page -->
+                <div id="content-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">Content Management</h1>
+                            <p class="text-slate-400">Manage your website pages and content</p>
+                        </div>
+                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="add-content-btn">
+                            <i class="fas fa-plus mr-2"></i> Add Content
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-white/10">
+                                        <th class="pb-3">Page Title</th>
+                                        <th class="pb-3">URL</th>
+                                        <th class="pb-3">Last Updated</th>
+                                        <th class="pb-3">Status</th>
+                                        <th class="pb-3 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">Homepage</td>
+                                        <td class="py-4 text-slate-400">/</td>
+                                        <td class="py-4 text-slate-400">2 hours ago</td>
+                                        <td class="py-4"><span class="status-badge">Published</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">About Us</td>
+                                        <td class="py-4 text-slate-400">/about</td>
+                                        <td class="py-4 text-slate-400">1 day ago</td>
+                                        <td class="py-4"><span class="status-badge">Published</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">Services</td>
+                                        <td class="py-4 text-slate-400">/services</td>
+                                        <td class="py-4 text-slate-400">3 days ago</td>
+                                        <td class="py-4"><span class="status-badge">Published</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-white/5">
+                                        <td class="py-4">Contact</td>
+                                        <td class="py-4 text-slate-400">/contact</td>
+                                        <td class="py-4 text-slate-400">1 week ago</td>
+                                        <td class="py-4"><span class="status-badge">Published</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Media Page -->
+                <div id="media-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">Media Library</h1>
+                            <p class="text-slate-400">Manage your website images and files</p>
+                        </div>
+                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="upload-media-page-btn">
+                            <i class="fas fa-upload mr-2"></i> Upload Media
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            </div>
+                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            </div>
+                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            </div>
+                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            </div>
+                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Page -->
+                <div id="blog-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">Blog Posts</h1>
+                            <p class="text-slate-400">Manage your blog content</p>
+                        </div>
+                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="new-blog-post-btn">
+                            <i class="fas fa-plus mr-2"></i> New Post
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                                <div>
+                                    <h3 class="font-bold">10 Tips for Better SEO</h3>
+                                    <p class="text-sm text-slate-400 mt-1">Published on May 15, 2023</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                                <div>
+                                    <h3 class="font-bold">How to Improve Website Performance</h3>
+                                    <p class="text-sm text-slate-400 mt-1">Published on April 28, 2023</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                                <div>
+                                    <h3 class="font-bold">The Future of Web Design</h3>
+                                    <p class="text-sm text-slate-400 mt-1">Published on March 10, 2023</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
+                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- E-commerce Page -->
+                <div id="ecommerce-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">E-commerce</h1>
+                            <p class="text-slate-400">Manage your online store</p>
+                        </div>
+                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Add Product
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-white/10">
+                                        <th class="pb-3">Product</th>
+                                        <th class="pb-3">Price</th>
+                                        <th class="pb-3">Stock</th>
+                                        <th class="pb-3">Status</th>
+                                        <th class="pb-3 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">Premium Package</td>
+                                        <td class="py-4">$99.99</td>
+                                        <td class="py-4">25</td>
+                                        <td class="py-4"><span class="status-badge">Active</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">Basic Package</td>
+                                        <td class="py-4">$49.99</td>
+                                        <td class="py-4">42</td>
+                                        <td class="py-4"><span class="status-badge">Active</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                        <td class="py-4">Deluxe Package</td>
+                                        <td class="py-4">$149.99</td>
+                                        <td class="py-4">12</td>
+                                        <td class="py-4"><span class="status-badge">Active</span></td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-slate-400 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Page -->
+                <div id="settings-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">Settings</h1>
+                            <p class="text-slate-400">Configure your website settings</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold mb-3">General Settings</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium">Site Title</p>
+                                            <p class="text-sm text-slate-400">The name of your website</p>
+                                        </div>
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="My Business">
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium">Site Description</p>
+                                            <p class="text-sm text-slate-400">A brief description of your website</p>
+                                        </div>
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="The best business in town">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-3">Maintenance Mode</h3>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium">Enable Maintenance Mode</p>
+                                        <p class="text-sm text-slate-400">Show a maintenance page to visitors</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-3">SEO Settings</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium">Meta Keywords</p>
+                                            <p class="text-sm text-slate-400">Keywords for search engines</p>
+                                        </div>
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="business, services, quality">
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium">Google Analytics</p>
+                                            <p class="text-sm text-slate-400">Your Google Analytics ID</p>
+                                        </div>
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end">
+                                <button class="btn-primary px-6 py-2 rounded-lg">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Support Page -->
+                <div id="support-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-bold">Support</h1>
+                            <p class="text-slate-400">Get help with your website</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold mb-3">Contact Support</h3>
+                                <p class="text-slate-400 mb-4">Need help with something? Send us a message and we'll get back to you as soon as possible.</p>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm text-slate-400 mb-1">Subject</label>
+                                        <input type="text" class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm text-slate-400 mb-1">Message</label>
+                                        <textarea class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 h-32"></textarea>
+                                    </div>
+                                    
+                                    <div class="flex justify-end">
+                                        <button class="btn-primary px-6 py-2 rounded-lg">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-3">Help Resources</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                                <i class="fas fa-book"></i>
+                                            </div>
+                                            <span>Documentation</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                                <i class="fas fa-video"></i>
+                                            </div>
+                                            <span>Video Tutorials</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                                <i class="fas fa-question-circle"></i>
+                                            </div>
+                                            <span>FAQs</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                                <i class="fas fa-comments"></i>
+                                            </div>
+                                            <span>Community Forum</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <!-- New Page Modal -->
+    <div id="new-page-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-xl font-bold">Create New Page</h3>
+                <button class="modal-close text-slate-400 hover:text-primary">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Page Title</label>
+                        <input type="text" class="w-full px-4 py-2 rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">URL Slug</label>
+                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="e.g., about-us">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Page Content</label>
+                        <div class="content-editor" contenteditable="true">
+                            <p>Start typing your content here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-lg">Create Page</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Upload Media Modal -->
+    <div id="upload-media-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-xl font-bold">Upload Media</h3>
+                <button class="modal-close text-slate-400 hover:text-primary">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="border-2 border-dashed border-white/20 rounded-lg p-8 text-center">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-primary mb-4"></i>
+                    <p class="mb-2">Drag and drop files here</p>
+                    <p class="text-sm text-slate-400 mb-4">or</p>
+                    <button class="btn-secondary px-4 py-2 rounded-lg">
+                        Select Files
+                    </button>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm text-slate-400 mb-1">File Name</label>
+                    <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Optional custom name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-lg">Upload Files</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New Blog Post Modal -->
+    <div id="new-blog-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-xl font-bold">New Blog Post</h3>
+                <button class="modal-close text-slate-400 hover:text-primary">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Post Title</label>
+                        <input type="text" class="w-full px-4 py-2 rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Featured Image</label>
+                        <button class="btn-secondary w-full px-4 py-2 rounded-lg text-left">
+                            <i class="fas fa-image mr-2"></i> Select Image
+                        </button>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Post Content</label>
+                        <div class="content-editor" contenteditable="true">
+                            <p>Start writing your blog post here...</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Tags</label>
+                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Separate tags with commas">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-lg">Publish Post</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-xl font-bold">Login to Dashboard</h3>
+                <button class="modal-close text-slate-400 hover:text-primary">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Email</label>
+                        <input type="email" class="w-full px-4 py-2 rounded-lg" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-1">Password</label>
+                        <input type="password" class="w-full px-4 py-2 rounded-lg" placeholder="••••••••">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember-me" class="h-4 w-4 rounded bg-dark-bg/50 border-primary/30 text-primary focus:ring-primary">
+                            <label for="remember-me" class="ml-2 text-sm text-slate-300">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-lg">Login</button>
+            </div>
+            <div class="px-6 pb-6 text-center">
+                <p class="text-sm text-slate-400">Don't have an account? <a href="#" class="text-primary hover:underline">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast-notification"></div>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-mobile-menu').addEventListener('click', () => {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+        
+        // Page switching functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+        const pageTitle = document.getElementById('page-title');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all nav items
+                navItems.forEach(nav => nav.classList.remove('active-nav'));
+                
+                // Add active class to clicked nav item
+                item.classList.add('active-nav');
+                
+                // Hide all pages
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show the selected page
+                const pageId = item.getAttribute('data-page') + '-page';
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update page title
+                const pageName = item.querySelector('span').textContent;
+                pageTitle.textContent = pageName;
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-sidebar').classList.add('hidden');
+            });
+        });
+        
+        // Modal functionality
+        const modals = document.querySelectorAll('.modal');
+        const modalButtons = {
+            'new-page-btn': 'new-page-modal',
+            'upload-media-btn': 'upload-media-modal',
+            'upload-media-page-btn': 'upload-media-modal',
+            'new-blog-btn': 'new-blog-modal',
+            'new-blog-post-btn': 'new-blog-modal',
+            'add-content-btn': 'new-page-modal',
+            'settings-btn': 'auth-modal',
+            'logout-btn': 'auth-modal'
+        };
+        
+        // Open modals
+        Object.keys(modalButtons).forEach(buttonId => {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.addEventListener('click', () => {
+                    const modalId = modalButtons[buttonId];
+                    document.getElementById(modalId).classList.add('active');
+                });
+            }
+        });
+        
+        // Close modals
+        document.querySelectorAll('.modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.modal').classList.remove('active');
+            });
+        });
+        
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+        
+        // Sample function to show toast
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast-notification');
+            toast.textContent = message;
+            toast.className = '';
+            toast.classList.add(type, 'show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Sample toast triggers for demo purposes
+        document.querySelectorAll('[data-toast]').forEach(button => {
+            button.addEventListener('click', () => {
+                const message = button.getAttribute('data-toast-message') || 'Action completed';
+                const type = button.getAttribute('data-toast-type') || 'info';
+                showToast(message, type);
+            });
+        });
+    </script>
+</body>
+</html>
