@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Blacnova Management Console</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Blacnova Development | Las Cruces Web & Business Solutions</title>
+    <meta name="description" content="Blacnova Development offers professional web design, custom development, and SEO services in Las Cruces, NM. Elevate your digital presence with our tailored business solutions.">
+    <meta name="keywords" content="web development Las Cruces, Las Cruces web design, SEO services NM, custom business websites, digital agency Las Cruces">
+    <link rel="canonical" href="https://www.blacnova.com/">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.blacnova.com/">
+    <meta property="og:title" content="Blacnova Development | Las Cruces Web & Business Solutions">
+    <meta property="og:description" content="Professional web design, custom development, and SEO services in Las Cruces, NM. Let's build your digital future.">
+    <meta property="og:image" content="https://www.blacnova.com/img/hero.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.blacnova.com/">
+    <meta property="twitter:title" content="Blacnova Development | Las Cruces Web & Business Solutions">
+    <meta property="twitter:description" content="Professional web design, custom development, and SEO services in Las Cruces, NM. Let's build your digital future.">
+    <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
+
+    <link rel="icon" href="img/bn.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -19,1079 +39,753 @@
 
   gtag('config', 'G-SPY1G645JS');
 </script>
-    <style>
-        :root {
-            --primary: #d4611c;
-            --primary-dark: #b35116;
-            --primary-light: #e67a35;
-            --dark-bg: #1a1a1a;
-            --card-bg: rgba(26, 26, 26, 0.9);
-            --surface: rgba(38, 38, 38, 0.7);
-            --text-primary: #EEEEEE;
-            --text-secondary: #a1a1aa;
-            --bn-soft: #FAF9EE;
-            --bn-green: #1A1A1a;
-            --bn-white: #EEEEEE;
-            --bn-black: #010101;
-            --bn-dark: #1A1A1A;
-        }
-        
-        body {
-            background: var(--dark-bg);
-            font-family: 'Inter', sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        
-        .glass-card {
-            background: var(--surface);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-card:hover:not(.no-hover) {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-            transform: translateY(-2px);
-            border-color: rgba(212, 97, 28, 0.3);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
-            border: none;
-            color: white;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.3);
-            background: var(--primary-light);
-        }
-        
-        .btn-secondary {
-            background: rgba(38, 38, 38, 0.7);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(48, 48, 48, 0.7);
-            border-color: rgba(212, 97, 28, 0.3);
-        }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Alpine JS for dropdowns -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-        .btn-primary:disabled, .btn-secondary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bn-soft': '#FAF9EE',
+                        'bn-green': '#1A1A1a',
+                        'bn-white': '#EEEEEE',
+                        'bn-black': '#010101',
+                        'bn-dark': '#1A1A1A',
+                        forge: { // Added forge colors for the dropdown
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-        .btn-primary:disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
-            background: var(--primary);
-        }
-         .btn-secondary:disabled:hover {
-            transform: none;
-            background: rgba(38, 38, 38, 0.7);
-        }
-        
-        .dashboard-item {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center;
-        }
-        
-        .dashboard-item:hover:not(.no-hover) {
-            transform: scale(1.01);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-item {
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .nav-item:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .active-nav {
-            background: linear-gradient(90deg, rgba(212, 97, 28, 0.15) 0%, rgba(212, 97, 28, 0.05) 100%);
-            border-left: 3px solid var(--primary);
-        }
-        
-        .fade-in { animation: fadeIn 0.3s ease-in forwards; }
-        .slide-in { animation: slideIn 0.3s ease-out forwards; }
-        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        
-        input, textarea, select {
-            transition: all 0.3s ease;
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(212, 97, 28, 0.2);
-            outline: none;
-        }
-        
-        .tooltip { position: relative; }
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 120px;
-            background-color: rgba(26, 26, 26, 0.9);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
-        
-        .empty-state { opacity: 0.6; transition: all 0.3s ease; }
-        .empty-state:hover { opacity: 1; transform: scale(1.02); }
-        
-        @media (max-width: 768px) { .glass-card { backdrop-filter: blur(8px); } }
-
-        .image-preview { max-width: 100px; max-height: 100px; border-radius: 8px; margin-top: 8px; display: none; }
-        
-        #toast-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(150%);
-            padding: 12px 24px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-            z-index: 100;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        #toast-notification.show { transform: translateX(-50%) translateY(0); }
-        #toast-notification.success { background-color: var(--primary); }
-        #toast-notification.error { background-color: var(--primary-dark); }
-        #toast-notification.info { background-color: var(--primary); }
-        
-        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary); }
-        input:checked + .slider:before { transform: translateX(26px); }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            background-color: rgba(212, 97, 28, 0.15);
-            color: var(--primary);
-        }
-        
-        .progress-bar {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            height: 10px;
-        }
-        .progress-bar-fill {
-            background-color: var(--primary);
-            height: 100%;
-            transition: width 0.5s ease-in-out;
-        }
-
-        /* Dashboard specific styles */
-        .stat-card {
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.1);
-        }
-        
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            background-color: rgba(212, 97, 28, 0.2);
-            color: var(--primary);
-        }
-
-        /* Modal styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: var(--surface);
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .modal-header {
-            padding: 16px 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-body {
-            padding: 24px;
-        }
-        
-        .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-        
-        /* Page styles */
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-
-        /* Content editor styles */
-        .content-editor {
-            min-height: 200px;
-            padding: 16px;
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            outline: none;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(212, 97, 28, 0.5);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(212, 97, 28, 0.7);
-        }
-
-        /* Blacnova specific styling */
-        .bn-bg-gradient {
-            background: linear-gradient(135deg, rgba(212, 97, 28, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
-        }
-
-        .bn-border {
-            border-color: rgba(212, 97, 28, 0.3);
-        }
-
-        .bn-text-gradient {
-            background: linear-gradient(90deg, #d4611c, #e67a35);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .bn-rounded {
-            border-radius: 12px;
-        }
-
-        .bn-rounded-lg {
-            border-radius: 16px;
-        }
-
-        .bn-rounded-xl {
-            border-radius: 20px;
-        }
-    </style>
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Blacnova Development",
+      "image": "https://www.blacnova.com/img/logo_white.png",
+      "@id": "https://www.blacnova.com/",
+      "url": "https://www.blacnova.com/",
+      "telephone": "+1-575-123-4567",
+      "description": "Custom website development, SEO, and full-service digital solutions for businesses in Las Cruces, NM.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Las Cruces",
+        "addressRegion": "NM",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/blacnova",
+        "https://www.twitter.com/blacnova",
+        "https://www.linkedin.com/company/blacnova"
+      ] 
+    }
+    </script>
 </head>
-<body class="min-h-screen antialiased">
-    <div class="flex h-screen">
-        <!-- Sidebar Navigation -->
-        <div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:block">
-            <div class="flex items-center space-x-3 mb-8">
-                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
-                <h1 class="text-xl font-medium">Dashboard</h1>
-            </div>
-            
-            <nav class="space-y-1">
-                <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
-                    <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                    <span>Overview</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
-                    <i class="fas fa-file-alt w-5 text-center"></i>
-                    <span>Content</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
-                    <i class="fas fa-images w-5 text-center"></i>
-                    <span>Media</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
-                    <i class="fas fa-blog w-5 text-center"></i>
-                    <span>Blog</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
-                    <i class="fas fa-shopping-cart w-5 text-center"></i>
-                    <span>E-commerce</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
-                    <i class="fas fa-cog w-5 text-center"></i>
-                    <span>Settings</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
-                    <i class="fas fa-question-circle w-5 text-center"></i>
-                    <span>Support</span>
-                </div>
-            </nav>
-        </div>
-        
-        <!-- Mobile Header -->
-        <div class="md:hidden fixed top-0 left-0 right-0 bg-dark-bg border-b border-white/10 p-4 z-10 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <button id="mobile-menu-button" class="text-slate-400 hover:text-primary">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <h1 class="text-xl font-bold">Blacnova</h1>
-            </div>
-            <div class="flex items-center space-x-3">
-                <div class="text-right">
-                    <p class="font-medium text-sm">User</p>
-                    <p class="text-xs text-slate-400">client@example.com</p>
-                </div>
-                <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
-            </div>
-        </div>
-        
-        <!-- Mobile Sidebar (Hidden by default) -->
-        <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
-            <div class="w-64 h-full bg-dark-bg border-r border-white/10 p-4">
-                <div class="flex justify-between items-center mb-8">
-                    <div class="flex items-center space-x-3">
-                        <img src="img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
-                        <h1 class="text-xl font-bold">Blacnova</h1>
-                    </div>
-                    <button id="close-mobile-menu" class="text-slate-400 hover:text-primary">
-                        <i class="fas fa-times"></i>
-                    </button>
+
+<body>
+    <header class="header fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="header-content flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <img src="img/logo_white.png" alt="Blacnova Development Logo" class="logo h-20">
+                    </a>
                 </div>
                 
-                <nav class="space-y-1 mb-8">
-                    <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
-                        <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                        <span>Overview</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
-                        <i class="fas fa-file-alt w-5 text-center"></i>
-                        <span>Content</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
-                        <i class="fas fa-images w-5 text-center"></i>
-                        <span>Media</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
-                        <i class="fas fa-blog w-5 text-center"></i>
-                        <span>Blog</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
-                        <i class="fas fa-shopping-cart w-5 text-center"></i>
-                        <span>E-commerce</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
-                        <i class="fas fa-cog w-5 text-center"></i>
-                        <span>Settings</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
-                        <i class="fas fa-question-circle w-5 text-center"></i>
-                        <span>Support</span>
+                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+                    <div class="flex space-x-8">
+                        <!-- Services Dropdown -->
+                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
+                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                                Our Services
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
+                                 x-transition:enter-start="opacity-0 translate-y-1" 
+                                 x-transition:enter-end="opacity-100 translate-y-0" 
+                                 x-transition:leave="transition ease-in duration-150" 
+                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <div class="grid grid-cols-3">
+                                    <div class="col-span-1 bg-gray-50 p-4">
+                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-span-2 p-4">
+                                        <div x-show="activeCategory === 'development'" class="space-y-3">
+                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
+                                        </div>
+                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
+                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
+                                        </div>
+                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
+                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tools Dropdown Integrated Here -->
+                        <div class="relative group" x-data="{ open: false, activeCategory: 'productivity' }" @mouseenter="open = true" @mouseleave="open = false">
+                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                                Tools
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            
+                            <!-- Dropdown Panel -->
+                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
+                                 x-transition:enter-start="opacity-0 translate-y-1" 
+                                 x-transition:enter-end="opacity-100 translate-y-0" 
+                                 x-transition:leave="transition ease-in duration-150" 
+                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <div class="grid grid-cols-3">
+                                    <!-- Categories Column -->
+                                    <div class="col-span-1 bg-gray-50 p-4">
+                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'productivity'" 
+                                                        :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'productivity', 'text-gray-700': activeCategory !== 'productivity' }"
+                                                        class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                                                    Productivity
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'devtools'" 
+                                                        :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
+                                                        class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                                                    Dev Tools
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'writing'" 
+                                                        :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'writing', 'text-gray-700': activeCategory !== 'writing' }"
+                                                        class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                                                    Writing
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Tools Column -->
+                                    <div class="col-span-2 p-4">
+                                        <!-- Productivity Tools -->
+                                        <div x-show="activeCategory === 'productivity'" class="space-y-3">
+                                            <h4 class="font-medium text-gray-900 mb-2">Productivity Tools</h4>
+                                            <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                                                <p class="font-medium">Task Manager</p>
+                                                <p class="text-sm text-gray-500">Organize your tasks and to-dos</p>
+                                            </a>
+                                            <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                                                <p class="font-medium">Calendar</p>
+                                                <p class="text-sm text-gray-500">Manage your schedule and events</p>
+                                            </a>
+                                        </div>
+                                        
+                                        <!-- Dev Tools -->
+                                        <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
+                                            <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
+                                            <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                                                <p class="font-medium">Designer</p>
+                                                <p class="text-sm text-gray-500">Create graphics and visual designs</p>
+                                            </a>
+                                        </div>
+                                         <!-- Writing Tools -->
+                                        <div x-show="activeCategory === 'writing'" class="space-y-3" style="display: none;">
+                                            <h4 class="font-medium text-gray-900 mb-2">Writing Tools</h4>
+                                            <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                                                <p class="font-medium">Grammar Checker</p>
+                                                <p class="text-sm text-gray-500">Improve your writing quality</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
+                        <a href="#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
+                        <a href="#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
                     </div>
                 </nav>
+                
+                <div class="hidden md:flex items-center">
+                    <a href="dashboard.blacnova.net" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white" aria-label="Open menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-button" class="focus:outline-none text-white" aria-label="Close menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col space-y-6">
+            <a href="#services" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Our Services</a>
+            <a href="about/index.html" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">About Us</a>
+            <a href="#contact" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Contact Us</a>
+            <a href="#quote" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Get Quote</a>
+            <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-3 rounded-3xl transition-all text-center mt-4 font-medium hover:bg-opacity-90">Dashboard</a>
+        </nav>
+    </div>
+    
+    <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+    
+    <main class="mt-24">
+
+
+        <section id="home" class="hero" style="height: 56vh; min-height: 430px;">
+            <img src="img/hero.png" alt="Modern workspace with laptops showing code" class="hero-bg">
+
+            <div class="hero-overlay"></div>
+            <div class="hero-content container mx-auto px-4 h-full flex items-center">
+                <div class="flex flex-col lg:flex-row items-center w-full">
+                    <div class="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left" >
+                        <h1 class="text-4xl md:text-5xl font-medium mb-4 leading-tight text-white font-heading animate__animated animate__fadeInDown">
+                            Elevate Your<br> 
+                            <strong class="font-bold">Digital Presence</strong>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-300 mb-6 mx-auto lg:mx-0 max-w-lg animate__animated animate__fadeInDown animate__delay-1s">
+                            Cutting-edge development solutions tailored to your business needs in 
+                            <span class="badge border-0 text-white relative -top-px px-2 py-1 rounded-md font-medium" style="background-color: #d4611c;">
+                                Las Cruces, New Mexico
+                            </span>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="#quote" class="btn-primary px-6 py-3 rounded-3xl text-base text-center font-medium transition-all">
+                                Start Your Project
+                            </a>
+                            <a href="#services" class="px-6 py-3 rounded-3xl text-base text-center font-medium border border-white text-white hover:bg-white hover:text-black transition-colors">
+                                Our Services
+                            </a>
+                        </div>
+                    </div>
+                    
+<div class="hidden lg:block lg:w-1/2 relative mt-12 lg:mt-0">
+    <div class="laptop-mockup no-animation transform transition-all duration-500 hover:scale-105">
+        <div class="laptop-frame">
+            <div class="laptop-screen">
+                <img src="img/one.png" alt="Blacnova portfolio website screenshot" class="laptop-image">
+            </div>
+        </div>
+        <div class="laptop-base">
+            <div class="laptop-notch"></div>
+        </div>
+    </div>
+    <div class="phone-mockup no-animation transform transition-all duration-500 hover:scale-105">
+        <div class="phone-frame">
+            <div class="phone-screen">
+                <img src="img/three.png" alt="Blacnova mobile app screenshot" class="phone-image">
+            </div>
+            <div class="phone-notch"></div>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" class="bg-black py-8 md:py-12 mt-5">
+            <div class="container mx-auto px-4">
+                <h2 class="text-center text-white text-xl md:text-3xl font-medium mb-6 md:mb-12 font-heading scroll-animate" data-animation="animate__fadeIn">Businesses We've Worked With</h2>
+                
+                <div class="flex flex-nowrap justify-center items-center gap-2 sm:gap-4 md:gap-16 overflow-x-auto px-2 md:px-4 py-2 no-scrollbar scroll-animate" data-animation="animate__fadeInUp">
+                    <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+                        <img src="img/farm.png" alt="Mesilla Valley Produce Logo" class="w-full h-auto object-contain">
+                    </div>
+                    <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+                        <img src="img/chios.png" alt="Chios Taverna Logo" class="w-full h-auto object-contain">
+                    </div>
+                    <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+                        <img src="img/zia.png" alt="Zia Building Maintenance Logo" class="w-full h-auto object-contain">
+                    </div>
+                    <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+                        <img src="img/wildwest.png" alt="Wild West Western Wear Logo" class="w-full h-auto object-contain">
+                    </div>
+                    <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+                        <img src="img/source.png" alt="The Source Logo" class="w-full h-auto object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="services" class="py-20 bg-white poppins-font-section relative">
+            <div class="absolute top-0 left-0 w-full h-[300px] pointer-events-none" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);"></div>
+            
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Services</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
+                        <span class="section-title">Digital</span> Solutions
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        We provide a wide range of digital services to help your business grow. Our team of experts is dedicated to delivering high-quality solutions tailored to your unique needs.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-laptop-code"></i></span>
+                            <h3 class="title">Web Development</h3>
+                            <p class="description">
+                                We build responsive, high-performing websites that are secure, scalable, and tailored to your brand. From simple landing pages to complex web applications, our solutions drive user engagement.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                    
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-chart-line"></i></span>
+                            <h3 class="title">SEO Optimization</h3>
+                            <p class="description">
+                                Increase your online visibility and rank higher on search engines. We use proven strategies for on-page, off-page, and technical SEO to attract organic traffic and generate qualified leads.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                    
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-cloud-upload-alt"></i></span>
+                            <h3 class="title">Cloud Solutions</h3>
+                            <p class="description">
+                                Leverage the power of the cloud with our expert services. We offer cloud migration, infrastructure management, and custom cloud-native application development to enhance your business agility.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                    
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-bullhorn"></i></span>
+                            <h3 class="title">Digital Marketing</h3>
+                            <p class="description">
+                                Our comprehensive digital marketing campaigns are designed to build your brand and engage your target audience. We specialize in content marketing, social media, and PPC advertising.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                    
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                            <h3 class="title">E-Commerce</h3>
+                            <p class="description">
+                                Launch and grow your online store with our end-to-end e-commerce solutions. We build secure, user-friendly platforms with seamless payment gateway integration and inventory management.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                    
+                    <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
+                        <div class="content">
+                            <span class="icon"><i class="fas fa-cogs"></i></span>
+                            <h3 class="title">API Integration</h3>
+                            <p class="description">
+                                Connect your software systems and automate workflows with our custom API integration services. We ensure seamless data flow between your applications to improve efficiency and productivity.
+                            </p>
+                            <a href="#" class="learn-more group">
+                                Learn More
+                                <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                            </a>
+                        </div>
+                        <span class="circle-before"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+ <!-- Compact BN Apps CTA Section -->
+    <section id="bn-apps-compact-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
+        
+        <div class="relative container mx-auto px-6 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Side: Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Introducing BN Apps</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-[#ffffff] mb-3">
+                        All The Tools You Need. One Suite.
+                    </h2>
+                    <div class="flex justify-center lg:justify-start">
+                        <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
+                    </div>
+                    <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
+                        From invoicing and link management to cloud storage and AI-enhanced documents, BN Apps are built to help you work smarter, not harder.
+                    </p>
+                    <a href="apps/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        Explore Apps
+                    </a>
+                </div>
+
+                <!-- Right Side: App Icons Grid -->
+                <div class="lg:col-span-5 flex items-center justify-center lg:justify-end">
+                    <div class="grid grid-cols-3 gap-x-4 gap-y-4 max-w-[300px]">
+                        <!-- App 1: BN Links -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="fas fa-link text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Links</span>
+                        </div>
+                        <!-- App 2: BN Forms -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="far fa-file-alt text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Forms</span>
+                        </div>
+                        <!-- App 3: BN Email -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="fas fa-envelope text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Email</span>
+                        </div>
+                        <!-- App 4: BN Google Apps -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-google-drive text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">Workspace</span>
+                        </div>
+                        <!-- App 5: BN Invoice -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="fas fa-file-invoice-dollar text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Invoice</span>
+                        </div>
+                        <!-- App 6: BN Cards -->
+                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                            <i class="fas fa-layer-group text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Cards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="projects" class="py-24 relative overflow-hidden bg-[#fafbfb] poppins-font-section">
+    <!-- This script is for a particle background effect, assuming you have it configured -->
+    <div id="particles-js" class="absolute inset-0 z-0 opacity-100"></div>
+    
+    <div class="container mx-auto px-6 max-w-7xl relative z-10">
+        <div class="text-center mb-20">
+            <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Portfolio</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
+                <span class="section-title">Showcasing Our</span> Best Work
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-600">
+                Explore our portfolio of innovative digital solutions that have helped businesses transform and grow.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            
+            <!-- Project Card 1: SEO & Analytics -->
+            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
+                <img src="img/src5.png" alt="SEO Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute inset-0 flex flex-col justify-between p-8">
+                    <!-- Top Content: Label -->
+                    <div>
+                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">App Suite</span>
+                    </div>
+                    <!-- Bottom Content: Title, Description, Link -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">BN Apps</h3>
+                        <p class="text-gray-300 mb-4">All-in-one toolkit with invoicing, forms, link tools, and AI-powered productivity apps.</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2:  -->
+            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
+                <img src="img/src4.png" alt="E-Commerce Platform" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute inset-0 flex flex-col justify-between p-8">
+                    <!-- Top Content: Label -->
+                    <div>
+                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">Web Development</span>
+                    </div>
+                    <!-- Bottom Content: Title, Description, Link -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Cards MMS</h3>
+                        <p class="text-gray-300 mb-4">A universal CSV-powered content tool for menus, products, events, and structured data.</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3: Cloud Solutions -->
+            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
+                <img src="img/src6.png" alt="Cloud Migration" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute inset-0 flex flex-col justify-between p-8">
+                    <!-- Top Content: Label -->
+                    <div>
+                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">AI Productivity Suite</span>
+                    </div>
+                    <!-- Bottom Content: Title, Description, Link -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Orbit Workspace</h3>
+                        <p class="text-gray-300 mb-4">An AI-powered dashboard that links tools like Google Docs, Gmail, and more for smarter work automation.</p>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <!-- Main Content Area -->
-        <div class="flex-1 overflow-y-auto pt-16 md:pt-0">
-            <!-- Desktop Header -->
-            <div class="hidden md:flex justify-between items-center bg-dark-bg border-b border-white/10 p-4">
-                <h1 id="page-title" class="text-2xl font-bold">Overview</h1>
-                <div class="flex items-center space-x-4">
-                    <div class="text-right">
-                        <p class="font-medium">User</p>
-                        <p class="text-sm text-slate-400">client@example.com</p>
-                    </div>
-                    <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-10 h-10 rounded-full">
-                    <button id="logout-btn" class="text-slate-400 hover:text-primary">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="text-center mt-16">
+            <a href="projects/index.html" class="inline-flex items-center px-8 py-4 border border-[#d4611c] text-[#d4611c] font-semibold rounded-3xl hover:bg-[#d4611c] hover:text-white transition-all duration-300 group">
+                View All Projects
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+        <section id="about" class="py-24 bg-white poppins-font-section">
+            <div class="absolute top-0 left-0 w-full h-[300px] pointer-events-none" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);"></div>
             
-            <!-- Pages Container -->
-            <div id="pages-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <!-- Overview Page -->
-                <div id="overview-page" class="page active">
-                    <!-- Stats Overview -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="stat-card glass-card p-6 rounded-lg">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-slate-400 mb-1">Total Visitors</p>
-                                    <p class="text-2xl font-bold">1,248</p>
-                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5% from last week</p>
-                                </div>
-                                <div class="stat-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card glass-card p-6 rounded-lg">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-slate-400 mb-1">Page Views</p>
-                                    <p class="text-2xl font-bold">5,672</p>
-                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 8.3% from last week</p>
-                                </div>
-                                <div class="stat-icon">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card glass-card p-6 rounded-lg">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-slate-400 mb-1">Conversion Rate</p>
-                                    <p class="text-2xl font-bold">3.2%</p>
-                                    <p class="text-xs text-primary-dark mt-1"><i class="fas fa-arrow-down mr-1"></i> 1.1% from last week</p>
-                                </div>
-                                <div class="stat-icon">
-                                    <i class="fas fa-percentage"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card glass-card p-6 rounded-lg">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-slate-400 mb-1">Avg. Session</p>
-                                    <p class="text-2xl font-bold">2m 45s</p>
-                                    <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 15s from last week</p>
-                                </div>
-                                <div class="stat-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Main Content Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Left Column -->
-                        <div class="lg:col-span-2 space-y-6">
-                            <!-- Traffic Chart -->
-                            <div class="glass-card p-6">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h2 class="text-xl font-bold">Website Traffic</h2>
-                                    <select class="text-sm bg-dark-bg/50 border border-white/10 rounded-lg px-3 py-1">
-                                        <option>Last 7 days</option>
-                                        <option>Last 30 days</option>
-                                        <option>Last 90 days</option>
-                                    </select>
-                                </div>
-                                <div class="h-64">
-                                    <!-- Chart placeholder - would be replaced with Chart.js or similar -->
-                                    <div class="w-full h-full flex items-center justify-center bg-dark-bg/30 rounded-lg">
-                                        <p class="text-slate-400">Traffic chart will appear here</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Activity -->
-                            <div class="glass-card p-6">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h2 class="text-xl font-bold">Recent Activity</h2>
-                                    <button class="text-sm text-primary hover:underline">View All</button>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
-                                        <div class="stat-icon w-10 h-10 text-lg">
-                                            <i class="fas fa-file-alt"></i>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="font-medium">Homepage content updated</p>
-                                            <p class="text-sm text-slate-400">You updated the hero section text</p>
-                                            <p class="text-xs text-slate-500 mt-1">2 hours ago</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
-                                        <div class="stat-icon w-10 h-10 text-lg">
-                                            <i class="fas fa-image"></i>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="font-medium">New image uploaded</p>
-                                            <p class="text-sm text-slate-400">"team-photo.jpg" added to About page</p>
-                                            <p class="text-xs text-slate-500 mt-1">1 day ago</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
-                                        <div class="stat-icon w-10 h-10 text-lg">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="font-medium">New order received</p>
-                                            <p class="text-sm text-slate-400">Order #4567 for "Premium Package"</p>
-                                            <p class="text-xs text-slate-500 mt-1">2 days ago</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Right Column -->
-                        <div class="lg:col-span-1 space-y-6">
-                            <!-- Quick Actions -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-page-btn">
-                                        <i class="fas fa-file-alt text-xl mb-2"></i>
-                                        <span class="text-sm">New Page</span>
-                                    </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="upload-media-btn">
-                                        <i class="fas fa-image text-xl mb-2"></i>
-                                        <span class="text-sm">Upload Media</span>
-                                    </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-blog-btn">
-                                        <i class="fas fa-blog text-xl mb-2"></i>
-                                        <span class="text-sm">New Post</span>
-                                    </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="settings-btn">
-                                        <i class="fas fa-cog text-xl mb-2"></i>
-                                        <span class="text-sm">Settings</span>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- Website Status -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Website Status</h2>
-                                <div class="space-y-4">
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
-                                            <span>Website Online</span>
-                                        </div>
-                                        <span class="status-badge">Active</span>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
-                                            <span>SSL Certificate</span>
-                                        </div>
-                                        <span class="status-badge">Valid</span>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary-light"></div>
-                                            <span>Storage Usage</span>
-                                        </div>
-                                        <div class="w-24">
-                                            <div class="progress-bar">
-                                                <div class="progress-bar-fill" style="width: 65%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
-                                            <span>Backup Status</span>
-                                        </div>
-                                        <span class="text-sm text-slate-400">Last: Today 2:00 AM</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Comments -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Recent Comments</h2>
-                                <div class="space-y-4">
-                                    <div class="flex items-start space-x-3">
-                                        <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
-                                        <div class="flex-1 min-w-0">
-                                            <p class="font-medium">John D.</p>
-                                            <p class="text-sm text-slate-400">"Great article! Very helpful information."</p>
-                                            <p class="text-xs text-slate-500 mt-1">On "10 Tips for Better SEO"</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-start space-x-3">
-                                        <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
-                                        <div class="flex-1 min-w-0">
-                                            <p class="font-medium">Sarah M.</p>
-                                            <p class="text-sm text-slate-400">"When will the new products be available?"</p>
-                                            <p class="text-xs text-slate-500 mt-1">On "Upcoming Product Line"</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="w-full btn-secondary mt-4 py-2 rounded-lg text-sm">
-                                    View All Comments
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="text-center mb-20 scroll-animate" data-animation="animate__fadeInDown">
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Methodology</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
+                        <span class="section-title">How We Deliver</span> Excellence
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        A proven process that ensures quality, efficiency, and results at every stage of your project.
+                    </p>
                 </div>
                 
-                <!-- Content Page -->
-                <div id="content-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">Content Management</h1>
-                            <p class="text-slate-400">Manage your website pages and content</p>
-                        </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="add-content-btn">
-                            <i class="fas fa-plus mr-2"></i> Add Content
-                        </button>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="text-left border-b border-white/10">
-                                        <th class="pb-3">Page Title</th>
-                                        <th class="pb-3">URL</th>
-                                        <th class="pb-3">Last Updated</th>
-                                        <th class="pb-3">Status</th>
-                                        <th class="pb-3 text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Homepage</td>
-                                        <td class="py-4 text-slate-400">/</td>
-                                        <td class="py-4 text-slate-400">2 hours ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">About Us</td>
-                                        <td class="py-4 text-slate-400">/about</td>
-                                        <td class="py-4 text-slate-400">1 day ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Services</td>
-                                        <td class="py-4 text-slate-400">/services</td>
-                                        <td class="py-4 text-slate-400">3 days ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-white/5">
-                                        <td class="py-4">Contact</td>
-                                        <td class="py-4 text-slate-400">/contact</td>
-                                        <td class="py-4 text-slate-400">1 week ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Media Page -->
-                <div id="media-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">Media Library</h1>
-                            <p class="text-slate-400">Manage your website images and files</p>
-                        </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="upload-media-page-btn">
-                            <i class="fas fa-upload mr-2"></i> Upload Media
-                        </button>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
-                            </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
-                            </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
-                            </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
-                            </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog Page -->
-                <div id="blog-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">Blog Posts</h1>
-                            <p class="text-slate-400">Manage your blog content</p>
-                        </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="new-blog-post-btn">
-                            <i class="fas fa-plus mr-2"></i> New Post
-                        </button>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="space-y-4">
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
-                                <div>
-                                    <h3 class="font-bold">10 Tips for Better SEO</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on May 15, 2023</p>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
-                                </div>
+                <div class="flex flex-col lg:flex-row gap-10 items-stretch">
+                    <div class="lg:w-1/2 scroll-animate" data-animation="animate__fadeInLeft">
+                        <div class="h-full bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-3xl font-medium text-gray-900">Our Process</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-800">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h3.5l1-1h3l1 1H17a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                                </svg>
                             </div>
                             
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
-                                <div>
-                                    <h3 class="font-bold">How to Improve Website Performance</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on April 28, 2023</p>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
-                                <div>
-                                    <h3 class="font-bold">The Future of Web Design</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on March 10, 2023</p>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
-                                    <button class="btn-secondary px-3 py-1 text-sm rounded">View</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- E-commerce Page -->
-                <div id="ecommerce-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">E-commerce</h1>
-                            <p class="text-slate-400">Manage your online store</p>
-                        </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center">
-                            <i class="fas fa-plus mr-2"></i> Add Product
-                        </button>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="text-left border-b border-white/10">
-                                        <th class="pb-3">Product</th>
-                                        <th class="pb-3">Price</th>
-                                        <th class="pb-3">Stock</th>
-                                        <th class="pb-3">Status</th>
-                                        <th class="pb-3 text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Premium Package</td>
-                                        <td class="py-4">$99.99</td>
-                                        <td class="py-4">25</td>
-                                        <td class="py-4"><span class="status-badge">Active</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Basic Package</td>
-                                        <td class="py-4">$49.99</td>
-                                        <td class="py-4">42</td>
-                                        <td class="py-4"><span class="status-badge">Active</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Deluxe Package</td>
-                                        <td class="py-4">$149.99</td>
-                                        <td class="py-4">12</td>
-                                        <td class="py-4"><span class="status-badge">Active</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Settings Page -->
-                <div id="settings-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">Settings</h1>
-                            <p class="text-slate-400">Configure your website settings</p>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="space-y-6">
-                            <div>
-                                <h3 class="font-bold mb-3">General Settings</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">Site Title</p>
-                                            <p class="text-sm text-slate-400">The name of your website</p>
-                                        </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="My Business">
-                                    </div>
-                                    
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">Site Description</p>
-                                            <p class="text-sm text-slate-400">A brief description of your website</p>
-                                        </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="The best business in town">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h3 class="font-bold mb-3">Maintenance Mode</h3>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="font-medium">Enable Maintenance Mode</p>
-                                        <p class="text-sm text-slate-400">Show a maintenance page to visitors</p>
-                                    </div>
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h3 class="font-bold mb-3">SEO Settings</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">Meta Keywords</p>
-                                            <p class="text-sm text-slate-400">Keywords for search engines</p>
-                                        </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="business, services, quality">
-                                    </div>
-                                    
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">Google Analytics</p>
-                                            <p class="text-sm text-slate-400">Your Google Analytics ID</p>
-                                        </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex justify-end">
-                                <button class="btn-primary px-6 py-2 rounded-lg">Save Settings</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Support Page -->
-                <div id="support-page" class="page">
-                    <div class="flex justify-between items-center mb-8">
-                        <div>
-                            <h1 class="text-2xl font-bold">Support</h1>
-                            <p class="text-slate-400">Get help with your website</p>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6">
-                        <div class="space-y-6">
-                            <div>
-                                <h3 class="font-bold mb-3">Contact Support</h3>
-                                <p class="text-slate-400 mb-4">Need help with something? Send us a message and we'll get back to you as soon as possible.</p>
-                                
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm text-slate-400 mb-1">Subject</label>
-                                        <input type="text" class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2">
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm text-slate-400 mb-1">Message</label>
-                                        <textarea class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 h-32"></textarea>
-                                    </div>
-                                    
-                                    <div class="flex justify-end">
-                                        <button class="btn-primary px-6 py-2 rounded-lg">Send Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h3 class="font-bold mb-3">Help Resources</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                                <i class="fas fa-book"></i>
-                                            </div>
-                                            <span>Documentation</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                                <i class="fas fa-video"></i>
-                                            </div>
-                                            <span>Video Tutorials</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                                <i class="fas fa-question-circle"></i>
-                                            </div>
-                                            <span>FAQs</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                            <div class="space-y-8">
+                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
+                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-bold text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">1</div>
+                                    <div class="flex items-start gap-5 ml-4">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
                                                 <i class="fas fa-comments"></i>
                                             </div>
-                                            <span>Community Forum</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Discovery & Strategy</h4>
+                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">
+                                                You fill out our Project Intake Form to share your vision, goals, and technical requirements, so we can understand your project before moving forward.
+                                                <span class="badge border border-[#d4611c] text-[#d4611c] bg-transparent relative -top-px px-2 py-1 rounded-md font-medium mt-3" style="background-color: transparent;">
+                                                    View Intake Form
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
+                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-bold text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">2</div>
+                                    <div class="flex items-start gap-5 ml-4">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
+                                                <i class="fas fa-code"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Design & Development</h4>
+                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">Our team crafts pixel-perfect designs and robust code with iterative feedback cycles.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
+                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-bold text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">3</div>
+                                    <div class="flex items-start gap-5 ml-4">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
+                                                <i class="fas fa-rocket"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Launch & Growth</h4>
+                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">We deploy with precision and provide ongoing optimization for your business needs.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 scroll-animate" data-animation="animate__fadeInRight">
+                        <div class="h-full bg-black p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-3xl font-medium text-white">Why Choose Us</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+                                </svg>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
+                                    <div class="flex items-start gap-5">
+                                        <div class="flex-shrink-0">
+                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
+                                                <i class="fas fa-cloud"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-white group-hover:text-orange-400 transition-colors">Blacnova Dashboard</h4>
+                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Manage and update your website—no developer needed. Edit blog posts, tweak content, and take control with our powerful Cards - Cloud Management System.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
+                                    <div class="flex items-start gap-5">
+                                        <div class="flex-shrink-0">
+                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
+                                                <img src="img/BN.png" alt="BN Icon" class="w-8 h-8 object-contain" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-white group-hover:text-orange-400 transition-colors">BN Apps & Plugins</h4>
+                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                                                Get full access to our suite of Blacnova apps and plugins designed to supercharge your business. 
+                                                <a href="apps/index.html">
+                                                    <span class="badge border-0 text-white relative -top-px px-2 py-1 rounded-md font-medium ml-2" style="background-color: #d4611c;">
+                                                        View Apps
+                                                    </span>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
+                                    <div class="flex items-start gap-5">
+                                        <div class="flex-shrink-0">
+                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold mb-2 text-white group-hover:text-orange-400 transition-colors">Transparent Pricing</h4>
+                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                                                We provide a tailored quote based on your project's scope, then it's just 
+                                                <span style="color: #d4611c; font-weight: 600;">$25/month</span> 
+                                                for ongoing service and support. No surprises, no hidden fees.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -1100,253 +794,442 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <!-- Modals -->
-    <!-- New Page Modal -->
-    <div id="new-page-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-bold">Create New Page</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
-                    <i class="fas fa-times"></i>
-                </button>
+        </section>
+
+        <section id="quote" class="py-20 bg-[#fafbfb] poppins-font-section">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Let's Talk</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
+                        <span class="section-title">Ready to Start</span> Your Project?
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        Fill out the form below and we'll get back to you with a personalized quote and project plan.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300">
+                    <div class="p-8 md:p-10">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="you@example.com">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
+                                <select id="service" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                    <option selected>Choose a service...</option>
+                                    <option>Web Development</option>
+                                    <option>SEO Optimization</option>
+                                    <option>Cloud Solutions</option>
+                                    <option>Digital Marketing</option>
+                                    <option>E-Commerce</option>
+                                    <option>API Integration</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Details</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="px-8 py-4 bg-black text-white rounded-3xl font-semibold btn-contact hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                                    Submit Request
+                                    <span class="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Page Title</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg">
+        </section>
+    <!-- Completed Project CTA Section -->
+    <section id="project-preview-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
+        
+        <div class="relative container mx-auto px-6 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Side: Text Content -->
+                <div class="lg:col-span-6 text-center lg:text-left">
+                    <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Featured Projects</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-[#ffffff] mb-3">
+                        Client Website Showcase
+                    </h2>
+                    <div class="flex justify-center lg:justify-start">
+                        <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
                     </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">URL Slug</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="e.g., about-us">
+                    <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
+                        Check out our latest projects. We work closely with our clients to deliver modern, responsive, and high-performing websites that meet all their goals.
+                    </p>
+                    <a href="#" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        View Client Projects
+                    </a>
+                </div>
+
+                <!-- Right Side: Stacked Project Screenshots -->
+                <div class="lg:col-span-6 flex items-center justify-center lg:justify-end mt-16 lg:mt-0">
+                   <div class="relative w-full max-w-md h-64">
+                        <!-- Bottom-left image -->
+                        <img src="img/src1.png" alt="Project screenshot 3" class="absolute bottom-0 left-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -rotate-6 -translate-x-20 z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3d4758/ffffff';">
+
+                        <!-- Bottom-right image -->
+                        <img src="img/src2.png" alt="Project screenshot 2" class="absolute bottom-0 right-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform rotate-6 translate-x-20 z-0" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4d5768/ffffff';">
+                        
+                        <!-- Top-center image -->
+                        <img src="img/src3.png" alt="Project screenshot 1" class="absolute top-0 left-1/2 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -translate-x-1/2 -rotate-2 z-20" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2d3748/ffffff';">
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="relative py-24 overflow-hidden poppins-font-section" style="background-color: #ffffff;">
+            <div class="absolute top-0 left-0 w-full h-[300px] pointer-events-none" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);"></div>
+            <div class="container mx-auto px-6 max-w-5xl relative z-10">
+                <div class="p-1 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 relative overflow-hidden scroll-animate" data-animation="animate__zoomIn">
+                    <div class="absolute inset-0 flex justify-center items-center overflow-hidden rounded-3xl">
+                        <div class="w-80 h-80 bg-gradient-to-r from-[#d4611c]/20 via-[#e67a35]/20 to-[#d4611c]/20 opacity-20 absolute filter blur-3xl rounded-full"></div>
                     </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Page Content</label>
-                        <div class="content-editor" contenteditable="true">
-                            <p>Start typing your content here...</p>
+                    
+                    <div class="bg-gradient-to-br from-black/90 to-black/95 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
+                        <canvas id="cta-particles" class="absolute inset-0 w-full h-full pointer-events-none rounded-3xl"></canvas>
+                        
+                        <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase relative z-10">Let's Build Together</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white relative z-10">
+                            Ready to Elevate Your Digital Presence?
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto relative z-10">
+                            We craft custom solutions that drive results. Schedule your free consultation today.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row justify-center gap-5 relative z-10">
+                            <a href="#quote" class="group relative px-8 py-4 bg-[#d4611c] text-white font-semibold rounded-3xl overflow-hidden transition-all duration-500 hover:bg-[#e67a35] hover:shadow-xl">
+                                <span class="relative z-10 flex items-center justify-center">
+                                    Start Your Project
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="absolute inset-0 bg-gradient-to-r from-[#d4611c] to-[#e67a35] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                            </a>
+                            
+                            <a href="#services" class="group relative px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-3xl overflow-hidden transition-all duration-500 hover:border-white/60 hover:shadow-lg">
+                                <span class="relative z-10 flex items-center justify-center">
+                                    Explore Services
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Create Page</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Upload Media Modal -->
-    <div id="upload-media-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-bold">Upload Media</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="border-2 border-dashed border-white/20 rounded-lg p-8 text-center">
-                    <i class="fas fa-cloud-upload-alt text-4xl text-primary mb-4"></i>
-                    <p class="mb-2">Drag and drop files here</p>
-                    <p class="text-sm text-slate-400 mb-4">or</p>
-                    <button class="btn-secondary px-4 py-2 rounded-lg">
-                        Select Files
-                    </button>
+        </section>
+
+        <section id="local" class="py-20 bg-black poppins-font-section">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Roots</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+                        <span class="section-title">Proudly Serving</span> Las Cruces
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-400">
+                        As a locally owned business, we're committed to helping our community thrive through technology.
+                    </p>
                 </div>
-                <div class="mt-4">
-                    <label class="block text-sm text-slate-400 mb-1">File Name</label>
-                    <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Optional custom name">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Upload Files</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- New Blog Post Modal -->
-    <div id="new-blog-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-bold">New Blog Post</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Post Title</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Featured Image</label>
-                        <button class="btn-secondary w-full px-4 py-2 rounded-lg text-left">
-                            <i class="fas fa-image mr-2"></i> Select Image
-                        </button>
-                    </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Post Content</label>
-                        <div class="content-editor" contenteditable="true">
-                            <p>Start writing your blog post here...</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="local-card p-8 rounded-3xl">
+                        <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Community Focused</h3>
+                        <p class="text-gray-400 mb-4">
+                            We reinvest in local businesses and support the growth of the Mesilla Valley's digital economy.
+                        </p>
+                        <div class="flex items-center text-[#d4611c] font-medium">
+                            <span>Learn about our initiatives</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Tags</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Separate tags with commas">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Publish Post</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Auth Modal -->
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-bold">Login to Dashboard</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Email</label>
-                        <input type="email" class="w-full px-4 py-2 rounded-lg" placeholder="your@email.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-slate-400 mb-1">Password</label>
-                        <input type="password" class="w-full px-4 py-2 rounded-lg" placeholder="••••••••">
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input type="checkbox" id="remember-me" class="h-4 w-4 rounded bg-dark-bg/50 border-primary/30 text-primary focus:ring-primary">
-                            <label for="remember-me" class="ml-2 text-sm text-slate-300">Remember me</label>
+                    
+                    <div class="local-card p-8 rounded-3xl">
+                        <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Local Expertise</h3>
+                        <p class="text-gray-400 mb-4">
+                            Our team understands the unique needs and challenges of businesses in Southern New Mexico.
+                        </p>
+                        <div class="flex items-center text-[#d4611c] font-medium">
+                            <span>Meet our team</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="local-card p-8 rounded-3xl">
+                        <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Personal Service</h3>
+                        <p class="text-gray-400 mb-4">
+                            Unlike national agencies, we offer face-to-face consultations and personalized support.
+                        </p>
+                        <div class="flex items-center text-[#d4611c] font-medium">
+                            <span>Schedule a meeting</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Login</button>
+        </section>
+    </main>
+    
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center scroll-animate" data-animation="animate__fadeIn">
+                <a href="/" aria-label="Back to homepage">
+                    <img src="img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
+                </a>
             </div>
-            <div class="px-6 pb-6 text-center">
-                <p class="text-sm text-slate-400">Don't have an account? <a href="#" class="text-primary hover:underline">Sign up</a></p>
+            <p class="text-center text-white/70 mt-4 scroll-animate" data-animation="animate__fadeIn" data-delay="0.2s">Founded in Las Cruces, New Mexico.</p>
+            <div class="border-t border-white/40 mt-12 pt-8 text-center text-white/60 scroll-animate" data-animation="animate__fadeIn" data-delay="0.4s">
+                <p>&copy; <span id="year"></span> Blacnova. All rights reserved.</p>
             </div>
         </div>
-    </div>
+    </footer>
     
-    <!-- Toast Notification -->
-    <div id="toast-notification"></div>
-    
+    <script src="js/ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/shimmerjs@1.0.3/dist/shimmer.min.js"></script>
+
+    <script src="js/BN-Cta.js"></script>
+    <script src="js/BN-Contact.js"></script>
+    <script src="js/BN-PageScroll.js"></script>
+
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-sidebar').classList.remove('hidden');
-        });
-        
-        document.getElementById('close-mobile-menu').addEventListener('click', () => {
-            document.getElementById('mobile-sidebar').classList.add('hidden');
-        });
-        
-        // Page switching functionality
-        const navItems = document.querySelectorAll('.nav-item');
-        const pages = document.querySelectorAll('.page');
-        const pageTitle = document.getElementById('page-title');
-        
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Remove active class from all nav items
-                navItems.forEach(nav => nav.classList.remove('active-nav'));
-                
-                // Add active class to clicked nav item
-                item.classList.add('active-nav');
-                
-                // Hide all pages
-                pages.forEach(page => page.classList.remove('active'));
-                
-                // Show the selected page
-                const pageId = item.getAttribute('data-page') + '-page';
-                document.getElementById(pageId).classList.add('active');
-                
-                // Update page title
-                const pageName = item.querySelector('span').textContent;
-                pageTitle.textContent = pageName;
-                
-                // Close mobile menu if open
-                document.getElementById('mobile-sidebar').classList.add('hidden');
-            });
-        });
-        
-        // Modal functionality
-        const modals = document.querySelectorAll('.modal');
-        const modalButtons = {
-            'new-page-btn': 'new-page-modal',
-            'upload-media-btn': 'upload-media-modal',
-            'upload-media-page-btn': 'upload-media-modal',
-            'new-blog-btn': 'new-blog-modal',
-            'new-blog-post-btn': 'new-blog-modal',
-            'add-content-btn': 'new-page-modal',
-            'settings-btn': 'auth-modal',
-            'logout-btn': 'auth-modal'
-        };
-        
-        // Open modals
-        Object.keys(modalButtons).forEach(buttonId => {
-            const button = document.getElementById(buttonId);
-            if (button) {
-                button.addEventListener('click', () => {
-                    const modalId = modalButtons[buttonId];
-                    document.getElementById(modalId).classList.add('active');
+        document.addEventListener("DOMContentLoaded", function() {
+            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+
+            if ("IntersectionObserver" in window) {
+                // Hide elements that will be animated, to prevent flashing
+                elementsToAnimate.forEach(el => {
+                    el.style.opacity = '0';
+                });
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            const animation = el.getAttribute('data-animation') || 'animate__fadeInUp';
+                            const delay = el.getAttribute('data-delay');
+
+                            if (delay) {
+                                el.style.animationDelay = delay;
+                            }
+                            
+                            // Make element visible and add animation classes
+                            el.style.opacity = '1';
+                            el.classList.add('animate__animated', animation);
+                            
+                            // Unobserve the element after animation to prevent re-triggering
+                            observer.unobserve(el);
+                        }
+                    });
+                }, {
+                    threshold: 0.05 // Trigger when 5% of the element is visible
+                });
+
+                elementsToAnimate.forEach(el => {
+                    observer.observe(el);
+                });
+
+            } else {
+                // Fallback for older browsers that don't support IntersectionObserver
+                elementsToAnimate.forEach(el => {
+                    el.style.opacity = '1';
                 });
             }
         });
-        
-        // Close modals
-        document.querySelectorAll('.modal-close').forEach(closeBtn => {
-            closeBtn.addEventListener('click', () => {
-                closeBtn.closest('.modal').classList.remove('active');
-            });
-        });
-        
-        // Close modal when clicking outside
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-        });
-        
-        // Sample function to show toast
-        function showToast(message, type = 'info') {
-            const toast = document.getElementById('toast-notification');
-            toast.textContent = message;
-            toast.className = '';
-            toast.classList.add(type, 'show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Sample toast triggers for demo purposes
-        document.querySelectorAll('[data-toast]').forEach(button => {
-            button.addEventListener('click', () => {
-                const message = button.getAttribute('data-toast-message') || 'Action completed';
-                const type = button.getAttribute('data-toast-type') || 'info';
-                showToast(message, type);
-            });
-        });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const MOBILE_BREAKPOINT = 768;
+    const isMobile = () => window.innerWidth < MOBILE_BREAKPOINT;
+    if (!isMobile()) return;
+
+    const allCards = document.querySelectorAll('.process-step, .feature-card, .local-card');
+
+    const removeAllHoverStates = () => {
+        allCards.forEach(card => {
+            card.classList.remove('hover', 'shadow-lg', 'bg-[#2a2a2a]', 'border-white/40', 'border-orange-200');
+
+            card.style.transform = '';
+            card.style.boxShadow = '';
+            card.style.borderColor = '';
+
+            const icon = card.querySelector('.feature-icon, .process-icon, .local-icon');
+            if (icon) {
+                icon.classList.remove(
+                    'from-orange-600', 'to-red-600', 'from-orange-500', 'to-amber-500',
+                    'bg-gradient-to-br', 'rotate-6'
+                );
+                icon.classList.add('bg-[#1a1a1a]');
+                icon.style.transform = '';
+                icon.style.boxShadow = '';
+            }
+
+            const title = card.querySelector('h3, h4');
+            if (title) {
+                title.classList.remove('text-orange-400', 'text-orange-600');
+                if (card.classList.contains('feature-card') || card.classList.contains('local-card')) {
+                    title.classList.add('text-white');
+                } else {
+                    title.classList.add('text-gray-900');
+                }
+            }
+
+            const paragraph = card.querySelector('p');
+            if (paragraph) {
+                paragraph.classList.remove('text-gray-300', 'text-gray-800');
+                if (card.classList.contains('feature-card') || card.classList.contains('local-card')) {
+                    paragraph.classList.add('text-gray-400');
+                } else {
+                    paragraph.classList.add('text-gray-600');
+                }
+            }
+
+            const stepNumber = card.querySelector('.step-number');
+            if (stepNumber) {
+                stepNumber.classList.remove('bg-orange-500', 'text-white');
+            }
+        });
+    };
+
+    const applyHoverToCard = (card) => {
+        card.classList.add('hover', 'shadow-lg');
+
+        if (card.classList.contains('feature-card')) {
+            card.classList.add('bg-[#2a2a2a]', 'border-white/40');
+            const icon = card.querySelector('.feature-icon');
+            if (icon) {
+                icon.classList.remove('bg-[#1a1a1a]');
+                icon.classList.add('from-orange-600', 'to-red-600', 'bg-gradient-to-br');
+            }
+            const title = card.querySelector('h4');
+            if (title) {
+                title.classList.remove('text-white');
+                title.classList.add('text-orange-400');
+            }
+            const paragraph = card.querySelector('p');
+            if (paragraph) {
+                paragraph.classList.remove('text-gray-400');
+                paragraph.classList.add('text-gray-300');
+            }
+        }
+
+        if (card.classList.contains('process-step')) {
+            card.classList.add('border-orange-200');
+            const icon = card.querySelector('.process-icon');
+            if (icon) {
+                icon.classList.remove('bg-[#1a1a1a]');
+                icon.classList.add('from-orange-500', 'to-amber-500', 'bg-gradient-to-br');
+            }
+            const stepNumber = card.querySelector('.step-number');
+            if (stepNumber) {
+                stepNumber.classList.add('bg-orange-500', 'text-white');
+            }
+            const title = card.querySelector('h4');
+            if (title) {
+                title.classList.remove('text-gray-900');
+                title.classList.add('text-orange-600');
+            }
+            const paragraph = card.querySelector('p');
+            if (paragraph) {
+                paragraph.classList.remove('text-gray-600');
+                paragraph.classList.add('text-gray-800');
+            }
+        }
+
+        if (card.classList.contains('local-card')) {
+            // Manually apply the CSS that would normally be triggered by :hover
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 30px rgba(212, 97, 28, 0.2)';
+            card.style.borderColor = 'rgba(212, 97, 28, 0.3)';
+
+            const icon = card.querySelector('.local-icon');
+            if (icon) {
+                icon.style.transform = 'rotate(5deg) scale(1.1)';
+                icon.style.boxShadow = '0 8px 20px rgba(212, 97, 28, 0.4)';
+                icon.classList.remove('bg-[#1a1a1a]');
+                icon.style.background = 'linear-gradient(135deg, #d4611c 0%, #e67a35 100%)';
+            }
+
+            const title = card.querySelector('h3');
+            if (title) {
+                title.classList.remove('text-white');
+                title.classList.add('text-orange-400');
+            }
+
+            const paragraph = card.querySelector('p');
+            if (paragraph) {
+                paragraph.classList.remove('text-gray-400');
+                paragraph.classList.add('text-gray-300');
+            }
+        }
+    };
+
+    function handleScroll() {
+        let centerY = window.innerHeight / 2;
+        let closestCard = null;
+        let closestDistance = Infinity;
+
+        allCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(centerY - cardCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestCard = card;
+            }
+        });
+
+        if (closestCard) {
+            removeAllHoverStates();
+            applyHoverToCard(closestCard);
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run on load
+});
+</script>
+
+
+
+
+
 </body>
 </html>
