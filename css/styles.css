@@ -17,7 +17,10 @@ html, body {
             flex: 1;
         }
 
-        /* Header Styles */
+
+
+
+/* Header Styles */
         .header {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
@@ -65,6 +68,28 @@ html, body {
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile dropdown styles */
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-dropdown-content.open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        .rotate-0 {
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
         }
 
         /* Hero Section */
@@ -420,4 +445,48 @@ html, body {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+/* Pulsating outline animation */
+@keyframes pulse-outline {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 97, 28, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 97, 28, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 97, 28, 0);
+  }
+}
+
+.btn-pulse-outline:hover {
+  animation: pulse-outline 1.5s infinite;
+}
+.rocket {
+  animation: float 4s ease-in-out infinite; /* 4s for a slow, smooth float */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* moves up 10px at midpoint */
+  }
+}
+/* Pulsating outline animation */
+@keyframes pulse-outline {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 97, 28, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 97, 28, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 97, 28, 0);
+  }
+}
+
+.btn-pulse-outline:hover {
+  animation: pulse-outline 1.5s infinite;
 }

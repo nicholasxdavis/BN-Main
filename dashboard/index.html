@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SPY1G645JS');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Blacnova Management Console</title>
@@ -10,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
+
     <style>
         :root {
             --primary: #d4611c;
@@ -319,12 +329,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(212, 97, 28, 0.5);
+            background: #333;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(212, 97, 28, 0.7);
+            background: #444;
         }
 
         /* Blacnova specific styling */
@@ -347,55 +357,93 @@
             border-radius: 12px;
         }
 
-        .bn-rounded-lg {
+        .bn-rounded-3xl {
             border-radius: 16px;
         }
 
-        .bn-rounded-xl {
+        .bn-rounded-3xl {
             border-radius: 20px;
         }
+        /* Mobile header background */
+.md\:hidden.fixed {
+    background: var(--dark-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Desktop header background */
+.hidden.md\:flex {
+    background: var(--dark-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Mobile sidebar background */
+#mobile-sidebar .w-64 {
+    background: var(--dark-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+#mobile-menu-button {
+    background: rgba(38, 38, 38, 0.7);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
     </style>
 </head>
 <body class="min-h-screen antialiased">
     <div class="flex h-screen">
-        <!-- Sidebar Navigation -->
-        <div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:block">
-            <div class="flex items-center space-x-3 mb-8">
-                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
-                <h1 class="text-xl font-medium">Dashboard</h1>
-            </div>
-            
-            <nav class="space-y-1">
-                <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
-                    <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                    <span>Overview</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
-                    <i class="fas fa-file-alt w-5 text-center"></i>
-                    <span>Content</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
-                    <i class="fas fa-images w-5 text-center"></i>
-                    <span>Media</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
-                    <i class="fas fa-blog w-5 text-center"></i>
-                    <span>Blog</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
-                    <i class="fas fa-shopping-cart w-5 text-center"></i>
-                    <span>E-commerce</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
-                    <i class="fas fa-cog w-5 text-center"></i>
-                    <span>Settings</span>
-                </div>
-                <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
-                    <i class="fas fa-question-circle w-5 text-center"></i>
-                    <span>Support</span>
-                </div>
-            </nav>
+ <!-- Sidebar Navigation -->
+<div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:flex flex-col h-screen">
+    <!-- Logo Section -->
+    <div class="flex items-center space-x-3 mb-8">
+        <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+        <h1 class="text-xl font-medium">Dashboard</h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="space-y-1">
+        <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3" data-page="overview">
+            <i class="fas fa-tachometer-alt w-5 text-center"></i>
+            <span>Overview</span>
         </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="content">
+            <i class="fas fa-file-alt w-5 text-center"></i>
+            <span>Content</span>
+        </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="media">
+            <i class="fas fa-images w-5 text-center"></i>
+            <span>Media</span>
+        </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="blog">
+            <i class="fas fa-blog w-5 text-center"></i>
+            <span>Blog</span>
+        </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="ecommerce">
+            <i class="fas fa-shopping-cart w-5 text-center"></i>
+            <span>E-commerce</span>
+        </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="settings">
+            <i class="fas fa-cog w-5 text-center"></i>
+            <span>Settings</span>
+        </div>
+        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="support">
+            <i class="fas fa-question-circle w-5 text-center"></i>
+            <span>Support</span>
+        </div>
+    </nav>
+
+    <!-- Footer at bottom -->
+    <footer class="mt-auto text-center text-xs text-white/40 pt-6">
+        © 2025 Blacnova Development
+    </footer>
+</div>
+
         
         <!-- Mobile Header -->
         <div class="md:hidden fixed top-0 left-0 right-0 bg-dark-bg border-b border-white/10 p-4 z-10 flex justify-between items-center">
@@ -403,7 +451,7 @@
                 <button id="mobile-menu-button" class="text-slate-400 hover:text-primary">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="text-xl font-bold">Blacnova</h1>
+ 
             </div>
             <div class="flex items-center space-x-3">
                 <div class="text-right">
@@ -415,56 +463,63 @@
         </div>
         
         <!-- Mobile Sidebar (Hidden by default) -->
-        <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
-            <div class="w-64 h-full bg-dark-bg border-r border-white/10 p-4">
-                <div class="flex justify-between items-center mb-8">
-                    <div class="flex items-center space-x-3">
-                        <img src="img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
-                        <h1 class="text-xl font-bold">Blacnova</h1>
-                    </div>
-                    <button id="close-mobile-menu" class="text-slate-400 hover:text-primary">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <nav class="space-y-1 mb-8">
-                    <div class="nav-item active-nav p-3 rounded-lg flex items-center space-x-3" data-page="overview">
-                        <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                        <span>Overview</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="content">
-                        <i class="fas fa-file-alt w-5 text-center"></i>
-                        <span>Content</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="media">
-                        <i class="fas fa-images w-5 text-center"></i>
-                        <span>Media</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="blog">
-                        <i class="fas fa-blog w-5 text-center"></i>
-                        <span>Blog</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="ecommerce">
-                        <i class="fas fa-shopping-cart w-5 text-center"></i>
-                        <span>E-commerce</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="settings">
-                        <i class="fas fa-cog w-5 text-center"></i>
-                        <span>Settings</span>
-                    </div>
-                    <div class="nav-item p-3 rounded-lg flex items-center space-x-3" data-page="support">
-                        <i class="fas fa-question-circle w-5 text-center"></i>
-                        <span>Support</span>
-                    </div>
-                </nav>
+<div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
+    <div class="w-64 h-full bg-dark-bg border-r border-white/10 p-4 flex flex-col">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center space-x-3">
+                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+
             </div>
+            <button id="close-mobile-menu" class="text-slate-400 hover:text-primary">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
+
+        <!-- Nav -->
+        <nav class="space-y-1 mb-8">
+            <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3" data-page="overview">
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span>Overview</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="content">
+                <i class="fas fa-file-alt w-5 text-center"></i>
+                <span>Content</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="media">
+                <i class="fas fa-images w-5 text-center"></i>
+                <span>Media</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="blog">
+                <i class="fas fa-blog w-5 text-center"></i>
+                <span>Blog</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="ecommerce">
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
+                <span>E-commerce</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="settings">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span>Settings</span>
+            </div>
+            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="support">
+                <i class="fas fa-question-circle w-5 text-center"></i>
+                <span>Support</span>
+            </div>
+             <footer class="mt-auto text-center text-xs text-white/40 pt-6">
+            © 2025 Blacnova Development
+        </footer>
+        </nav>
+
         
+    </div>
+</div>
+
         <!-- Main Content Area -->
-        <div class="flex-1 overflow-y-auto pt-16 md:pt-0">
+        <div class="flex-1 overflow-y-auto pt-16 md:pt-0 ">
             <!-- Desktop Header -->
             <div class="hidden md:flex justify-between items-center bg-dark-bg border-b border-white/10 p-4">
-                <h1 id="page-title" class="text-2xl font-bold">Overview</h1>
+                <h1 id="page-title" class="text-2xl font-medium">Overview</h1>
                 <div class="flex items-center space-x-4">
                     <div class="text-right">
                         <p class="font-medium">User</p>
@@ -483,11 +538,11 @@
                 <div id="overview-page" class="page active">
                     <!-- Stats Overview -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="stat-card glass-card p-6 rounded-lg">
+                        <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm text-slate-400 mb-1">Total Visitors</p>
-                                    <p class="text-2xl font-bold">1,248</p>
+                                    <p class="text-2xl font-medium">1,248</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5% from last week</p>
                                 </div>
                                 <div class="stat-icon">
@@ -496,11 +551,11 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card glass-card p-6 rounded-lg">
+                        <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm text-slate-400 mb-1">Page Views</p>
-                                    <p class="text-2xl font-bold">5,672</p>
+                                    <p class="text-2xl font-medium">5,672</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 8.3% from last week</p>
                                 </div>
                                 <div class="stat-icon">
@@ -509,11 +564,11 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card glass-card p-6 rounded-lg">
+                        <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm text-slate-400 mb-1">Conversion Rate</p>
-                                    <p class="text-2xl font-bold">3.2%</p>
+                                    <p class="text-2xl font-medium">3.2%</p>
                                     <p class="text-xs text-primary-dark mt-1"><i class="fas fa-arrow-down mr-1"></i> 1.1% from last week</p>
                                 </div>
                                 <div class="stat-icon">
@@ -522,11 +577,11 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card glass-card p-6 rounded-lg">
+                        <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm text-slate-400 mb-1">Avg. Session</p>
-                                    <p class="text-2xl font-bold">2m 45s</p>
+                                    <p class="text-2xl font-medium">2m 45s</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 15s from last week</p>
                                 </div>
                                 <div class="stat-icon">
@@ -541,10 +596,10 @@
                         <!-- Left Column -->
                         <div class="lg:col-span-2 space-y-6">
                             <!-- Traffic Chart -->
-                            <div class="glass-card p-6">
+                            <div class="glass-card p-6 rounded-3xl">
                                 <div class="flex justify-between items-center mb-4">
-                                    <h2 class="text-xl font-bold">Website Traffic</h2>
-                                    <select class="text-sm bg-dark-bg/50 border border-white/10 rounded-lg px-3 py-1">
+                                    <h2 class="text-xl font-medium">Website Traffic</h2>
+                                    <select class="text-sm bg-dark-bg/50 border border-white/10 rounded-3xl px-3 py-1">
                                         <option>Last 7 days</option>
                                         <option>Last 30 days</option>
                                         <option>Last 90 days</option>
@@ -552,20 +607,20 @@
                                 </div>
                                 <div class="h-64">
                                     <!-- Chart placeholder - would be replaced with Chart.js or similar -->
-                                    <div class="w-full h-full flex items-center justify-center bg-dark-bg/30 rounded-lg">
+                                    <div class="w-full h-full flex items-center justify-center bg-dark-bg/30 rounded-3xl">
                                         <p class="text-slate-400">Traffic chart will appear here</p>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Recent Activity -->
-                            <div class="glass-card p-6">
+                            <div class="glass-card p-6 rounded-3xl">
                                 <div class="flex justify-between items-center mb-4">
-                                    <h2 class="text-xl font-bold">Recent Activity</h2>
+                                    <h2 class="text-xl font-medium">Recent Activity</h2>
                                     <button class="text-sm text-primary hover:underline">View All</button>
                                 </div>
                                 <div class="space-y-4">
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-file-alt"></i>
                                         </div>
@@ -576,7 +631,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-image"></i>
                                         </div>
@@ -587,7 +642,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-lg transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-shopping-cart"></i>
                                         </div>
@@ -604,22 +659,22 @@
                         <!-- Right Column -->
                         <div class="lg:col-span-1 space-y-6">
                             <!-- Quick Actions -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Quick Actions</h2>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h2 class="text-xl font-medium mb-4">Quick Actions</h2>
                                 <div class="grid grid-cols-2 gap-3">
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-page-btn">
-                                        <i class="fas fa-file-alt text-xl mb-2"></i>
-                                        <span class="text-sm">New Page</span>
-                                    </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="upload-media-btn">
-                                        <i class="fas fa-image text-xl mb-2"></i>
-                                        <span class="text-sm">Upload Media</span>
-                                    </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="new-blog-btn">
+                                    <button class="btn-secondary p-3 rounded-3xl flex flex-col items-center" id="new-page-btn">
                                         <i class="fas fa-blog text-xl mb-2"></i>
-                                        <span class="text-sm">New Post</span>
+                                        <span class="text-sm">Blog Post</span>
                                     </button>
-                                    <button class="btn-secondary p-3 rounded-lg flex flex-col items-center" id="settings-btn">
+                                    <button class="btn-secondary p-3 rounded-3xl flex flex-col items-center" id="upload-media-btn">
+                                        <i class="fas fa-image text-xl mb-2"></i>
+                                        <span class="text-sm">Media Libary</span>
+                                    </button>
+                                    <button class="btn-secondary p-3 rounded-3xl flex flex-col items-center" id="new-blog-btn">
+                                        <i class="fas fa-file-alt text-xl mb-2"></i>
+                                        <span class="text-sm">Submissions</span>
+                                    </button>
+                                    <button class="btn-secondary p-3 rounded-3xl flex flex-col items-center" id="settings-btn">
                                         <i class="fas fa-cog text-xl mb-2"></i>
                                         <span class="text-sm">Settings</span>
                                     </button>
@@ -627,8 +682,8 @@
                             </div>
                             
                             <!-- Website Status -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Website Status</h2>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h2 class="text-xl font-medium mb-4">Website Status</h2>
                                 <div class="space-y-4">
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center space-x-2">
@@ -646,31 +701,13 @@
                                         <span class="status-badge">Valid</span>
                                     </div>
                                     
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary-light"></div>
-                                            <span>Storage Usage</span>
-                                        </div>
-                                        <div class="w-24">
-                                            <div class="progress-bar">
-                                                <div class="progress-bar-fill" style="width: 65%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-3 h-3 rounded-full bg-primary"></div>
-                                            <span>Backup Status</span>
-                                        </div>
-                                        <span class="text-sm text-slate-400">Last: Today 2:00 AM</span>
-                                    </div>
-                                </div>
-                            </div>
+                                   
+               </div>
+           </div>
                             
                             <!-- Recent Comments -->
-                            <div class="glass-card p-6">
-                                <h2 class="text-xl font-bold mb-4">Recent Comments</h2>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h2 class="text-xl font-medium mb-4">Recent Comments</h2>
                                 <div class="space-y-4">
                                     <div class="flex items-start space-x-3">
                                         <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
@@ -690,7 +727,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="w-full btn-secondary mt-4 py-2 rounded-lg text-sm">
+                                <button class="w-full btn-secondary mt-4 py-2 rounded-3xl text-sm">
                                     View All Comments
                                 </button>
                             </div>
@@ -702,15 +739,15 @@
                 <div id="content-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">Content Management</h1>
+                            <h1 class="text-2xl font-medium">Content Management</h1>
                             <p class="text-slate-400">Manage your website pages and content</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="add-content-btn">
+                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="add-content-btn">
                             <i class="fas fa-plus mr-2"></i> Add Content
                         </button>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
@@ -789,29 +826,29 @@
                 <div id="media-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">Media Library</h1>
+                            <h1 class="text-2xl font-medium">Media Library</h1>
                             <p class="text-slate-400">Manage your website images and files</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="upload-media-page-btn">
+                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="upload-media-page-btn">
                             <i class="fas fa-upload mr-2"></i> Upload Media
                         </button>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-slate-500"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-slate-500"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-slate-500"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-slate-500"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-lg flex items-center justify-center">
+                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
                                 <i class="fas fa-image text-4xl text-slate-500"></i>
                             </div>
                         </div>
@@ -822,19 +859,19 @@
                 <div id="blog-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">Blog Posts</h1>
+                            <h1 class="text-2xl font-medium">Blog Posts</h1>
                             <p class="text-slate-400">Manage your blog content</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center" id="new-blog-post-btn">
+                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="new-blog-post-btn">
                             <i class="fas fa-plus mr-2"></i> New Post
                         </button>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="space-y-4">
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
                                 <div>
-                                    <h3 class="font-bold">10 Tips for Better SEO</h3>
+                                    <h3 class="font-medium">10 Tips for Better SEO</h3>
                                     <p class="text-sm text-slate-400 mt-1">Published on May 15, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
@@ -843,9 +880,9 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
                                 <div>
-                                    <h3 class="font-bold">How to Improve Website Performance</h3>
+                                    <h3 class="font-medium">How to Improve Website Performance</h3>
                                     <p class="text-sm text-slate-400 mt-1">Published on April 28, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
@@ -854,9 +891,9 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
                                 <div>
-                                    <h3 class="font-bold">The Future of Web Design</h3>
+                                    <h3 class="font-medium">The Future of Web Design</h3>
                                     <p class="text-sm text-slate-400 mt-1">Published on March 10, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
@@ -872,15 +909,15 @@
                 <div id="ecommerce-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">E-commerce</h1>
+                            <h1 class="text-2xl font-medium">E-commerce</h1>
                             <p class="text-slate-400">Manage your online store</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-lg flex items-center">
+                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center">
                             <i class="fas fa-plus mr-2"></i> Add Product
                         </button>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
@@ -945,22 +982,22 @@
                 <div id="settings-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">Settings</h1>
+                            <h1 class="text-2xl font-medium">Settings</h1>
                             <p class="text-slate-400">Configure your website settings</p>
                         </div>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="space-y-6">
                             <div>
-                                <h3 class="font-bold mb-3">General Settings</h3>
+                                <h3 class="font-medium mb-3">General Settings</h3>
                                 <div class="space-y-4">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Site Title</p>
                                             <p class="text-sm text-slate-400">The name of your website</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="My Business">
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="My Business">
                                     </div>
                                     
                                     <div class="flex items-center justify-between">
@@ -968,13 +1005,13 @@
                                             <p class="font-medium">Site Description</p>
                                             <p class="text-sm text-slate-400">A brief description of your website</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="The best business in town">
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="The best business in town">
                                     </div>
                                 </div>
                             </div>
                             
                             <div>
-                                <h3 class="font-bold mb-3">Maintenance Mode</h3>
+                                <h3 class="font-medium mb-3">Maintenance Mode</h3>
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="font-medium">Enable Maintenance Mode</p>
@@ -988,14 +1025,14 @@
                             </div>
                             
                             <div>
-                                <h3 class="font-bold mb-3">SEO Settings</h3>
+                                <h3 class="font-medium mb-3">SEO Settings</h3>
                                 <div class="space-y-4">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Meta Keywords</p>
                                             <p class="text-sm text-slate-400">Keywords for search engines</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" value="business, services, quality">
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="business, services, quality">
                                     </div>
                                     
                                     <div class="flex items-center justify-between">
@@ -1003,13 +1040,13 @@
                                             <p class="font-medium">Google Analytics</p>
                                             <p class="text-sm text-slate-400">Your Google Analytics ID</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
+                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="flex justify-end">
-                                <button class="btn-primary px-6 py-2 rounded-lg">Save Settings</button>
+                                <button class="btn-primary px-6 py-2 rounded-3xl">Save Settings</button>
                             </div>
                         </div>
                     </div>
@@ -1019,38 +1056,38 @@
                 <div id="support-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-bold">Support</h1>
+                            <h1 class="text-2xl font-medium">Support</h1>
                             <p class="text-slate-400">Get help with your website</p>
                         </div>
                     </div>
                     
-                    <div class="glass-card p-6">
+                    <div class="glass-card p-6 rounded-3xl">
                         <div class="space-y-6">
                             <div>
-                                <h3 class="font-bold mb-3">Contact Support</h3>
+                                <h3 class="font-medium mb-3">Contact Support</h3>
                                 <p class="text-slate-400 mb-4">Need help with something? Send us a message and we'll get back to you as soon as possible.</p>
                                 
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-sm text-slate-400 mb-1">Subject</label>
-                                        <input type="text" class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2">
+                                        <input type="text" class="w-full bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2">
                                     </div>
                                     
                                     <div>
                                         <label class="block text-sm text-slate-400 mb-1">Message</label>
-                                        <textarea class="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-2 h-32"></textarea>
+                                        <textarea class="w-full bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 h-32"></textarea>
                                     </div>
                                     
                                     <div class="flex justify-end">
-                                        <button class="btn-primary px-6 py-2 rounded-lg">Send Message</button>
+                                        <button class="btn-primary px-6 py-2 rounded-3xl">Send Message</button>
                                     </div>
                                 </div>
                             </div>
                             
                             <div>
-                                <h3 class="font-bold mb-3">Help Resources</h3>
+                                <h3 class="font-medium mb-3">Help Resources</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-book"></i>
@@ -1059,7 +1096,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-video"></i>
@@ -1068,7 +1105,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-question-circle"></i>
@@ -1077,7 +1114,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-comments"></i>
@@ -1099,7 +1136,7 @@
     <div id="new-page-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="text-xl font-bold">Create New Page</h3>
+                <h3 class="text-xl font-medium">Create New Page</h3>
                 <button class="modal-close text-slate-400 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1108,11 +1145,11 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Page Title</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg">
+                        <input type="text" class="w-full px-4 py-2 rounded-3xl">
                     </div>
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">URL Slug</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="e.g., about-us">
+                        <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="e.g., about-us">
                     </div>
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Page Content</label>
@@ -1123,8 +1160,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Create Page</button>
+                <button class="btn-secondary px-4 py-2 rounded-3xl modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-3xl">Create Page</button>
             </div>
         </div>
     </div>
@@ -1133,28 +1170,28 @@
     <div id="upload-media-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="text-xl font-bold">Upload Media</h3>
+                <h3 class="text-xl font-medium">Upload Media</h3>
                 <button class="modal-close text-slate-400 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="border-2 border-dashed border-white/20 rounded-lg p-8 text-center">
+                <div class="border-2 border-dashed border-white/20 rounded-3xl p-8 text-center">
                     <i class="fas fa-cloud-upload-alt text-4xl text-primary mb-4"></i>
                     <p class="mb-2">Drag and drop files here</p>
                     <p class="text-sm text-slate-400 mb-4">or</p>
-                    <button class="btn-secondary px-4 py-2 rounded-lg">
+                    <button class="btn-secondary px-4 py-2 rounded-3xl">
                         Select Files
                     </button>
                 </div>
                 <div class="mt-4">
                     <label class="block text-sm text-slate-400 mb-1">File Name</label>
-                    <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Optional custom name">
+                    <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="Optional custom name">
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Upload Files</button>
+                <button class="btn-secondary px-4 py-2 rounded-3xl modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-3xl">Upload Files</button>
             </div>
         </div>
     </div>
@@ -1163,7 +1200,7 @@
     <div id="new-blog-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="text-xl font-bold">New Blog Post</h3>
+                <h3 class="text-xl font-medium">New Blog Post</h3>
                 <button class="modal-close text-slate-400 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1172,11 +1209,11 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Post Title</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg">
+                        <input type="text" class="w-full px-4 py-2 rounded-3xl">
                     </div>
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Featured Image</label>
-                        <button class="btn-secondary w-full px-4 py-2 rounded-lg text-left">
+                        <button class="btn-secondary w-full px-4 py-2 rounded-3xl text-left">
                             <i class="fas fa-image mr-2"></i> Select Image
                         </button>
                     </div>
@@ -1188,13 +1225,13 @@
                     </div>
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Tags</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg" placeholder="Separate tags with commas">
+                        <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="Separate tags with commas">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Publish Post</button>
+                <button class="btn-secondary px-4 py-2 rounded-3xl modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-3xl">Publish Post</button>
             </div>
         </div>
     </div>
@@ -1203,7 +1240,7 @@
     <div id="auth-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="text-xl font-bold">Login to Dashboard</h3>
+                <h3 class="text-xl font-medium">Login to Dashboard</h3>
                 <button class="modal-close text-slate-400 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1212,11 +1249,11 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Email</label>
-                        <input type="email" class="w-full px-4 py-2 rounded-lg" placeholder="your@email.com">
+                        <input type="email" class="w-full px-4 py-2 rounded-3xl" placeholder="your@email.com">
                     </div>
                     <div>
                         <label class="block text-sm text-slate-400 mb-1">Password</label>
-                        <input type="password" class="w-full px-4 py-2 rounded-lg" placeholder="••••••••">
+                        <input type="password" class="w-full px-4 py-2 rounded-3xl" placeholder="••••••••">
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
@@ -1228,8 +1265,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary px-4 py-2 rounded-lg modal-close">Cancel</button>
-                <button class="btn-primary px-4 py-2 rounded-lg">Login</button>
+                <button class="btn-secondary px-4 py-2 rounded-3xl modal-close">Cancel</button>
+                <button class="btn-primary px-4 py-2 rounded-3xl">Login</button>
             </div>
             <div class="px-6 pb-6 text-center">
                 <p class="text-sm text-slate-400">Don't have an account? <a href="#" class="text-primary hover:underline">Sign up</a></p>
@@ -1339,5 +1376,28 @@
             });
         });
     </script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDijaOhowAUActToLfD16a56y-YtNw582E",
+    authDomain: "blacnova.firebaseapp.com",
+    projectId: "blacnova",
+    storageBucket: "blacnova.firebasestorage.app",
+    messagingSenderId: "1012412900214",
+    appId: "1:1012412900214:web:bdcb173c5c53825fbb5057",
+    measurementId: "G-W6W7S1PJWE"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>

@@ -97,16 +97,19 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
             }
 
             #bn-contact-form-title {
-                position: absolute;
-                top: 1.5rem; /* top-8 */
-                left: 1.2rem; /* left-8 */
-                font-size: 1.575rem; /* text-3xl */
-                font-weight: 100; /* font-bold */
-                color: white;
-                text-align: left;
-                z-index: 30;
-                margin: 0;
-            }
+    position: absolute;
+    top: 1.5rem; /* top-8 */
+    left: 1.2rem; /* left-8 */
+    font-size: 1.575rem; /* text-3xl */
+    font-weight: 100; /* font-bold */
+    text-align: left;
+    z-index: 30;
+    margin: 0;
+    background: linear-gradient(to bottom, white 65%, transparent 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
             #bn-contact-inner-box {
                 width: 360px; /* Increased width */
