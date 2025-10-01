@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-SPY1G645JS');
-</script>
+        gtag('config', 'G-SPY1G645JS');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Blacnova Management Console</title>
+    <title>Blacnova Dashboard</title>
+     <link rel="icon" href="../img/bn.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,515 +19,143 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
-
-    <style>
-        :root {
-            --primary: #d4611c;
-            --primary-dark: #b35116;
-            --primary-light: #e67a35;
-            --dark-bg: #1a1a1a;
-            --card-bg: rgba(26, 26, 26, 0.9);
-            --surface: rgba(38, 38, 38, 0.7);
-            --text-primary: #EEEEEE;
-            --text-secondary: #a1a1aa;
-            --bn-soft: #FAF9EE;
-            --bn-green: #1A1A1a;
-            --bn-white: #EEEEEE;
-            --bn-black: #010101;
-            --bn-dark: #1A1A1A;
-        }
-        
-        body {
-            background: var(--dark-bg);
-            font-family: 'Inter', sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        
-        .glass-card {
-            background: var(--surface);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-card:hover:not(.no-hover) {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-            transform: translateY(-2px);
-            border-color: rgba(212, 97, 28, 0.3);
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
-            border: none;
-            color: white;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.3);
-            background: var(--primary-light);
-        }
-        
-        .btn-secondary {
-            background: rgba(38, 38, 38, 0.7);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(48, 48, 48, 0.7);
-            border-color: rgba(212, 97, 28, 0.3);
-        }
-
-        .btn-primary:disabled, .btn-secondary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        .btn-primary:disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 6px rgba(212, 97, 28, 0.1);
-            background: var(--primary);
-        }
-         .btn-secondary:disabled:hover {
-            transform: none;
-            background: rgba(38, 38, 38, 0.7);
-        }
-        
-        .dashboard-item {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center;
-        }
-        
-        .dashboard-item:hover:not(.no-hover) {
-            transform: scale(1.01);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-item {
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .nav-item:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .active-nav {
-            background: linear-gradient(90deg, rgba(212, 97, 28, 0.15) 0%, rgba(212, 97, 28, 0.05) 100%);
-            border-left: 3px solid var(--primary);
-        }
-        
-        .fade-in { animation: fadeIn 0.3s ease-in forwards; }
-        .slide-in { animation: slideIn 0.3s ease-out forwards; }
-        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        
-        input, textarea, select {
-            transition: all 0.3s ease;
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(212, 97, 28, 0.2);
-            outline: none;
-        }
-        
-        .tooltip { position: relative; }
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 120px;
-            background-color: rgba(26, 26, 26, 0.9);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
-        
-        .empty-state { opacity: 0.6; transition: all 0.3s ease; }
-        .empty-state:hover { opacity: 1; transform: scale(1.02); }
-        
-        @media (max-width: 768px) { .glass-card { backdrop-filter: blur(8px); } }
-
-        .image-preview { max-width: 100px; max-height: 100px; border-radius: 8px; margin-top: 8px; display: none; }
-        
-        #toast-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(150%);
-            padding: 12px 24px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-            z-index: 100;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        #toast-notification.show { transform: translateX(-50%) translateY(0); }
-        #toast-notification.success { background-color: var(--primary); }
-        #toast-notification.error { background-color: var(--primary-dark); }
-        #toast-notification.info { background-color: var(--primary); }
-        
-        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary); }
-        input:checked + .slider:before { transform: translateX(26px); }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            background-color: rgba(212, 97, 28, 0.15);
-            color: var(--primary);
-        }
-        
-        .progress-bar {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            height: 10px;
-        }
-        .progress-bar-fill {
-            background-color: var(--primary);
-            height: 100%;
-            transition: width 0.5s ease-in-out;
-        }
-
-        /* Dashboard specific styles */
-        .stat-card {
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(212, 97, 28, 0.1);
-        }
-        
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            background-color: rgba(212, 97, 28, 0.2);
-            color: var(--primary);
-        }
-
-        /* Modal styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: var(--surface);
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .modal-header {
-            padding: 16px 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-body {
-            padding: 24px;
-        }
-        
-        .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-        
-        /* Page styles */
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-
-        /* Content editor styles */
-        .content-editor {
-            min-height: 200px;
-            padding: 16px;
-            background: rgba(26, 26, 26, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            outline: none;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #444;
-        }
-
-        /* Blacnova specific styling */
-        .bn-bg-gradient {
-            background: linear-gradient(135deg, rgba(212, 97, 28, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
-        }
-
-        .bn-border {
-            border-color: rgba(212, 97, 28, 0.3);
-        }
-
-        .bn-text-gradient {
-            background: linear-gradient(90deg, #d4611c, #e67a35);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .bn-rounded {
-            border-radius: 12px;
-        }
-
-        .bn-rounded-3xl {
-            border-radius: 16px;
-        }
-
-        .bn-rounded-3xl {
-            border-radius: 20px;
-        }
-        /* Mobile header background */
-.md\:hidden.fixed {
-    background: var(--dark-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-/* Desktop header background */
-.hidden.md\:flex {
-    background: var(--dark-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-/* Mobile sidebar background */
-#mobile-sidebar .w-64 {
-    background: var(--dark-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-#mobile-menu-button {
-    background: rgba(38, 38, 38, 0.7);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
 </head>
 <body class="min-h-screen antialiased">
     <div class="flex h-screen">
- <!-- Sidebar Navigation -->
-<div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:flex flex-col h-screen">
-    <!-- Logo Section -->
-    <div class="flex items-center space-x-3 mb-8">
-        <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
-        <h1 class="text-xl font-medium">Dashboard</h1>
-    </div>
+        <!-- Sidebar Navigation -->
+        <div class="w-64 bg-dark-bg border-r border-white/10 p-4 hidden md:flex flex-col h-screen" style="background: #000000;">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-3 mb-8">
+                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+                <h1 class="text-xl font-medium text-white">Dashboard</h1>
+            </div>
 
-    <!-- Navigation -->
-    <nav class="space-y-1">
-        <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3" data-page="overview">
-            <i class="fas fa-tachometer-alt w-5 text-center"></i>
-            <span>Overview</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="content">
-            <i class="fas fa-file-alt w-5 text-center"></i>
-            <span>Content</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="media">
-            <i class="fas fa-images w-5 text-center"></i>
-            <span>Media</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="blog">
-            <i class="fas fa-blog w-5 text-center"></i>
-            <span>Blog</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="ecommerce">
-            <i class="fas fa-shopping-cart w-5 text-center"></i>
-            <span>E-commerce</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="settings">
-            <i class="fas fa-cog w-5 text-center"></i>
-            <span>Settings</span>
-        </div>
-        <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="support">
-            <i class="fas fa-question-circle w-5 text-center"></i>
-            <span>Support</span>
-        </div>
-    </nav>
+            <!-- Navigation -->
+            <nav class="space-y-1">
+                <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="overview">
+                    <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="appearance">
+                    <i class="fas fa-paint-brush w-5 text-center"></i>
+                    <span>Appearance</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="content-media">
+                    <i class="fas fa-images w-5 text-center"></i>
+                    <span>Content & Media</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="blog">
+                    <i class="fas fa-blog w-5 text-center"></i>
+                    <span>Blog</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="submissions">
+                    <i class="fas fa-inbox w-5 text-center"></i>
+                    <span>Submissions</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="ecommerce">
+                    <i class="fas fa-shopping-cart w-5 text-center"></i>
+                    <span>E-commerce</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="settings">
+                    <i class="fas fa-cog w-5 text-center"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="support">
+                    <i class="fas fa-question-circle w-5 text-center"></i>
+                    <span>Support</span>
+                </div>
+            </nav>
 
-    <!-- Footer at bottom -->
-    <footer class="mt-auto text-center text-xs text-white/40 pt-6">
-        © 2025 Blacnova Development
-    </footer>
-</div>
-
+            <!-- Footer at bottom -->
+            <footer class="mt-auto text-center text-xs text-white/40 pt-6">
+                © 2025 Blacnova Development
+            </footer>
+        </div>
         
         <!-- Mobile Header -->
-        <div class="md:hidden fixed top-0 left-0 right-0 bg-dark-bg border-b border-white/10 p-4 z-10 flex justify-between items-center">
+        <div class="md:hidden fixed top-0 left-0 right-0 bg-light-bg border-b border-gray-200 p-4 z-10 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <button id="mobile-menu-button" class="text-slate-400 hover:text-primary">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-primary">
                     <i class="fas fa-bars"></i>
                 </button>
- 
             </div>
             <div class="flex items-center space-x-3">
                 <div class="text-right">
                     <p class="font-medium text-sm">User</p>
-                    <p class="text-xs text-slate-400">client@example.com</p>
+                    <p class="text-xs text-gray-500">client@example.com</p>
                 </div>
                 <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
             </div>
         </div>
         
         <!-- Mobile Sidebar (Hidden by default) -->
-<div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
-    <div class="w-64 h-full bg-dark-bg border-r border-white/10 p-4 flex flex-col">
-        <!-- Header -->
-        <div class="flex justify-between items-center mb-8">
-            <div class="flex items-center space-x-3">
-                <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+        <div id="mobile-sidebar" class="fixed inset-0 bg-black bg-opacity-70 z-20 hidden md:hidden">
+            <div class="w-64 h-full bg-black border-r border-white/10 p-4 flex flex-col">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-3">
+                        <img src="../img/bn.png" alt="Blacnova Logo" class="w-10 h-10">
+                    </div>
+                    <button id="close-mobile-menu" class="text-white hover:text-primary">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
 
+                <!-- Nav -->
+                <nav class="space-y-1 mb-8">
+                    <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="overview">
+                        <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                        <span>Overview</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="appearance">
+                        <i class="fas fa-paint-brush w-5 text-center"></i>
+                        <span>Appearance</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="content-media">
+                        <i class="fas fa-images w-5 text-center"></i>
+                        <span>Content & Media</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="blog">
+                        <i class="fas fa-blog w-5 text-center"></i>
+                        <span>Blog</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="submissions">
+                        <i class="fas fa-inbox w-5 text-center"></i>
+                        <span>Submissions</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="ecommerce">
+                        <i class="fas fa-shopping-cart w-5 text-center"></i>
+                        <span>E-commerce</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="settings">
+                        <i class="fas fa-cog w-5 text-center"></i>
+                        <span>Settings</span>
+                    </div>
+                    <div class="nav-item p-3 rounded-3xl flex items-center space-x-3 text-white" data-page="support">
+                        <i class="fas fa-question-circle w-5 text-center"></i>
+                        <span>Support</span>
+                    </div>
+                    <footer class="mt-auto text-center text-xs text-white/40 pt-6">
+                        © 2025 Blacnova Development
+                    </footer>
+                </nav>
             </div>
-            <button id="close-mobile-menu" class="text-slate-400 hover:text-primary">
-                <i class="fas fa-times"></i>
-            </button>
         </div>
 
-        <!-- Nav -->
-        <nav class="space-y-1 mb-8">
-            <div class="nav-item active-nav p-3 rounded-3xl flex items-center space-x-3" data-page="overview">
-                <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                <span>Overview</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="content">
-                <i class="fas fa-file-alt w-5 text-center"></i>
-                <span>Content</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="media">
-                <i class="fas fa-images w-5 text-center"></i>
-                <span>Media</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="blog">
-                <i class="fas fa-blog w-5 text-center"></i>
-                <span>Blog</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="ecommerce">
-                <i class="fas fa-shopping-cart w-5 text-center"></i>
-                <span>E-commerce</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="settings">
-                <i class="fas fa-cog w-5 text-center"></i>
-                <span>Settings</span>
-            </div>
-            <div class="nav-item p-3 rounded-3xl flex items-center space-x-3" data-page="support">
-                <i class="fas fa-question-circle w-5 text-center"></i>
-                <span>Support</span>
-            </div>
-             <footer class="mt-auto text-center text-xs text-white/40 pt-6">
-            © 2025 Blacnova Development
-        </footer>
-        </nav>
-
-        
-    </div>
-</div>
-
         <!-- Main Content Area -->
-        <div class="flex-1 overflow-y-auto pt-16 md:pt-0 ">
+        <div class="flex-1 overflow-y-auto pt-16 md:pt-0 bg-fafbfb" style="background: #fafbfb;">
             <!-- Desktop Header -->
-            <div class="hidden md:flex justify-between items-center bg-dark-bg border-b border-white/10 p-4">
+            <div class="hidden md:flex justify-between items-center bg-light-bg border-b border-gray-200 p-4">
                 <h1 id="page-title" class="text-2xl font-medium">Overview</h1>
                 <div class="flex items-center space-x-4">
                     <div class="text-right">
                         <p class="font-medium">User</p>
-                        <p class="text-sm text-slate-400">client@example.com</p>
+                        <p class="text-sm text-gray-500">client@example.com</p>
                     </div>
                     <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-10 h-10 rounded-full">
-                    <button id="logout-btn" class="text-slate-400 hover:text-primary">
+                    <button id="logout-btn" class="text-gray-600 hover:text-primary">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </div>
@@ -541,7 +170,7 @@
                         <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-slate-400 mb-1">Total Visitors</p>
+                                    <p class="text-sm text-gray-500 mb-1">Total Visitors</p>
                                     <p class="text-2xl font-medium">1,248</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 12.5% from last week</p>
                                 </div>
@@ -554,7 +183,7 @@
                         <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-slate-400 mb-1">Page Views</p>
+                                    <p class="text-sm text-gray-500 mb-1">Page Views</p>
                                     <p class="text-2xl font-medium">5,672</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 8.3% from last week</p>
                                 </div>
@@ -567,7 +196,7 @@
                         <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-slate-400 mb-1">Conversion Rate</p>
+                                    <p class="text-sm text-gray-500 mb-1">Conversion Rate</p>
                                     <p class="text-2xl font-medium">3.2%</p>
                                     <p class="text-xs text-primary-dark mt-1"><i class="fas fa-arrow-down mr-1"></i> 1.1% from last week</p>
                                 </div>
@@ -580,7 +209,7 @@
                         <div class="stat-card glass-card p-6 rounded-3xl rounded-3xl">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-slate-400 mb-1">Avg. Session</p>
+                                    <p class="text-sm text-gray-500 mb-1">Avg. Session</p>
                                     <p class="text-2xl font-medium">2m 45s</p>
                                     <p class="text-xs text-primary mt-1"><i class="fas fa-arrow-up mr-1"></i> 15s from last week</p>
                                 </div>
@@ -599,7 +228,7 @@
                             <div class="glass-card p-6 rounded-3xl">
                                 <div class="flex justify-between items-center mb-4">
                                     <h2 class="text-xl font-medium">Website Traffic</h2>
-                                    <select class="text-sm bg-dark-bg/50 border border-white/10 rounded-3xl px-3 py-1">
+                                    <select class="text-sm bg-white border border-gray-200 rounded-3xl px-3 py-1">
                                         <option>Last 7 days</option>
                                         <option>Last 30 days</option>
                                         <option>Last 90 days</option>
@@ -607,8 +236,8 @@
                                 </div>
                                 <div class="h-64">
                                     <!-- Chart placeholder - would be replaced with Chart.js or similar -->
-                                    <div class="w-full h-full flex items-center justify-center bg-dark-bg/30 rounded-3xl">
-                                        <p class="text-slate-400">Traffic chart will appear here</p>
+                                    <div class="w-full h-full flex items-center justify-center bg-gray-100 rounded-3xl">
+                                        <p class="text-gray-500">Traffic chart will appear here</p>
                                     </div>
                                 </div>
                             </div>
@@ -620,36 +249,36 @@
                                     <button class="text-sm text-primary hover:underline">View All</button>
                                 </div>
                                 <div class="space-y-4">
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-gray-100 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-file-alt"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium">Homepage content updated</p>
-                                            <p class="text-sm text-slate-400">You updated the hero section text</p>
-                                            <p class="text-xs text-slate-500 mt-1">2 hours ago</p>
+                                            <p class="text-sm text-gray-500">You updated the hero section text</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-gray-100 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-image"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium">New image uploaded</p>
-                                            <p class="text-sm text-slate-400">"team-photo.jpg" added to About page</p>
-                                            <p class="text-xs text-slate-500 mt-1">1 day ago</p>
+                                            <p class="text-sm text-gray-500">"team-photo.jpg" added to About page</p>
+                                            <p class="text-xs text-gray-400 mt-1">1 day ago</p>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-start space-x-3 p-3 hover:bg-white/5 rounded-3xl transition-colors">
+                                    <div class="flex items-start space-x-3 p-3 hover:bg-gray-100 rounded-3xl transition-colors">
                                         <div class="stat-icon w-10 h-10 text-lg">
                                             <i class="fas fa-shopping-cart"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium">New order received</p>
-                                            <p class="text-sm text-slate-400">Order #4567 for "Premium Package"</p>
-                                            <p class="text-xs text-slate-500 mt-1">2 days ago</p>
+                                            <p class="text-sm text-gray-500">Order #4567 for "Premium Package"</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 days ago</p>
                                         </div>
                                     </div>
                                 </div>
@@ -700,10 +329,8 @@
                                         </div>
                                         <span class="status-badge">Valid</span>
                                     </div>
-                                    
-                                   
-               </div>
-           </div>
+                                </div>
+                            </div>
                             
                             <!-- Recent Comments -->
                             <div class="glass-card p-6 rounded-3xl">
@@ -713,8 +340,8 @@
                                         <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium">John D.</p>
-                                            <p class="text-sm text-slate-400">"Great article! Very helpful information."</p>
-                                            <p class="text-xs text-slate-500 mt-1">On "10 Tips for Better SEO"</p>
+                                            <p class="text-sm text-gray-500">"Great article! Very helpful information."</p>
+                                            <p class="text-xs text-gray-400 mt-1">On "10 Tips for Better SEO"</p>
                                         </div>
                                     </div>
                                     
@@ -722,8 +349,8 @@
                                         <img src="https://placehold.co/40x40/1a1a1a/d4611c?text=U" alt="User" class="w-8 h-8 rounded-full">
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium">Sarah M.</p>
-                                            <p class="text-sm text-slate-400">"When will the new products be available?"</p>
-                                            <p class="text-xs text-slate-500 mt-1">On "Upcoming Product Line"</p>
+                                            <p class="text-sm text-gray-500">"When will the new products be available?"</p>
+                                            <p class="text-xs text-gray-400 mt-1">On "Upcoming Product Line"</p>
                                         </div>
                                     </div>
                                 </div>
@@ -735,121 +362,299 @@
                     </div>
                 </div>
                 
-                <!-- Content Page -->
-                <div id="content-page" class="page">
+                <!-- Appearance Page -->
+                <div id="appearance-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-medium">Content Management</h1>
-                            <p class="text-slate-400">Manage your website pages and content</p>
+                            <h1 class="text-2xl font-medium">Appearance</h1>
+                            <p class="text-gray-500">Customize the look and feel of your website</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="add-content-btn">
-                            <i class="fas fa-plus mr-2"></i> Add Content
-                        </button>
                     </div>
                     
                     <div class="glass-card p-6 rounded-3xl">
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="text-left border-b border-white/10">
-                                        <th class="pb-3">Page Title</th>
-                                        <th class="pb-3">URL</th>
-                                        <th class="pb-3">Last Updated</th>
-                                        <th class="pb-3">Status</th>
-                                        <th class="pb-3 text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Homepage</td>
-                                        <td class="py-4 text-slate-400">/</td>
-                                        <td class="py-4 text-slate-400">2 hours ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">About Us</td>
-                                        <td class="py-4 text-slate-400">/about</td>
-                                        <td class="py-4 text-slate-400">1 day ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
-                                        <td class="py-4">Services</td>
-                                        <td class="py-4 text-slate-400">/services</td>
-                                        <td class="py-4 text-slate-400">3 days ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-white/5">
-                                        <td class="py-4">Contact</td>
-                                        <td class="py-4 text-slate-400">/contact</td>
-                                        <td class="py-4 text-slate-400">1 week ago</td>
-                                        <td class="py-4"><span class="status-badge">Published</span></td>
-                                        <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="space-y-6">
+                            <!-- Color Palette Section -->
+                            <div>
+                                <h3 class="font-medium mb-4">Color Palette</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Primary Color</p>
+                                                <p class="text-sm text-gray-500">Main brand color</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-primary mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#d4611c">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Secondary Color</p>
+                                                <p class="text-sm text-gray-500">Secondary brand color</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-blue-500 mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#3b82f6">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Background Color</p>
+                                                <p class="text-sm text-gray-500">Site background color</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-white mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#ffffff">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Text Color</p>
+                                                <p class="text-sm text-gray-500">Main text color</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-gray-800 mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#1f2937">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Accent Color</p>
+                                                <p class="text-sm text-gray-500">For highlights and accents</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-green-500 mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#10b981">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Header Color</p>
+                                                <p class="text-sm text-gray-500">Navigation and header background</p>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full bg-black mr-2 border border-gray-300"></div>
+                                                <input type="color" class="w-8 h-8 rounded-full border-0 p-0" value="#000000">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Font Palette Section -->
+                            <div>
+                                <h3 class="font-medium mb-4">Font Palette</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Heading Font</p>
+                                                <p class="text-sm text-gray-500">Font for all headings</p>
+                                            </div>
+                                            <select class="bg-white border border-gray-200 rounded-3xl px-4 py-2">
+                                                <option>Poppins</option>
+                                                <option>Inter</option>
+                                                <option>Space Grotesk</option>
+                                                <option>Roboto</option>
+                                                <option>Open Sans</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Body Font</p>
+                                                <p class="text-sm text-gray-500">Font for body text</p>
+                                            </div>
+                                            <select class="bg-white border border-gray-200 rounded-3xl px-4 py-2">
+                                                <option>Inter</option>
+                                                <option>Poppins</option>
+                                                <option>Space Grotesk</option>
+                                                <option>Roboto</option>
+                                                <option>Open Sans</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Base Font Size</p>
+                                                <p class="text-sm text-gray-500">Default font size</p>
+                                            </div>
+                                            <select class="bg-white border border-gray-200 rounded-3xl px-4 py-2">
+                                                <option>16px (Default)</option>
+                                                <option>14px</option>
+                                                <option>18px</option>
+                                                <option>20px</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">Font Weight</p>
+                                                <p class="text-sm text-gray-500">Default font weight</p>
+                                            </div>
+                                            <select class="bg-white border border-gray-200 rounded-3xl px-4 py-2">
+                                                <option>400 (Normal)</option>
+                                                <option>300 (Light)</option>
+                                                <option>500 (Medium)</option>
+                                                <option>600 (Semi-bold)</option>
+                                                <option>700 (Bold)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Branding Section -->
+                            <div>
+                                <h3 class="font-medium mb-4">Branding</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <p class="font-medium mb-2">Main Logo</p>
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-20 h-20 bg-gray-100 rounded-3xl flex items-center justify-center">
+                                                    <i class="fas fa-image text-2xl text-gray-400"></i>
+                                                </div>
+                                                <div>
+                                                    <button class="btn-secondary px-4 py-2 rounded-3xl text-sm">Upload Logo</button>
+                                                    <p class="text-xs text-gray-500 mt-1">Recommended: 200x200px</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <p class="font-medium mb-2">Secondary Logo</p>
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-20 h-20 bg-gray-100 rounded-3xl flex items-center justify-center">
+                                                    <i class="fas fa-image text-2xl text-gray-400"></i>
+                                                </div>
+                                                <div>
+                                                    <button class="btn-secondary px-4 py-2 rounded-3xl text-sm">Upload Logo</button>
+                                                    <p class="text-xs text-gray-500 mt-1">Recommended: 200x200px</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div>
+                                            <p class="font-medium mb-2">Favicon</p>
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-16 h-16 bg-gray-100 rounded-3xl flex items-center justify-center">
+                                                    <i class="fas fa-image text-xl text-gray-400"></i>
+                                                </div>
+                                                <div>
+                                                    <button class="btn-secondary px-4 py-2 rounded-3xl text-sm">Upload Favicon</button>
+                                                    <p class="text-xs text-gray-500 mt-1">Recommended: 32x32px</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end">
+                                <button class="btn-primary px-6 py-2 rounded-3xl">Save Changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Media Page -->
-                <div id="media-page" class="page">
+                <!-- Content & Media Page -->
+                <div id="content-media-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
-                            <h1 class="text-2xl font-medium">Media Library</h1>
-                            <p class="text-slate-400">Manage your website images and files</p>
+                            <h1 class="text-2xl font-medium">Content & Media</h1>
+                            <p class="text-gray-500">Manage your website content and media files</p>
                         </div>
-                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="upload-media-page-btn">
+                        <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="upload-content-media-btn">
                             <i class="fas fa-upload mr-2"></i> Upload Media
                         </button>
                     </div>
                     
                     <div class="glass-card p-6 rounded-3xl">
+                        <h3 class="font-medium mb-4">Hero Section</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-gray-100 rounded-3xl p-4">
+                                <div class="aspect-video bg-white rounded-3xl flex items-center justify-center mb-3">
+                                    <i class="fas fa-image text-4xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-medium">Hero Background</h4>
+                                <p class="text-sm text-gray-500">Main hero section background image</p>
+                                <div class="flex mt-2">
+                                    <button class="text-primary hover:underline text-sm mr-3">Replace</button>
+                                    <button class="text-gray-500 hover:text-primary-dark text-sm">Edit Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-medium mb-4">About Us Section</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-gray-100 rounded-3xl p-4">
+                                <div class="aspect-square bg-white rounded-3xl flex items-center justify-center mb-3">
+                                    <i class="fas fa-image text-4xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-medium">About Us Image 1</h4>
+                                <p class="text-sm text-gray-500">Team photo for about us section</p>
+                                <div class="flex mt-2">
+                                    <button class="text-primary hover:underline text-sm mr-3">Replace</button>
+                                    <button class="text-gray-500 hover:text-primary-dark text-sm">Edit Details</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-100 rounded-3xl p-4">
+                                <div class="aspect-square bg-white rounded-3xl flex items-center justify-center mb-3">
+                                    <i class="fas fa-image text-4xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-medium">About Us Image 2</h4>
+                                <p class="text-sm text-gray-500">Office space image for about us</p>
+                                <div class="flex mt-2">
+                                    <button class="text-primary hover:underline text-sm mr-3">Replace</button>
+                                    <button class="text-gray-500 hover:text-primary-dark text-sm">Edit Details</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-100 rounded-3xl p-4">
+                                <div class="aspect-square bg-white rounded-3xl flex items-center justify-center mb-3">
+                                    <i class="fas fa-image text-4xl text-gray-400"></i>
+                                </div>
+                                <h4 class="font-medium">About Us Image 3</h4>
+                                <p class="text-sm text-gray-500">Team collaboration image</p>
+                                <div class="flex mt-2">
+                                    <button class="text-primary hover:underline text-sm mr-3">Replace</button>
+                                    <button class="text-gray-500 hover:text-primary-dark text-sm">Edit Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-medium mb-4">General Media</h3>
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            <div class="aspect-square bg-gray-100 rounded-3xl flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            <div class="aspect-square bg-gray-100 rounded-3xl flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            <div class="aspect-square bg-gray-100 rounded-3xl flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            <div class="aspect-square bg-gray-100 rounded-3xl flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
                             </div>
-                            <div class="aspect-square bg-dark-bg/30 rounded-3xl flex items-center justify-center">
-                                <i class="fas fa-image text-4xl text-slate-500"></i>
+                            <div class="aspect-square bg-gray-100 rounded-3xl flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
                             </div>
                         </div>
                     </div>
@@ -860,7 +665,7 @@
                     <div class="flex justify-between items-center mb-8">
                         <div>
                             <h1 class="text-2xl font-medium">Blog Posts</h1>
-                            <p class="text-slate-400">Manage your blog content</p>
+                            <p class="text-gray-500">Manage your blog content</p>
                         </div>
                         <button class="btn-primary px-4 py-2 rounded-3xl flex items-center" id="new-blog-post-btn">
                             <i class="fas fa-plus mr-2"></i> New Post
@@ -869,10 +674,10 @@
                     
                     <div class="glass-card p-6 rounded-3xl">
                         <div class="space-y-4">
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-gray-100 rounded-3xl transition-colors">
                                 <div>
                                     <h3 class="font-medium">10 Tips for Better SEO</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on May 15, 2023</p>
+                                    <p class="text-sm text-gray-500 mt-1">Published on May 15, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
                                     <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
@@ -880,10 +685,10 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-gray-100 rounded-3xl transition-colors">
                                 <div>
                                     <h3 class="font-medium">How to Improve Website Performance</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on April 28, 2023</p>
+                                    <p class="text-sm text-gray-500 mt-1">Published on April 28, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
                                     <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
@@ -891,10 +696,10 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-start justify-between p-4 hover:bg-white/5 rounded-3xl transition-colors">
+                            <div class="flex items-start justify-between p-4 hover:bg-gray-100 rounded-3xl transition-colors">
                                 <div>
                                     <h3 class="font-medium">The Future of Web Design</h3>
-                                    <p class="text-sm text-slate-400 mt-1">Published on March 10, 2023</p>
+                                    <p class="text-sm text-gray-500 mt-1">Published on March 10, 2023</p>
                                 </div>
                                 <div class="flex space-x-2">
                                     <button class="btn-secondary px-3 py-1 text-sm rounded">Edit</button>
@@ -905,12 +710,105 @@
                     </div>
                 </div>
                 
+                <!-- Submissions Page -->
+                <div id="submissions-page" class="page">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-2xl font-medium">Submissions</h1>
+                            <p class="text-gray-500">View form submissions from your website</p>
+                        </div>
+                        <button class="btn-secondary px-4 py-2 rounded-3xl flex items-center">
+                            <i class="fas fa-download mr-2"></i> Export
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-3xl">
+                        <div class="flex space-x-4 mb-6">
+                            <button class="px-4 py-2 rounded-3xl bg-gray-200 hover:bg-gray-100 text-gray-700">Contact Form</button>
+                            <button class="px-4 py-2 rounded-3xl bg-gray-200 hover:bg-gray-100 text-gray-700">Newsletter</button>
+                            <button class="px-4 py-2 rounded-3xl bg-gray-200 hover:bg-gray-100 text-gray-700">Support Tickets</button>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-gray-200">
+                                        <th class="pb-3">Name</th>
+                                        <th class="pb-3">Email</th>
+                                        <th class="pb-3">Subject</th>
+                                        <th class="pb-3">Date</th>
+                                        <th class="pb-3 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                        <td class="py-4">John Smith</td>
+                                        <td class="py-4 text-gray-500">john@example.com</td>
+                                        <td class="py-4">Website Inquiry</td>
+                                        <td class="py-4 text-gray-500">2 hours ago</td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-gray-500 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                        <td class="py-4">Sarah Johnson</td>
+                                        <td class="py-4 text-gray-500">sarah@example.com</td>
+                                        <td class="py-4">Partnership Request</td>
+                                        <td class="py-4 text-gray-500">1 day ago</td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-gray-500 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                        <td class="py-4">Michael Brown</td>
+                                        <td class="py-4 text-gray-500">michael@example.com</td>
+                                        <td class="py-4">Product Question</td>
+                                        <td class="py-4 text-gray-500">3 days ago</td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-gray-500 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-100">
+                                        <td class="py-4">Emily Davis</td>
+                                        <td class="py-4 text-gray-500">emily@example.com</td>
+                                        <td class="py-4">Pricing Information</td>
+                                        <td class="py-4 text-gray-500">1 week ago</td>
+                                        <td class="py-4 text-right">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-gray-500 hover:text-primary-dark">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- E-commerce Page -->
                 <div id="ecommerce-page" class="page">
                     <div class="flex justify-between items-center mb-8">
                         <div>
                             <h1 class="text-2xl font-medium">E-commerce</h1>
-                            <p class="text-slate-400">Manage your online store</p>
+                            <p class="text-gray-500">Manage your online store</p>
                         </div>
                         <button class="btn-primary px-4 py-2 rounded-3xl flex items-center">
                             <i class="fas fa-plus mr-2"></i> Add Product
@@ -921,7 +819,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left border-b border-white/10">
+                                    <tr class="text-left border-b border-gray-200">
                                         <th class="pb-3">Product</th>
                                         <th class="pb-3">Price</th>
                                         <th class="pb-3">Stock</th>
@@ -930,44 +828,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
                                         <td class="py-4">Premium Package</td>
                                         <td class="py-4">$99.99</td>
                                         <td class="py-4">25</td>
                                         <td class="py-4"><span class="status-badge">Active</span></td>
                                         <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
+                                            <button class="text-gray-500 hover:text-primary-dark">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
                                         <td class="py-4">Basic Package</td>
                                         <td class="py-4">$49.99</td>
                                         <td class="py-4">42</td>
                                         <td class="py-4"><span class="status-badge">Active</span></td>
                                         <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
+                                            <button class="text-gray-500 hover:text-primary-dark">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr class="border-b border-white/10 hover:bg-white/5">
+                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
                                         <td class="py-4">Deluxe Package</td>
                                         <td class="py-4">$149.99</td>
                                         <td class="py-4">12</td>
                                         <td class="py-4"><span class="status-badge">Active</span></td>
                                         <td class="py-4 text-right">
-                                            <button class="text-slate-400 hover:text-primary mr-3">
+                                            <button class="text-gray-500 hover:text-primary mr-3">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="text-slate-400 hover:text-primary-dark">
+                                            <button class="text-gray-500 hover:text-primary-dark">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </td>
@@ -983,7 +881,7 @@
                     <div class="flex justify-between items-center mb-8">
                         <div>
                             <h1 class="text-2xl font-medium">Settings</h1>
-                            <p class="text-slate-400">Configure your website settings</p>
+                            <p class="text-gray-500">Configure your website settings</p>
                         </div>
                     </div>
                     
@@ -995,17 +893,17 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Site Title</p>
-                                            <p class="text-sm text-slate-400">The name of your website</p>
+                                            <p class="text-sm text-gray-500">The name of your website</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="My Business">
+                                        <input type="text" class="bg-white border border-gray-200 rounded-3xl px-4 py-2 w-64" value="My Business">
                                     </div>
                                     
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Site Description</p>
-                                            <p class="text-sm text-slate-400">A brief description of your website</p>
+                                            <p class="text-sm text-gray-500">A brief description of your website</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="The best business in town">
+                                        <input type="text" class="bg-white border border-gray-200 rounded-3xl px-4 py-2 w-64" value="The best business in town">
                                     </div>
                                 </div>
                             </div>
@@ -1015,12 +913,22 @@
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="font-medium">Enable Maintenance Mode</p>
-                                        <p class="text-sm text-slate-400">Show a maintenance page to visitors</p>
+                                        <p class="text-sm text-gray-500">Show a maintenance page to visitors</p>
                                     </div>
                                     <label class="switch">
-                                        <input type="checkbox">
+                                        <input type="checkbox" id="maintenance-toggle">
                                         <span class="slider"></span>
                                     </label>
+                                </div>
+                                
+                                <div id="maintenance-password-section" class="mt-4 hidden">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium">Maintenance Password</p>
+                                            <p class="text-sm text-gray-500">Password to access site during maintenance</p>
+                                        </div>
+                                        <input type="password" class="bg-white border border-gray-200 rounded-3xl px-4 py-2 w-64" placeholder="Enter password">
+                                    </div>
                                 </div>
                             </div>
                             
@@ -1030,17 +938,17 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Meta Keywords</p>
-                                            <p class="text-sm text-slate-400">Keywords for search engines</p>
+                                            <p class="text-sm text-gray-500">Keywords for search engines</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" value="business, services, quality">
+                                        <input type="text" class="bg-white border border-gray-200 rounded-3xl px-4 py-2 w-64" value="business, services, quality">
                                     </div>
                                     
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <p class="font-medium">Google Analytics</p>
-                                            <p class="text-sm text-slate-400">Your Google Analytics ID</p>
+                                            <p class="text-sm text-gray-500">Your Google Analytics ID</p>
                                         </div>
-                                        <input type="text" class="bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
+                                        <input type="text" class="bg-white border border-gray-200 rounded-3xl px-4 py-2 w-64" placeholder="UA-XXXXX-Y">
                                     </div>
                                 </div>
                             </div>
@@ -1057,7 +965,7 @@
                     <div class="flex justify-between items-center mb-8">
                         <div>
                             <h1 class="text-2xl font-medium">Support</h1>
-                            <p class="text-slate-400">Get help with your website</p>
+                            <p class="text-gray-500">Get help with your website</p>
                         </div>
                     </div>
                     
@@ -1065,17 +973,17 @@
                         <div class="space-y-6">
                             <div>
                                 <h3 class="font-medium mb-3">Contact Support</h3>
-                                <p class="text-slate-400 mb-4">Need help with something? Send us a message and we'll get back to you as soon as possible.</p>
+                                <p class="text-gray-500 mb-4">Need help with something? Send us a message and we'll get back to you as soon as possible.</p>
                                 
                                 <div class="space-y-4">
                                     <div>
-                                        <label class="block text-sm text-slate-400 mb-1">Subject</label>
-                                        <input type="text" class="w-full bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2">
+                                        <label class="block text-sm text-gray-500 mb-1">Subject</label>
+                                        <input type="text" class="w-full bg-white border border-gray-200 rounded-3xl px-4 py-2">
                                     </div>
                                     
                                     <div>
-                                        <label class="block text-sm text-slate-400 mb-1">Message</label>
-                                        <textarea class="w-full bg-dark-bg/50 border border-white/10 rounded-3xl px-4 py-2 h-32"></textarea>
+                                        <label class="block text-sm text-gray-500 mb-1">Message</label>
+                                        <textarea class="w-full bg-white border border-gray-200 rounded-3xl px-4 py-2 h-32"></textarea>
                                     </div>
                                     
                                     <div class="flex justify-end">
@@ -1087,7 +995,7 @@
                             <div>
                                 <h3 class="font-medium mb-3">Help Resources</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-gray-100 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-book"></i>
@@ -1096,7 +1004,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-gray-100 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-video"></i>
@@ -1105,7 +1013,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-gray-100 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-question-circle"></i>
@@ -1114,7 +1022,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="glass-card p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-pointer">
+                                    <div class="glass-card p-4 rounded-3xl hover:bg-gray-100 transition-colors cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                                                 <i class="fas fa-comments"></i>
@@ -1137,22 +1045,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="text-xl font-medium">Create New Page</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
+                <button class="modal-close text-gray-500 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Page Title</label>
+                        <label class="block text-sm text-gray-500 mb-1">Page Title</label>
                         <input type="text" class="w-full px-4 py-2 rounded-3xl">
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">URL Slug</label>
+                        <label class="block text-sm text-gray-500 mb-1">URL Slug</label>
                         <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="e.g., about-us">
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Page Content</label>
+                        <label class="block text-sm text-gray-500 mb-1">Page Content</label>
                         <div class="content-editor" contenteditable="true">
                             <p>Start typing your content here...</p>
                         </div>
@@ -1171,21 +1079,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="text-xl font-medium">Upload Media</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
+                <button class="modal-close text-gray-500 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="border-2 border-dashed border-white/20 rounded-3xl p-8 text-center">
+                <div class="border-2 border-dashed border-gray-300 rounded-3xl p-8 text-center">
                     <i class="fas fa-cloud-upload-alt text-4xl text-primary mb-4"></i>
                     <p class="mb-2">Drag and drop files here</p>
-                    <p class="text-sm text-slate-400 mb-4">or</p>
+                    <p class="text-sm text-gray-500 mb-4">or</p>
                     <button class="btn-secondary px-4 py-2 rounded-3xl">
                         Select Files
                     </button>
                 </div>
                 <div class="mt-4">
-                    <label class="block text-sm text-slate-400 mb-1">File Name</label>
+                    <label class="block text-sm text-gray-500 mb-1">File Name</label>
                     <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="Optional custom name">
                 </div>
             </div>
@@ -1201,30 +1109,30 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="text-xl font-medium">New Blog Post</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
+                <button class="modal-close text-gray-500 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Post Title</label>
+                        <label class="block text-sm text-gray-500 mb-1">Post Title</label>
                         <input type="text" class="w-full px-4 py-2 rounded-3xl">
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Featured Image</label>
+                        <label class="block text-sm text-gray-500 mb-1">Featured Image</label>
                         <button class="btn-secondary w-full px-4 py-2 rounded-3xl text-left">
                             <i class="fas fa-image mr-2"></i> Select Image
                         </button>
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Post Content</label>
+                        <label class="block text-sm text-gray-500 mb-1">Post Content</label>
                         <div class="content-editor" contenteditable="true">
                             <p>Start writing your blog post here...</p>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Tags</label>
+                        <label class="block text-sm text-gray-500 mb-1">Tags</label>
                         <input type="text" class="w-full px-4 py-2 rounded-3xl" placeholder="Separate tags with commas">
                     </div>
                 </div>
@@ -1241,24 +1149,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="text-xl font-medium">Login to Dashboard</h3>
-                <button class="modal-close text-slate-400 hover:text-primary">
+                <button class="modal-close text-gray-500 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Email</label>
+                        <label class="block text-sm text-gray-500 mb-1">Email</label>
                         <input type="email" class="w-full px-4 py-2 rounded-3xl" placeholder="your@email.com">
                     </div>
                     <div>
-                        <label class="block text-sm text-slate-400 mb-1">Password</label>
+                        <label class="block text-sm text-gray-500 mb-1">Password</label>
                         <input type="password" class="w-full px-4 py-2 rounded-3xl" placeholder="••••••••">
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input type="checkbox" id="remember-me" class="h-4 w-4 rounded bg-dark-bg/50 border-primary/30 text-primary focus:ring-primary">
-                            <label for="remember-me" class="ml-2 text-sm text-slate-300">Remember me</label>
+                            <input type="checkbox" id="remember-me" class="h-4 w-4 rounded bg-white border-primary/30 text-primary focus:ring-primary">
+                            <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
                         </div>
                         <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
                     </div>
@@ -1268,9 +1176,7 @@
                 <button class="btn-secondary px-4 py-2 rounded-3xl modal-close">Cancel</button>
                 <button class="btn-primary px-4 py-2 rounded-3xl">Login</button>
             </div>
-            <div class="px-6 pb-6 text-center">
-                <p class="text-sm text-slate-400">Don't have an account? <a href="#" class="text-primary hover:underline">Sign up</a></p>
-            </div>
+ 
         </div>
     </div>
     
@@ -1321,10 +1227,9 @@
         const modalButtons = {
             'new-page-btn': 'new-page-modal',
             'upload-media-btn': 'upload-media-modal',
-            'upload-media-page-btn': 'upload-media-modal',
+            'upload-content-media-btn': 'upload-media-modal',
             'new-blog-btn': 'new-blog-modal',
             'new-blog-post-btn': 'new-blog-modal',
-            'add-content-btn': 'new-page-modal',
             'settings-btn': 'auth-modal',
             'logout-btn': 'auth-modal'
         };
@@ -1356,6 +1261,20 @@
             });
         });
         
+        // Maintenance mode toggle
+        const maintenanceToggle = document.getElementById('maintenance-toggle');
+        const maintenancePasswordSection = document.getElementById('maintenance-password-section');
+        
+        if (maintenanceToggle && maintenancePasswordSection) {
+            maintenanceToggle.addEventListener('change', () => {
+                if (maintenanceToggle.checked) {
+                    maintenancePasswordSection.classList.remove('hidden');
+                } else {
+                    maintenancePasswordSection.classList.add('hidden');
+                }
+            });
+        }
+        
         // Sample function to show toast
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast-notification');
@@ -1377,27 +1296,28 @@
         });
     </script>
     <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDijaOhowAUActToLfD16a56y-YtNw582E",
-    authDomain: "blacnova.firebaseapp.com",
-    projectId: "blacnova",
-    storageBucket: "blacnova.firebasestorage.app",
-    messagingSenderId: "1012412900214",
-    appId: "1:1012412900214:web:bdcb173c5c53825fbb5057",
-    measurementId: "G-W6W7S1PJWE"
-  };
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDijaOhowAUActToLfD16a56y-YtNw582E",
+            authDomain: "blacnova.firebaseapp.com",
+            projectId: "blacnova",
+            storageBucket: "blacnova.firebasestorage.app",
+            messagingSenderId: "1012412900214",
+            appId: "1:1012412900214:web:bdcb173c5c53825fbb5057",
+            measurementId: "G-W6W7S1PJWE"
+        };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+    <script src="../js/BN-Dashboard.js"></script>
 </body>
 </html>

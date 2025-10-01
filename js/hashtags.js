@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Service content definitions with hero icons
     const services = {
@@ -469,31 +468,57 @@ document.addEventListener('DOMContentLoaded', function() {
             contentDiv.innerHTML += createFeatureCard(feature, index);
         });
 
-        // CTA with forced page reload
-        contentDiv.innerHTML += `
-    <div class="text-center mt-12">
-        <a href="#quote" id="quote-cta" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
-            Get Started
-        </a>
-        <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
-    </div>
-`;
+        // Conditional CTA based on serviceId
+        let ctaHtml = '';
+        if (serviceId === 'initiatives') {
+            // No button for initiatives
+            ctaHtml = `
+                <div class="text-center mt-12">
+                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
+                </div>
+            `;
+        } else if (serviceId === 'meet-us') {
+            // "Schedule Meeting" button for meet-us
+            ctaHtml = `
+                <div class="text-center mt-12">
+                    <a href="eco/schedule/index.html" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
+                        Schedule Meeting
+                    </a>
+                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
+                </div>
+            `;
+        } else {
+            // Default "Get Started" button
+            ctaHtml = `
+                <div class="text-center mt-12">
+                    <a href="#quote" id="quote-cta" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
+                        Get Started
+                    </a>
+                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
+                </div>
+            `;
+        }
+        
+        contentDiv.innerHTML += ctaHtml;
+
         container.appendChild(headingDiv);
         container.appendChild(contentDiv);
         section.appendChild(backButtonContainer);
         section.appendChild(container);
 
-        // Add event listener for quote CTA
-        setTimeout(() => {
-            const quoteCta = document.getElementById('quote-cta');
-            if (quoteCta) {
-                quoteCta.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = window.location.pathname + '#quote';
-                    window.location.reload();
-                });
-            }
-        }, 100);
+        // Add event listener for quote CTA only if it exists
+        if (serviceId !== 'initiatives' && serviceId !== 'meet-us') {
+            setTimeout(() => {
+                const quoteCta = document.getElementById('quote-cta');
+                if (quoteCta) {
+                    quoteCta.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.location.href = window.location.pathname + '#quote';
+                        window.location.reload();
+                    });
+                }
+            }, 100);
+        }
 
         return section;
     }
@@ -588,4 +613,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
 });
-

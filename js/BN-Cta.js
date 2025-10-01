@@ -12,7 +12,7 @@
     const config = {
         buttonTitle: "Let's Build Together",
         description: "Elevate Your Digital Presence",
-        upgradeLink: "www.blacnova.net/#quote",
+        upgradeLink: "https://www.blacnova.net/#quote",
         particleColor: "#eeeeee",
         fontFamily: "'Inter', sans-serif",
         fontUrl: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"

@@ -136,12 +136,16 @@
                     <div class="flex space-x-8">
                         <!-- Services Dropdown -->
                         <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-                                Our Services
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
+                            <a href="#services" 
+   class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+    Our Services
+    <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
+         :class="{ 'rotate-180': open }" 
+         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M19 9l-7 7-7-7" />
+    </svg>
+</a>
                             <div x-show="open" x-transition:enter="transition ease-out duration-200" 
                                  x-transition:enter-start="opacity-0 translate-y-1" 
                                  x-transition:enter-end="opacity-100 translate-y-0" 
@@ -189,12 +193,15 @@
 
                        <!-- Tools Dropdown Integrated Here -->
 <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+    <a href="tools/index.html" 
+       class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
         Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
+             :class="{ 'rotate-180': open }" 
+             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
-    </button>
+    </a>
     
     <!-- Dropdown Panel -->
     <div x-show="open" x-transition:enter="transition ease-out duration-200" 
@@ -286,7 +293,7 @@
                 </nav>
                 
                 <div class="hidden md:flex items-center">
-                    <a href="dashboard.blacnova.net" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
+                    <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
                 </div>
                 
                 <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white" aria-label="Open menu">
@@ -295,7 +302,73 @@
             </div>
         </div>
     </header>
-    
+    <script> 
+(function() {
+    // --- START OF CUSTOMIZATION ---
+    // Define your custom shortcuts here.
+    // The script will only shorten links that are listed below.
+    const customShortcuts = {
+        'Our Services': 'Services',
+        'Contact Us': 'Contact',
+        'Get Quote': 'Quote',
+        'About Us': 'About' // ADDED: This line shortens "About Us" to "About"
+    };
+    // --- END OF CUSTOMIZATION ---
+
+    /**
+     * This function checks each navigation link to see if its text is wrapping.
+     * If it wraps AND has a custom shortcut defined, the text is shortened.
+     */
+    function adjustNavLinks() {
+        const navLinks = document.querySelectorAll('header nav .nav-link');
+
+        navLinks.forEach(link => {
+            const originalText = link.dataset.originalText;
+            if (!originalText) return;
+
+            let textNode = null;
+            for (const node of link.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    textNode = node;
+                    break;
+                }
+            }
+            if (!textNode) return;
+
+            // Restore the link to its full original text to measure correctly
+            textNode.nodeValue = originalText;
+            
+            const lineHeight = parseFloat(window.getComputedStyle(link).lineHeight);
+
+            // Check if the element's actual height is greater than a single line's height
+            if (link.scrollHeight > lineHeight + 1) {
+                // If it's wrapping, check if a custom shortcut exists in our dictionary
+                if (customShortcuts[originalText]) {
+                    textNode.nodeValue = customShortcuts[originalText];
+                }
+            }
+        });
+    }
+
+    // --- Script Initialization (No changes needed here) ---
+    window.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('header nav .nav-link');
+
+        navLinks.forEach(link => {
+            for (const node of link.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    link.dataset.originalText = node.nodeValue.trim();
+                    break;
+                }
+            }
+        });
+        
+        adjustNavLinks();
+        window.addEventListener('resize', adjustNavLinks);
+    });
+
+})();
+    </script>
  <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
         <div class="flex justify-end mb-8">
             <button id="close-menu-button" class="focus:outline-none text-white" aria-label="Close menu">
@@ -592,67 +665,64 @@
         </div>
     </div>
 </section>
- <!-- Compact BN Apps CTA Section -->
-    <section id="bn-apps-compact-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
-        
-        <div class="relative container mx-auto px-6 max-w-7xl">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                
-                <!-- Left Side: Text Content -->
-                <div class="lg:col-span-7 text-center lg:text-left">
-                    <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Introducing BN Tools</span>
-                    <h2 class="text-3xl lg:text-4xl font-medium text-[#ffffff] mb-3">
-                        All The Tools You Need. One Suite.
-                    </h2>
-                    <div class="flex justify-center lg:justify-start">
-                        <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
-                    </div>
-                    <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
-                        From invoicing and link management to cloud storage and AI-enhanced documents, BN Tools are built to help you work smarter, not harder.
-                    </p>
-                    <a href="apps/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
-                        Explore Tools
-                    </a>
-                </div>
 
-                <!-- Right Side: App Icons Grid -->
-                <div class="lg:col-span-5 flex items-center justify-center lg:justify-end">
-                    <div class="grid grid-cols-3 gap-x-4 gap-y-4 max-w-[300px]">
-                        <!-- App 1: BN Links -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="fas fa-link text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Links</span>
-                        </div>
-                        <!-- App 2: BN Forms -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="far fa-file-alt text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Forms</span>
-                        </div>
-                        <!-- App 3: BN Email -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="fas fa-envelope text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Email</span>
-                        </div>
-                        <!-- App 4: BN Google Apps -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="fab fa-google-drive text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">Workspace</span>
-                        </div>
-                        <!-- App 5: BN Invoice -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="fas fa-file-invoice-dollar text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Invoice</span>
-                        </div>
-                        <!-- App 6: BN Cards -->
-                        <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                            <i class="fas fa-layer-group text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                            <span class="text-[#ffffff] font-medium text-xs text-center">BN Cards</span>
-                        </div>
+<section id="bn-apps-compact-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
+    
+    <img src="img/polka-right.png" alt="" aria-hidden="true" class="hidden lg:block absolute top-1/2 left-[-4px] transform -translate-y-1/2 opacity-75">
+    <img src="img/polka-left.png" alt="" aria-hidden="true" class="hidden lg:block absolute top-1/2 right-[-4px] transform -translate-y-1/2 opacity-75">
+    
+    <div class="relative container mx-auto px-6 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Introducing BN Tools</span>
+                <h2 class="text-3xl lg:text-4xl font-medium text-[#ffffff] mb-3">
+                    All The Tools You Need. One Suite.
+                </h2>
+                <div class="flex justify-center lg:justify-start">
+                    <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
+                </div>
+                <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
+                    From invoicing and link management to cloud storage and AI-enhanced documents, BN Tools are built to help you work smarter, not harder.
+                </p>
+                <a href="tools/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    Explore Tools
+                </a>
+            </div>
+
+            <div class="lg:col-span-5 flex items-center justify-center lg:justify-end">
+                <div class="grid grid-cols-3 gap-x-4 gap-y-4 max-w-[300px]">
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-link text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Links</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="far fa-file-alt text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Forms</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-envelope text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Email</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="fab fa-google-drive text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">Workspace</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-file-invoice-dollar text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Invoice</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-layer-group text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
+                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Cards</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
 <section id="projects" class="py-24 relative overflow-hidden bg-[#fafbfb] poppins-font-section">
     <!-- This script is for a particle background effect, assuming you have it configured -->
     <div id="particles-js" class="absolute inset-0 z-0 opacity-100"></div>
@@ -716,7 +786,7 @@
                     <!-- Bottom Content: Title, Description, Link -->
                     <div>
                         <h3 class="text-2xl font-medium mb-2 text-white">Cards MMS</h3>
-                        <p class="text-gray-300 mb-4">A universal CSV-powered content tool for menus, products, events, and structured data.</p>
+                        <p class="text-gray-300 mb-4">A universal json powered content tool for menus, products, events, and structured data.</p>
                         <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
                             <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
                                 View Project
@@ -890,9 +960,9 @@
                                             <h4 class="text-xl font-medium mb-2 text-white group-hover:text-orange-400 transition-colors">BN Tools & Plugins</h4>
                                             <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
                                                 Get full access to our suite of Blacnova tools and plugins designed to supercharge your business. 
-                                                <a href="apps/index.html">
+                                                <a href="tools/index.html">
                                                     <span class="badge border-0 text-white relative -top-px px-2 py-1 rounded-md font-medium ml-2" style="background-color: #d4611c;">
-                                                        View Apps
+                                                        View Tools
                                                     </span>
                                                 </a>
                                             </p>
@@ -1008,7 +1078,7 @@
                     <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
                         Check out our latest projects. We work closely with our clients to deliver modern, responsive, and high-performing websites that meet all their goals.
                     </p>
-                    <a href="#" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    <a href="projects/index.html#clients" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
                         View Client Projects
                     </a>
                 </div>
