@@ -32,7 +32,7 @@
     <meta property="twitter:description" content="Professional web design, custom development, and SEO services in Las Cruces, NM. Let's build your digital future.">
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
-    <link rel="icon" href="img/bn.png" type="image/png">
+    <link rel="icon" href="ui/img/bn.png" type="image/png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,8 +42,8 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="js/hashtags.js"></script>
+    <link rel="stylesheet" type="text/css" href="ui/css/styles.css">
+    <script src="ui/js/hashtags.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Alpine JS for dropdowns -->
@@ -128,7 +128,7 @@
             <div class="header-content flex justify-between items-center h-24">
                 <div class="flex items-center">
                     <a href="/" class="flex items-center">
-                        <img src="img/logo_white.png" alt="Blacnova Development Logo" class="logo h-20">
+                        <img src="ui/img/logo_white.png" alt="Blacnova Development Logo" class="logo h-20">
                     </a>
                 </div>
                 
@@ -193,7 +193,7 @@
 
                        <!-- Tools Dropdown Integrated Here -->
 <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <a href="tools/index.html" 
+    <a href="pages/tools/index.html" 
        class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
         Tools
         <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
@@ -246,7 +246,7 @@
                 <!-- Developer Tools -->
                 <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
                     <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="tools/SSL/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="pages/tools/ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">SSL Checker</p>
                         <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
                     </a>
@@ -255,11 +255,11 @@
                 <!-- Design Tools -->
                 <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
                     <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="tools/PFP/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="pages/tools/pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">PFP Previewer</p>
                         <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
                     </a>
-                    <a href="tools/COLORS/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="pages/tools/colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">Color Palette Generator</p>
                         <p class="text-sm text-gray-500">Create beautiful color schemes</p>
                     </a>
@@ -268,15 +268,15 @@
                 <!-- Web Utilities -->
                 <div x-show="activeCategory === 'web'" class="space-y-3">
                     <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="tools/QR/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="pages/tools/qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">QR Code Generator</p>
                         <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
                     </a>
-                    <a href="tools/SHORTENER/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">Link Shortener</p>
                         <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
                     </a>
-                    <a href="tools/TREE/" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">Link Tree</p>
                         <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
                     </a>
@@ -286,7 +286,7 @@
     </div>
 </div>
 
-                        <a href="about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
+                        <a href="pages/about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
                         <a href="#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
                         <a href="#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
                     </div>
@@ -429,7 +429,7 @@
                     <div class="mb-4">
                         <h4 class="font-medium text-gray-300 mb-2">Developer Tools</h4>
                         <div class="space-y-2 ml-2">
-                            <a href="tools/SSL/" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
+                            <a href="pages/tools/ssl/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
                         </div>
                     </div>
                     
@@ -437,8 +437,8 @@
                     <div class="mb-4">
                         <h4 class="font-medium text-gray-300 mb-2">Design Tools</h4>
                         <div class="space-y-2 ml-2">
-                            <a href="tools/PFP/" class="block py-1 text-gray-400 hover:text-white transition-colors">PFP Previewer</a>
-                            <a href="tools/COLORS/" class="block py-1 text-gray-400 hover:text-white transition-colors">Color Palette Generator</a>
+                            <a href="pages/tools/pfp/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">PFP Previewer</a>
+                            <a href="pages/tools/colors/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">Color Palette Generator</a>
                         </div>
                     </div>
                     
@@ -446,15 +446,15 @@
                     <div class="mb-4">
                         <h4 class="font-medium text-gray-300 mb-2">Web Utilities</h4>
                         <div class="space-y-2 ml-2">
-                            <a href="tools/QR/" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
-                            <a href="tools/SHORTENER/" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
-                            <a href="tools/TREE/" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
+                            <a href="pages/tools/qr/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
+                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
+                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <a href="about/index.html" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">About Us</a>
+            <a href="pages/about/index.html" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">About Us</a>
             <a href="#contact" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Contact Us</a>
             <a href="#quote" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Get Quote</a>
             <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-3 rounded-3xl transition-all text-center mt-4 font-medium hover:bg-opacity-90">Dashboard</a>
@@ -467,7 +467,7 @@
 
 
         <section id="home" class="hero" style="height: 56vh; min-height: 430px;">
-            <img src="img/hero.png" alt="Modern workspace with laptops showing code" class="hero-bg">
+            <img src="ui/img/hero.png" alt="Modern workspace with laptops showing code" class="hero-bg">
 
             <div class="hero-overlay"></div>
             <div class="hero-content container mx-auto px-4 h-full flex items-center">
@@ -497,7 +497,7 @@
     <div class="laptop-mockup no-animation transform transition-all duration-500 hover:scale-105">
         <div class="laptop-frame">
             <div class="laptop-screen">
-                <img src="img/one.png" alt="Blacnova portfolio website screenshot" class="laptop-image">
+                <img src="ui/img/one.png" alt="Blacnova portfolio website screenshot" class="laptop-image">
             </div>
         </div>
         <div class="laptop-base">
@@ -507,7 +507,7 @@
     <div class="phone-mockup no-animation transform transition-all duration-500 hover:scale-105">
         <div class="phone-frame">
             <div class="phone-screen">
-                <img src="img/three.png" alt="Blacnova mobile app screenshot" class="phone-image">
+                <img src="ui/img/three.png" alt="Blacnova mobile app screenshot" class="phone-image">
             </div>
             <div class="phone-notch"></div>
         </div>
@@ -524,19 +524,19 @@
                 
                 <div class="flex flex-nowrap justify-center items-center gap-2 sm:gap-4 md:gap-16 overflow-x-auto px-2 md:px-4 py-2 no-scrollbar scroll-animate" data-animation="animate__fadeInUp">
                     <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
-                        <img src="img/farm.png" alt="Mesilla Valley Produce Logo" class="w-full h-auto object-contain">
+                        <img src="ui/img/farm.png" alt="Mesilla Valley Produce Logo" class="w-full h-auto object-contain">
                     </div>
                     <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
-                        <img src="img/chios.png" alt="Chios Taverna Logo" class="w-full h-auto object-contain">
+                        <img src="ui/img/chios.png" alt="Chios Taverna Logo" class="w-full h-auto object-contain">
                     </div>
                     <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
-                        <img src="img/zia.png" alt="Zia Building Maintenance Logo" class="w-full h-auto object-contain">
+                        <img src="ui/img/zia.png" alt="Zia Building Maintenance Logo" class="w-full h-auto object-contain">
                     </div>
                     <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
-                        <img src="img/wildwest.png" alt="Wild West Western Wear Logo" class="w-full h-auto object-contain">
+                        <img src="ui/img/wildwest.png" alt="Wild West Western Wear Logo" class="w-full h-auto object-contain">
                     </div>
                     <div class="flex-shrink-0 w-12 sm:w-16 md:w-32 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
-                        <img src="img/source.png" alt="The Source Logo" class="w-full h-auto object-contain">
+                        <img src="ui/img/source.png" alt="The Source Logo" class="w-full h-auto object-contain">
                     </div>
                 </div>
             </div>
@@ -668,8 +668,7 @@
 
 <section id="bn-apps-compact-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
     
-    <img src="img/polka-right.png" alt="" aria-hidden="true" class="hidden lg:block absolute top-1/2 left-[-4px] transform -translate-y-1/2 opacity-75">
-    <img src="img/polka-left.png" alt="" aria-hidden="true" class="hidden lg:block absolute top-1/2 right-[-4px] transform -translate-y-1/2 opacity-75">
+
     
     <div class="relative container mx-auto px-6 max-w-7xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -685,7 +684,7 @@
                 <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
                     From invoicing and link management to cloud storage and AI-enhanced documents, BN Tools are built to help you work smarter, not harder.
                 </p>
-                <a href="tools/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                <a href="pages/tools/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
                     Explore Tools
                 </a>
             </div>
@@ -751,7 +750,7 @@
             
             <!-- Project Card 1: SEO & Analytics -->
             <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="img/src5.png" alt="SEO Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <img src="ui/img/src5.png" alt="SEO Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div class="absolute inset-0 flex flex-col justify-between p-8">
                     <!-- Top Content: Label -->
@@ -776,7 +775,7 @@
 
             <!-- Project Card 2:  -->
             <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="img/src4.png" alt="E-Commerce Platform" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <img src="ui/img/src4.png" alt="E-Commerce Platform" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div class="absolute inset-0 flex flex-col justify-between p-8">
                     <!-- Top Content: Label -->
@@ -801,7 +800,7 @@
 
             <!-- Project Card 3: Cloud Solutions -->
             <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="img/src6.png" alt="Cloud Migration" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <img src="ui/img/src6.png" alt="Cloud Migration" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div class="absolute inset-0 flex flex-col justify-between p-8">
                     <!-- Top Content: Label -->
@@ -826,7 +825,7 @@
         </div>
         
         <div class="text-center mt-16">
-            <a href="projects/index.html" class="inline-flex items-center px-8 py-4 border border-[#d4611c] text-[#d4611c] font-semibold rounded-3xl hover:bg-[#d4611c] hover:text-white transition-all duration-300 group">
+            <a href="pages/projects/index.html" class="inline-flex items-center px-8 py-4 border border-[#d4611c] text-[#d4611c] font-semibold rounded-3xl hover:bg-[#d4611c] hover:text-white transition-all duration-300 group">
                 View All Projects
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -882,7 +881,7 @@
                                             <h4 class="text-xl font-medium mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Discovery & Strategy</h4>
                                             <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">
                                                 You fill out our Project Intake Form to share your vision, goals, and technical requirements, so we can understand your project before moving forward.
-                                                <a href="intake/index.html">
+                                                <a href="pages/intake/index.html">
                         <span class="badge border border-[#d4611c] text-[#d4611c] bg-transparent relative -top-px px-2 py-1 rounded-md font-medium mt-3" style="background-color: transparent;">
                             View Intake Form
                         </span>
@@ -953,14 +952,14 @@
                                     <div class="flex items-start gap-5">
                                         <div class="flex-shrink-0">
                                             <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <img src="img/bn.png" alt="BN Icon" class="w-8 h-8 object-contain" />
+                                                <img src="ui/img/bn.png" alt="BN Icon" class="w-8 h-8 object-contain" />
                                             </div>
                                         </div>
                                         <div>
                                             <h4 class="text-xl font-medium mb-2 text-white group-hover:text-orange-400 transition-colors">BN Tools & Plugins</h4>
                                             <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
                                                 Get full access to our suite of Blacnova tools and plugins designed to supercharge your business. 
-                                                <a href="tools/index.html">
+                                                <a href="pages/tools/index.html">
                                                     <span class="badge border-0 text-white relative -top-px px-2 py-1 rounded-md font-medium ml-2" style="background-color: #d4611c;">
                                                         View Tools
                                                     </span>
@@ -1078,7 +1077,7 @@
                     <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
                         Check out our latest projects. We work closely with our clients to deliver modern, responsive, and high-performing websites that meet all their goals.
                     </p>
-                    <a href="projects/index.html#clients" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    <a href="pages/projects/index.html#clients" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
                         View Client Projects
                     </a>
                 </div>
@@ -1087,13 +1086,13 @@
                 <div class="lg:col-span-6 flex items-center justify-center lg:justify-end mt-16 lg:mt-0">
                    <div class="relative w-full max-w-md h-64">
                         <!-- Bottom-left image -->
-                        <img src="img/src1.png" alt="Project screenshot 3" class="absolute bottom-0 left-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -rotate-6 -translate-x-20 z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3d4758/ffffff';">
+                        <img src="ui/img/src1.png" alt="Project screenshot 3" class="absolute bottom-0 left-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -rotate-6 -translate-x-20 z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3d4758/ffffff';">
 
                         <!-- Bottom-right image -->
-                        <img src="img/src2.png" alt="Project screenshot 2" class="absolute bottom-0 right-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform rotate-6 translate-x-20 z-0" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4d5768/ffffff';">
+                        <img src="ui/img/src2.png" alt="Project screenshot 2" class="absolute bottom-0 right-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform rotate-6 translate-x-20 z-0" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4d5768/ffffff';">
                         
                         <!-- Top-center image -->
-                        <img src="img/src3.png" alt="Project screenshot 1" class="absolute top-0 left-1/2 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -translate-x-1/2 -rotate-2 z-20" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2d3748/ffffff';">
+                        <img src="ui/img/src3.png" alt="Project screenshot 1" class="absolute top-0 left-1/2 w-4/5 h-4/5 object-cover rounded-lg shadow-xl transform -translate-x-1/2 -rotate-2 z-20" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2d3748/ffffff';">
                    </div>
                 </div>
             </div>
@@ -1158,7 +1157,7 @@
        <section id="local" class="py-20 bg-black poppins-font-section relative">
     <div class="container mx-auto px-6 max-w-7xl relative z-10">
         <div class="text-center mb-16">
-            <img src="img/zia-symbol.png" alt="Zia Symbol" class="mx-auto mb-6 w-16 h-16">
+            <img src="ui/img/zia-symbol.png" alt="Zia Symbol" class="mx-auto mb-6 w-16 h-16">
             <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Roots</span>
             <h2 class="text-4xl md:text-5xl font-medium mb-6 text-white">
                 <span class="section-title">Proudly Serving</span> Las Cruces
@@ -1200,7 +1199,7 @@
                 <p class="text-gray-400 mb-4">
                     Our team understands the unique needs and challenges of businesses in Southern New Mexico.
                 </p>
-                <a href="about/index.html" class="flex items-center text-[#d4611c] font-medium hover:underline">
+                <a href="pages/about/index.html" class="flex items-center text-[#d4611c] font-medium hover:underline">
                     <span>Learn more</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -1256,7 +1255,7 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-center scroll-animate" data-animation="animate__fadeIn">
                 <a href="/" aria-label="Back to homepage">
-                    <img src="img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
+                    <img src="ui/img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
                 </a>
             </div>
             <p class="text-center text-white/70 mt-4 scroll-animate" data-animation="animate__fadeIn" data-delay="0.2s">Founded in Las Cruces, New Mexico.</p>
@@ -1266,7 +1265,7 @@
         </div>
     </footer>
     
-    <script src="js/ui.js"></script>
+    <script src="ui/js/ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -1275,9 +1274,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/shimmerjs@1.0.3/dist/shimmer.min.js"></script>
 
-    <script src="js/BN-Cta.js"></script>
-    <script src="js/BN-Contact.js"></script>
-    <script src="js/BN-PageScroll.js"></script>
+    <script src="ui/js/BN-Cta.js"></script>
+    <script src="ui/js/BN-Contact.js"></script>
+    <script src="ui/js/BN-PageScroll.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

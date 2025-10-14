@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SPY1G645JS');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Generator | Blacnova Development</title>
+    <meta name="description" content="Generate high-quality, never-expiring QR codes for URLs, text, contact information, and more. Customize colors and download in multiple formats.">
+    <meta name="keywords" content="qr code generator, qr code creator, free qr code, custom qr code">
+    <link rel="canonical" href="https://www.blacnova.com/qr-generator">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.blacnova.com/qr-generator">
+    <meta property="og:title" content="QR Code Generator | Blacnova Development">
+    <meta property="og:description" content="Generate high-quality, never-expiring QR codes for URLs, text, contact information, and more.">
+    <meta property="og:image" content="https://www.blacnova.com/img/hero.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.blacnova.com/qr-generator">
+    <meta property="twitter:title" content="QR Code Generator | Blacnova Development">
+    <meta property="twitter:description" content="Generate high-quality, never-expiring QR codes for URLs, text, contact information, and more.">
+    <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
+
+    <link rel="icon" href="../../../ui/img/bn.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../ui/css/styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bn-soft': '#FAF9EE',
+                        'bn-green': '#1A1A1a',
+                        'bn-white': '#EEEEEE',
+                        'bn-black': '#010101',
+                        'bn-dark': '#1A1A1A',
+                        forge: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Blacnova Development",
+      "image": "https://www.blacnova.com/img/logo_white.png",
+      "@id": "https://www.blacnova.com/",
+      "url": "https://www.blacnova.com/",
+      "telephone": "+1-575-123-4567",
+      "description": "Custom website development, SEO, and full-service digital solutions for businesses in Las Cruces, NM.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Las Cruces",
+        "addressRegion": "NM",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/blacnova",
+        "https://www.twitter.com/blacnova",
+        "https://www.linkedin.com/company/blacnova"
+      ] 
+    }
+    </script>
+    <style>
+        .qr-preview {
+            transition: all 0.3s ease;
+        }
+        .color-circle {
+            outline: 2px solid #1a1a1a;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a1a1a;
+            transition: color 0.2s ease;
+        }
+        .popup-close:hover {
+            color: #f97316;
+        }
+        .info-icon {
+            transform: scale(0.8);
+        }
+        .scrollbar-orange::-webkit-scrollbar {
+            height: 8px;
+        }
+        .scrollbar-orange::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .scrollbar-orange::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 4px;
+        }
+        .scrollbar-orange::-webkit-scrollbar-thumb:hover {
+            background: #ea580c;
+        }
+        
+        /* Custom color picker styles */
+        .custom-color-picker {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        .custom-color-picker input {
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            width: 20px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .color-display {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
+        
+        /* QR History Styles */
+        .history-item {
+            transition: all 0.3s ease;
+        }
+        .history-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* FIX: Ensure canvas scales within its container */
+        #qr-code-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .palette-option {
+                padding: 0.5rem;
+            }
+            .palette-option .color-circle {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .popup-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            .form-input, .form-checkbox, .form-radio {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="header-content flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="../../../index.html" class="flex items-center">
+                        <img src="../../../ui/img/logo_white.png" alt="Blacnova Development Logo" class="logo h-20">
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+                    <div class="flex space-x-8">
+                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
+                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                                Our Services
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
+                                 x-transition:enter-start="opacity-0 translate-y-1" 
+                                 x-transition:enter-end="opacity-100 translate-y-0" 
+                                 x-transition:leave="transition ease-in duration-150" 
+                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <div class="grid grid-cols-3">
+                                    <div class="col-span-1 bg-gray-50 p-4">
+                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
+                                            </li>
+                                            <li>
+                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-span-2 p-4">
+                                        <div x-show="activeCategory === 'development'" class="space-y-3">
+                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
+                                        </div>
+                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
+                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
+                                        </div>
+                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
+                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
+                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
+    <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+        Tools
+        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+    </button>
+    
+    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
+         x-transition:enter-start="opacity-0 translate-y-1" 
+         x-transition:enter-end="opacity-100 translate-y-0" 
+         x-transition:leave="transition ease-in duration-150" 
+         x-transition:leave-start="opacity-100 translate-y-0" 
+         x-transition:leave-end="opacity-0 translate-y-1"
+         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+        <div class="grid grid-cols-3">
+            <div class="col-span-1 bg-gray-50 p-4">
+                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <button @mouseenter="activeCategory = 'devtools'" 
+                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
+                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                            Developer Tools
+                        </button>
+                    </li>
+                    <li>
+                        <button @mouseenter="activeCategory = 'design'" 
+                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
+                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                            Design Tools
+                        </button>
+                    </li>
+                    <li>
+                        <button @mouseenter="activeCategory = 'web'" 
+                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
+                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                            Web Utilities
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="col-span-2 p-4">
+                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
+                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">SSL Checker</p>
+                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
+                    </a>
+                </div>
+                
+                <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
+                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">PFP Previewer</p>
+                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
+                    </a>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">Color Palette Generator</p>
+                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
+                    </a>
+                </div>
+                
+                <div x-show="activeCategory === 'web'" class="space-y-3">
+                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">QR Code Generator</p>
+                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
+                    </a>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">Link Shortener</p>
+                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
+                    </a>
+                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        <p class="font-medium">Link Tree</p>
+                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                        <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
+                        <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
+                        <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                    </div>
+                </nav>
+                
+                <div class="hidden md:flex items-center">
+                    <a href="dashboard.blacnova.net" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white" aria-label="Open menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-button" class="focus:outline-none text-white" aria-label="Close menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col space-y-6">
+            <a href="../../../index.html#services" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Our Services</a>
+            <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">About Us</a>
+            <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Contact Us</a>
+            <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Get Quote</a>
+            <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-3 rounded-3xl transition-all text-center mt-4 font-medium hover:bg-opacity-90">Dashboard</a>
+        </nav>
+    </div>
+    
+    <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
+    
+    <main class="mt-24 py-20 bg-white poppins-font-section">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                 <img src="../../../ui/img/tools/qr.svg" alt="Profile Picture Icon" 
+     class="mx-auto mb-3 w-14 h-14 fade-bottom-right">
+                <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Free Tool</span>
+                <h2 class="text-4xl md:text-5xl font-medium mb-6 text-[#1a1a1a]">
+                    <span class="section-title">QR Code</span> Generator
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Create high-quality, never-expiring QR codes for URLs, text, contact information, and more. Customize colors and download in multiple formats.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                    <div class="p-6 bg-white border-b border-gray-100">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-orange-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">QR Code Settings</h3>
+                                <p class="text-sm text-gray-500">Customize your QR code appearance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <form id="qr-form" class="space-y-5" x-data="{ 
+                            qrType: 'url',
+                            qrContent: '',
+                            qrColor: '#000000',
+                            qrBgColor: '#FFFFFF',
+                            qrSize: 300,
+                            qrErrorCorrection: 'M',
+                            transparentBg: false,
+                            generateQRCode() {
+                                if (!this.qrContent) return;
+                                
+                                const content = this.qrContent.trim();
+                                
+                                const options = {
+                                    color: {
+                                        dark: this.qrColor,
+                                        light: this.transparentBg ? null : this.qrBgColor
+                                    },
+                                    width: parseInt(this.qrSize),
+                                    errorCorrectionLevel: this.qrErrorCorrection
+                                };
+                                
+                                let contentToEncode = content;
+                                
+                                if (this.qrType === 'vcard') {
+                                    contentToEncode = this.generateVCard();
+                                } else if (this.qrType === 'wifi') {
+                                    contentToEncode = this.generateWifiConfig();
+                                } else if (this.qrType === 'email') {
+                                    contentToEncode = `mailto:${content}`;
+                                } else if (this.qrType === 'sms') {
+                                    contentToEncode = `sms:${content}`;
+                                } else if (this.qrType === 'phone') {
+                                    contentToEncode = `tel:${content}`;
+                                }
+                                
+                                QRCode.toCanvas(document.createElement('canvas'), contentToEncode, options, (err, canvas) => {
+                                    if (err) {
+                                        console.error(err);
+                                        return;
+                                    }
+                                    
+                                    const qrCodeContainer = document.getElementById('qr-code-container');
+                                    qrCodeContainer.innerHTML = '';
+                                    qrCodeContainer.appendChild(canvas);
+                                    
+                                    const downloadPng = document.getElementById('download-png');
+                                    const downloadSvg = document.getElementById('download-svg');
+                                    downloadPng.disabled = false;
+                                    downloadSvg.disabled = false;
+                                    
+                                    currentQRCode = {
+                                        content: contentToEncode,
+                                        options: options,
+                                        dataUrl: canvas.toDataURL(),
+                                        type: this.qrType
+                                    };
+                                });
+                            },
+                            generateVCard() {
+                                const lines = [
+                                    'BEGIN:VCARD',
+                                    'VERSION:3.0',
+                                    `FN:${this.qrContent}`,
+                                    'END:VCARD'
+                                ];
+                                return lines.join('\n');
+                            },
+                            generateWifiConfig() {
+                                return `WIFI:S:${this.qrContent};T:WPA;P:password;;`;
+                            },
+                            updatePreview() {
+                                if (this.qrContent) {
+                                    this.generateQRCode();
+                                }
+                            }
+                        }" @submit.prevent="generateQRCode">
+                            <div class="space-y-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Code Type</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="url" class="sr-only" checked @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'url', 'border-gray-200 hover:border-gray-300': qrType !== 'url' }">
+                                            <i class="fas fa-link text-lg mb-1 block"></i>
+                                            URL
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="text" class="sr-only" @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'text', 'border-gray-200 hover:border-gray-300': qrType !== 'text' }">
+                                            <i class="fas fa-font text-lg mb-1 block"></i>
+                                            Text
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="vcard" class="sr-only" @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'vcard', 'border-gray-200 hover:border-gray-300': qrType !== 'vcard' }">
+                                            <i class="fas fa-address-card text-lg mb-1 block"></i>
+                                            vCard
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="wifi" class="sr-only" @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'wifi', 'border-gray-200 hover:border-gray-300': qrType !== 'wifi' }">
+                                            <i class="fas fa-wifi text-lg mb-1 block"></i>
+                                            WiFi
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="email" class="sr-only" @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'email', 'border-gray-200 hover:border-gray-300': qrType !== 'email' }">
+                                            <i class="fas fa-envelope text-lg mb-1 block"></i>
+                                            Email
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="qrType" x-model="qrType" value="sms" class="sr-only" @change="updatePreview()">
+                                        <div class="p-3 rounded-xl border-2 text-center text-sm" :class="{ 'border-orange-500': qrType === 'sms', 'border-gray-200 hover:border-gray-300': qrType !== 'sms' }">
+                                            <i class="fas fa-sms text-lg mb-1 block"></i>
+                                            SMS
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Content to encode</label>
+                                <div class="relative rounded-md shadow-sm">
+                                    <textarea x-model="qrContent" rows="3" class="block w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm placeholder-gray-400 transition-all" placeholder="https://example.com" @input.debounce.500ms="updatePreview()"></textarea>
+                                </div>
+                                <p class="mt-2 text-sm text-gray-500">Enter URL, text, email, phone number, etc.</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                    <div class="flex items-center">
+                                        <div class="custom-color-picker">
+                                            <div class="color-display" :style="{ backgroundColor: qrColor }"></div>
+                                            <input type="color" x-model="qrColor" @input.debounce.300ms="updatePreview()">
+                                        </div>
+                                        <span class="ml-3 text-sm font-medium text-gray-700" x-text="qrColor"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Background</label>
+                                    <div class="flex items-center">
+                                        <div class="custom-color-picker">
+                                            <div class="color-display" :style="{ backgroundColor: transparentBg ? 'transparent' : qrBgColor, backgroundImage: transparentBg ? 'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill-opacity=%22.1%22><path d=%22M8 0h8v8H8zM0 8h8v8H0z%22/></svg>\')' : 'none' }"></div>
+                                            <input type="color" x-model="qrBgColor" @input.debounce.300ms="updatePreview()" :disabled="transparentBg">
+                                        </div>
+                                        <span class="ml-3 text-sm font-medium text-gray-700" x-text="transparentBg ? 'Transparent' : qrBgColor"></span>
+                                    </div>
+                                    <label class="flex items-center mt-2">
+                                        <input type="checkbox" x-model="transparentBg" @change="updatePreview()" class="form-checkbox text-orange-500 focus:ring-orange-500">
+                                        <span class="ml-2 text-sm text-gray-700">Transparent background</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Size (for Download)</label>
+                                    <select x-model="qrSize" class="block w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all" @change="updatePreview()">
+                                        <option value="200">Small (200px)</option>
+                                        <option value="300" selected>Medium (300px)</option>
+                                        <option value="400">Large (400px)</option>
+                                        <option value="500">X-Large (500px)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                    <select x-model="qrErrorCorrection" class="block w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all" @change="updatePreview()">
+                                        <option value="L">Low (7%)</option>
+                                        <option value="M" selected>Medium (15%)</option>
+                                        <option value="Q">Quartile (25%)</option>
+                                        <option value="H">High (30%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <button type="submit" class="w-full flex justify-center items-center px-6 py-3.5 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all transform hover:-translate-y-0.5">
+                                    Generate QR Code
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                    <div class="p-6 bg-white border-b border-gray-100">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-orange-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">QR Code Preview</h3>
+                                <p class="text-sm text-gray-500">Download in multiple formats</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col items-center justify-center">
+                        <div id="qr-code-container" class="mb-8 p-4 bg-white rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center w-full max-w-[300px] aspect-square">
+                            <div class="text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                                </svg>
+                                <h3 class="mt-2 text-sm font-medium text-gray-900">No QR code generated</h3>
+                                <p class="mt-1 text-sm text-gray-500">Your QR code will appear here</p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full max-w-[300px] grid grid-cols-2 gap-3">
+                            <button id="download-png" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                PNG Image
+                            </button>
+                            <button id="download-svg" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                SVG Vector
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="p-6 bg-white border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-orange-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">QR Code History</h3>
+                                <p class="text-sm text-gray-500">Your recently downloaded QR codes</p>
+                            </div>
+                        </div>
+                        <button id="clear-history" class="text-sm text-orange-600 hover:text-orange-700 font-medium">
+                            Clear History
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div id="qr-history-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="text-center py-8 text-gray-500">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="mt-2">No QR codes in history yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center scroll-animate" data-animation="animate__fadeIn">
+                <a href="/" aria-label="Back to homepage">
+                    <img src="../../../ui/img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
+                </a>
+            </div>
+            <p class="text-center text-white/70 mt-4 scroll-animate" data-animation="animate__fadeIn" data-delay="0.2s">Founded in Las Cruces, New Mexico.</p>
+            <div class="border-t border-white/40 mt-12 pt-8 text-center text-white/60 scroll-animate" data-animation="animate__fadeIn" data-delay="0.4s">
+                <p>&copy; <span id="year"></span> Blacnova. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="history-popup" class="popup-overlay">
+        <div class="popup-content text-center">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <input id="popup-title-input" type="text" value="" class="w-full text-center text-2xl font-semibold text-gray-900 mb-4 border-2 border-transparent focus:border-orange-500 rounded-lg p-1 focus:outline-none">
+            <div id="popup-qr-container" class="mb-6 p-4 bg-white rounded-lg border-2 border-dashed border-gray-200 inline-block">
+                <img id="popup-qr-image" src="" alt="QR Code Preview" class="max-w-full h-auto max-h-64 mx-auto">
+            </div>
+            <p id="popup-qr-content" class="text-sm text-gray-600 mb-6 break-all"></p>
+            <div class="w-full grid grid-cols-2 gap-3 max-w-sm mx-auto">
+                <button id="popup-download-png" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    PNG
+                </button>
+                <button id="popup-download-svg" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    SVG
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../../ui/js/ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/shimmerjs@1.0.3/dist/shimmer.min.js"></script>
+
+    <script src="../../../ui/js/BN-Cta.js"></script>
+    <script src="../../../ui/js/BN-Contact.js"></script>
+    <script src="../../../ui/js/BN-PageScroll.js"></script>
+
+    <script>
+        let currentQRCode = null;
+        
+        function saveToHistory(qrData) {
+            if (!qrData) return;
+            const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+            
+            const isDuplicate = history.some(item => 
+                item.content === qrData.content && 
+                JSON.stringify(item.options) === JSON.stringify(qrData.options)
+            );
+
+            if (isDuplicate) return;
+
+            history.unshift({
+                title: 'Untitled QR Code',
+                content: qrData.content,
+                options: qrData.options,
+                dataUrl: qrData.dataUrl,
+                timestamp: new Date().toISOString(),
+                type: qrData.type
+            });
+            
+            if (history.length > 10) {
+                history.pop();
+            }
+            
+            localStorage.setItem('qrHistory', JSON.stringify(history));
+            refreshQRHistory();
+        }
+
+        function updateTitle(index, newTitle) {
+            const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+            if (history[index]) {
+                history[index].title = newTitle.trim() === '' ? 'Untitled QR Code' : newTitle;
+                localStorage.setItem('qrHistory', JSON.stringify(history));
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // ... (omitted for brevity, your existing animation and menu code is unchanged) ...
+            
+            // Set up main download buttons
+            const downloadPng = document.getElementById('download-png');
+            const downloadSvg = document.getElementById('download-svg');
+            
+            function triggerDownload(url, filename) {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = url;
+                link.click();
+            }
+
+            downloadPng.addEventListener('click', function() {
+                if (!currentQRCode) return;
+
+                const filename = `qr-code-${currentQRCode.type}-${Date.now()}.png`;
+                const isTransparent = currentQRCode.options.color.light === null;
+
+                if (isTransparent) {
+                    // Regenerate with toDataURL for proper transparency handling in PNG
+                    QRCode.toDataURL(currentQRCode.content, currentQRCode.options, function(err, url) {
+                        if (err) { console.error(err); return; }
+                        triggerDownload(url, filename);
+                        saveToHistory(currentQRCode);
+                    });
+                } else {
+                    triggerDownload(currentQRCode.dataUrl, filename);
+                    saveToHistory(currentQRCode);
+                }
+            });
+            
+            downloadSvg.addEventListener('click', function() {
+                if (!currentQRCode) return;
+                
+                QRCode.toString(currentQRCode.content, currentQRCode.options, function(err, svg) {
+                    if (err) { console.error(err); return; }
+                    const blob = new Blob([svg], { type: 'image/svg+xml' });
+                    const url = URL.createObjectURL(blob);
+                    triggerDownload(url, `qr-code-${currentQRCode.type}-${Date.now()}.svg`);
+                    saveToHistory(currentQRCode);
+                    setTimeout(() => URL.revokeObjectURL(url), 100);
+                });
+            });
+            
+            document.getElementById('clear-history').addEventListener('click', function() {
+                localStorage.removeItem('qrHistory');
+                refreshQRHistory();
+            });
+            
+            refreshQRHistory();
+        });
+        
+        function refreshQRHistory() {
+            const historyContainer = document.getElementById('qr-history-container');
+            const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+            
+            if (history.length === 0) {
+                historyContainer.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 col-span-3">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="mt-2">No QR codes in history yet</p>
+                    </div>`;
+                return;
+            }
+            
+            historyContainer.innerHTML = history.map((item, index) => {
+                const date = new Date(item.timestamp);
+                const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                const displayContent = item.content.length > 30 ? item.content.substring(0, 30) + '...' : item.content;
+                
+                return `
+                    <div class="history-item bg-white rounded-xl border border-gray-200 p-4 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                             <input type="text" value="${item.title || 'Untitled QR Code'}" data-index="${index}" class="history-title-input w-full mr-2 p-1 border-2 border-transparent rounded-md font-semibold text-gray-800 focus:border-orange-500 focus:outline-none bg-transparent truncate" title="Click to edit">
+                            <button class="text-red-500 hover:text-red-700 delete-history flex-shrink-0" data-index="${index}" title="Delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mb-3 flex-grow flex items-center justify-center">
+                            <img src="${item.dataUrl}" alt="QR Code" class="max-w-full h-auto max-h-32">
+                        </div>
+                        <div class="text-xs text-gray-500 mb-2 break-all">${displayContent}</div>
+                        <div class="flex justify-between items-center mt-auto pt-2 border-t border-gray-100">
+                            <span class="text-xs px-2 py-1 bg-gray-100 rounded-full capitalize">${item.type}</span>
+                            <button class="text-xs font-bold text-orange-600 hover:text-orange-700 view-qr" data-index="${index}">View</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            setupHistoryItemListeners();
+        }
+
+        function setupHistoryItemListeners() {
+            const historyPopup = document.getElementById('history-popup');
+            const popupClose = document.getElementById('popup-close');
+            const popupTitleInput = document.getElementById('popup-title-input');
+            let activeHistoryItem = null;
+
+            function showPopup() { historyPopup.classList.add('show'); }
+            function hidePopup() {
+                historyPopup.classList.remove('show');
+                if (activeHistoryItem) {
+                    // When closing the popup, refresh main history in case title was changed
+                    refreshQRHistory();
+                }
+                activeHistoryItem = null;
+            }
+            
+            popupClose.addEventListener('click', hidePopup);
+            historyPopup.addEventListener('click', (e) => {
+                if (e.target === historyPopup) hidePopup();
+            });
+
+            popupTitleInput.addEventListener('blur', function() {
+                updateTitle(this.dataset.index, this.value);
+            });
+            popupTitleInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') this.blur();
+            });
+
+            document.getElementById('popup-download-png').addEventListener('click', function() {
+                if (!activeHistoryItem) return;
+                const filename = `qr-code-${activeHistoryItem.type}-${Date.now()}.png`;
+                const isTransparent = activeHistoryItem.options.color.light === null;
+                 if (isTransparent) {
+                    QRCode.toDataURL(activeHistoryItem.content, activeHistoryItem.options, function(err, url) {
+                        if (err) { console.error(err); return; }
+                        const link = document.createElement('a');
+                        link.download = filename;
+                        link.href = url;
+                        link.click();
+                    });
+                } else {
+                     const link = document.createElement('a');
+                     link.download = filename;
+                     link.href = activeHistoryItem.dataUrl;
+                     link.click();
+                }
+            });
+
+            document.getElementById('popup-download-svg').addEventListener('click', function() {
+                if (!activeHistoryItem) return;
+                QRCode.toString(activeHistoryItem.content, activeHistoryItem.options, function(err, svg) {
+                    if (err) { console.error(err); return; }
+                    const blob = new Blob([svg], { type: 'image/svg+xml' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = `qr-code-${activeHistoryItem.type}-${Date.now()}.svg`;
+                    link.href = url;
+                    link.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 100);
+                });
+            });
+            
+            document.querySelectorAll('.delete-history').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+                    history.splice(index, 1);
+                    localStorage.setItem('qrHistory', JSON.stringify(history));
+                    refreshQRHistory();
+                });
+            });
+            
+            document.querySelectorAll('.view-qr').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+                    const item = history[index];
+                    
+                    if (item) {
+                        activeHistoryItem = item;
+                        popupTitleInput.value = item.title || 'Untitled QR Code';
+                        popupTitleInput.dataset.index = index;
+                        document.getElementById('popup-qr-image').src = item.dataUrl;
+                        document.getElementById('popup-qr-content').textContent = item.content;
+                        showPopup();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.history-title-input').forEach(input => {
+                input.addEventListener('blur', function() {
+                    updateTitle(this.dataset.index, this.value);
+                });
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') this.blur();
+                });
+            });
+        }
+        
+        // Boilerplate code (mobile menu, alerts, etc.) remains unchanged
+        // Your existing code for mobile menu and other UI elements is here...
+        document.addEventListener("DOMContentLoaded", function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const menuOverlay = document.getElementById('menu-overlay');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('closed'); menuOverlay.classList.toggle('hidden'); });
+            closeMenuButton.addEventListener('click', () => { mobileMenu.classList.add('closed'); menuOverlay.classList.add('hidden'); });
+            menuOverlay.addEventListener('click', () => { mobileMenu.classList.add('closed'); menuOverlay.classList.add('hidden'); });
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
