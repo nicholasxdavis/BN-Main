@@ -481,9 +481,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // "Schedule Meeting" button for meet-us
             ctaHtml = `
                 <div class="text-center mt-12">
-                    <a href="eco/schedule/index.html" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
+                    <button onclick="showMeetingPopup()" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
                         Schedule Meeting
-                    </a>
+                    </button>
                     <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
                 </div>
             `;
@@ -612,4 +612,322 @@ document.addEventListener('DOMContentLoaded', function() {
             document.documentElement.scrollTop = 0;
         }, 100);
     }
+
+    // --- Meeting Scheduling Popup ---
+    function createMeetingPopup() {
+        // Check if popup already exists
+        if (document.getElementById('bn-meeting-overlay')) {
+            return;
+        }
+
+        // Inject CSS for meeting popup
+        const meetingStyle = `
+            #bn-meeting-overlay {
+                font-family: 'Inter', sans-serif;
+                position: fixed;
+                top: 0; right: 0; bottom: 0; left: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                z-index: 10000;
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+
+            #bn-meeting-popup-container {
+                position: relative;
+                width: 385px;
+                height: 610px;
+                border-radius: 1.5rem;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                overflow: hidden;
+                padding-bottom: 1.25rem;
+                background-image: linear-gradient(to bottom, #000000, #484848);
+                color: white;
+            }
+
+            #bn-meeting-close-button {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                color: #eeeeee;
+                z-index: 30;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                transition: color 0.2s ease-in-out;
+            }
+            #bn-meeting-close-button:hover {
+                color: white;
+            }
+
+            #bn-meeting-form-title {
+                position: absolute;
+                top: 1.5rem;
+                left: 1.2rem;
+                font-size: 1.575rem;
+                font-weight: 100;
+                text-align: left;
+                z-index: 30;
+                margin: 0;
+                background: linear-gradient(to bottom, white 65%, transparent 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            #bn-meeting-inner-box {
+                width: 360px;
+                height: 485px;
+                background-color: #ffffff;
+                opacity: 98%;
+                color: #1a1a1a;
+                border-radius: 1rem;
+                z-index: 20;
+                padding: 1.5rem 2rem;
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+            }
+            
+            .bn-meeting-input-group {
+                margin-bottom: 1rem;
+            }
+
+            .bn-meeting-label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #374151;
+            }
+
+            .bn-meeting-input, .bn-meeting-textarea {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 1rem;
+                border: 1px solid #d1d5db;
+                border-radius: 0.5rem;
+                box-sizing: border-box;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+            .bn-meeting-input:focus, .bn-meeting-textarea:focus {
+                outline: none;
+                border-color: #000000;
+                box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .bn-meeting-textarea {
+                resize: none;
+            }
+
+            #bn-meeting-submit-btn {
+                width: 100%;
+                margin-top: 0.5rem;
+                padding: 0.875rem 0;
+                color: white;
+                font-weight: 600;
+                font-size: 1rem;
+                border-radius: 1.5rem;
+                background-color: #000000;
+                transition: opacity 0.2s;
+                border: none;
+                cursor: pointer;
+            }
+            #bn-meeting-submit-btn:hover {
+                opacity: 0.85;
+            }
+            #bn-meeting-submit-btn:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+            
+            /* Toast Notification Styles */
+            #bn-meeting-toast {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #1A1A1A;
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10001;
+                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                transform: translateY(200%);
+                opacity: 0;
+                max-width: 400px;
+            }
+            #bn-meeting-toast.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            #bn-meeting-toast .toast-content {
+                display: flex;
+                align-items: center;
+            }
+            #bn-meeting-toast svg {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                flex-shrink: 0;
+            }
+        `;
+
+        const styleElement = document.createElement('style');
+        styleElement.textContent = meetingStyle;
+        styleElement.id = 'bn-meeting-styles';
+        if (!document.getElementById('bn-meeting-styles')) {
+            document.head.appendChild(styleElement);
+        }
+
+        // Create HTML structure
+        const meetingHTML = `
+            <div id="bn-meeting-overlay">
+                <div id="bn-meeting-popup-container">
+                    <button id="bn-meeting-close-button" aria-label="Close popup">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="height: 1.5rem; width: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <h1 id="bn-meeting-form-title">Schedule Meeting</h1>
+                    <div id="bn-meeting-inner-box">
+                        <p style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: #4b5563;">Fill out this form to schedule a meeting with us.</p>
+                        <form id="bn-meeting-form" action="https://formspree.io/f/mldoylwq" method="POST" style="flex-grow: 1; display: flex; flex-direction: column;">
+                            <input type="hidden" name="type" value="Meeting Request">
+                            <div class="bn-meeting-input-group">
+                                <label for="meeting-name" class="bn-meeting-label">Full Name</label>
+                                <input id="meeting-name" name="name" type="text" class="bn-meeting-input" placeholder="John Doe" required>
+                            </div>
+                            <div class="bn-meeting-input-group">
+                                <label for="meeting-email" class="bn-meeting-label">Email Address</label>
+                                <input id="meeting-email" name="email" type="email" class="bn-meeting-input" placeholder="you@example.com" required>
+                            </div>
+                            <div class="bn-meeting-input-group" style="flex-grow: 1; display: flex; flex-direction: column;">
+                                <label for="meeting-message" class="bn-meeting-label">Message (Optional - preferred date/time)</label>
+                                <textarea id="meeting-message" name="message" class="bn-meeting-textarea" placeholder="Let us know your preferred date and time..." style="flex-grow: 1;"></textarea>
+                            </div>
+                            <button id="bn-meeting-submit-btn" type="submit">Schedule Meeting</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Toast Notification -->
+            <div id="bn-meeting-toast">
+                <div class="toast-content">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Success! Your meeting request has been submitted.</span>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', meetingHTML);
+
+        // Initialize popup logic
+        initializeMeetingPopup();
+    }
+
+    function initializeMeetingPopup() {
+        const overlay = document.getElementById('bn-meeting-overlay');
+        const closeButton = document.getElementById('bn-meeting-close-button');
+        const meetingForm = document.getElementById('bn-meeting-form');
+        
+        if (!overlay || !closeButton || !meetingForm) {
+            console.error("Meeting Popup: Could not find required elements.");
+            return;
+        }
+
+        const hidePopup = () => {
+            overlay.style.display = 'none';
+        };
+
+        // Form submission
+        meetingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = document.getElementById('bn-meeting-submit-btn');
+            const toast = document.getElementById('bn-meeting-toast');
+            const originalText = submitButton.textContent;
+            
+            // Disable submit button
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            
+            try {
+                // Get form data
+                const formData = new FormData(meetingForm);
+                
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/mldoylwq', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success toast
+                    if (toast) {
+                        toast.classList.add('show');
+                    }
+                    
+                    // Reset form
+                    meetingForm.reset();
+                    
+                    // Hide popup after a short delay
+                    setTimeout(() => {
+                        hidePopup();
+                    }, 500);
+                    
+                    // Hide toast after 3 seconds
+                    if (toast) {
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 3000);
+                    }
+                } else {
+                    // Handle error
+                    const data = await response.json();
+                    if (data.errors) {
+                        alert('There was an error submitting your meeting request. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your meeting request. Please try again.');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+
+        // Close button
+        closeButton.addEventListener('click', hidePopup);
+        
+        // Close on overlay click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                hidePopup();
+            }
+        });
+    }
+
+    // Global function to show meeting popup
+    window.showMeetingPopup = function() {
+        createMeetingPopup();
+        const overlay = document.getElementById('bn-meeting-overlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+        }
+    };
 });

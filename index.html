@@ -43,6 +43,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="ui/css/styles.css">
+    <style>
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1A1A1A;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateY(200%);
+            opacity: 0;
+            max-width: 400px;
+        }
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
     <script src="ui/js/hashtags.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1015,34 +1036,34 @@
                 
                 <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300">
                     <div class="p-8 md:p-10">
-                        <form class="space-y-6">
+                        <form id="quote-form" class="space-y-6" action="https://formspree.io/f/xdkprdlj" method="POST">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="John Doe">
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="John Doe">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="you@example.com">
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="you@example.com">
                                 </div>
                             </div>
                             
                             <div>
                                 <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
-                                <select id="service" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent">
-                                    <option selected>Choose a service...</option>
-                                    <option>Web Development</option>
-                                    <option>SEO Optimization</option>
-                                    <option>Cloud Solutions</option>
-                                    <option>Digital Marketing</option>
-                                    <option>E-Commerce</option>
-                                    <option>API Integration</option>
+                                <select id="service" name="service" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                    <option value="">Choose a service...</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="SEO Optimization">SEO Optimization</option>
+                                    <option value="Cloud Solutions">Cloud Solutions</option>
+                                    <option value="Digital Marketing">Digital Marketing</option>
+                                    <option value="E-Commerce">E-Commerce</option>
+                                    <option value="API Integration">API Integration</option>
                                 </select>
                             </div>
                             
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Details</label>
-                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Tell us about your project..."></textarea>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Tell us about your project..."></textarea>
                             </div>
                             
                             <div class="text-center">
@@ -1055,6 +1076,16 @@
 
                             </div>
                         </form>
+                    </div>
+                </div>
+                
+                <!-- Toast Notification -->
+                <div id="toast-notification" class="toast-notification">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Success! Your request has been submitted.</span>
                     </div>
                 </div>
             </div>
@@ -1500,6 +1531,66 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+</script>
+
+<script>
+// Form submission handler for Formspree
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('quote-form');
+    const toast = document.getElementById('toast-notification');
+    
+    if (form && toast) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(form);
+            
+            // Disable submit button
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Submitting...';
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/xdkprdlj', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success toast
+                    toast.classList.add('show');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Hide toast after 3 seconds
+                    setTimeout(function() {
+                        toast.classList.remove('show');
+                    }, 3000);
+                } else {
+                    // Handle error
+                    const data = await response.json();
+                    if (data.errors) {
+                        alert('There was an error submitting your form. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your form. Please try again.');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }
+        });
+    }
+});
 </script>
 
 

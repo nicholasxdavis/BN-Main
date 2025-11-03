@@ -172,6 +172,41 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
             #bn-contact-submit-btn:hover {
                 opacity: 0.85;
             }
+            #bn-contact-submit-btn:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+            
+            /* Toast Notification Styles */
+            #bn-contact-toast {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #1A1A1A;
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10001;
+                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                transform: translateY(200%);
+                opacity: 0;
+                max-width: 400px;
+            }
+            #bn-contact-toast.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            #bn-contact-toast .toast-content {
+                display: flex;
+                align-items: center;
+            }
+            #bn-contact-toast svg {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                flex-shrink: 0;
+            }
         `;
         const styleElement = document.createElement('style');
         styleElement.textContent = styleSheet;
@@ -190,22 +225,31 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
                     <h1 id="bn-contact-form-title">Contact Us</h1>
                     <div id="bn-contact-inner-box">
                         <p style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: #4b5563;">Fill out this form, We'll get back to you as soon as possible.</p>
-                        <form id="bn-contact-form" style="flex-grow: 1; display: flex; flex-direction: column;">
+                        <form id="bn-contact-form" action="https://formspree.io/f/mldoylwq" method="POST" style="flex-grow: 1; display: flex; flex-direction: column;">
                             <div class="bn-contact-input-group">
                                 <label for="contact-name" class="bn-contact-label">Full Name</label>
-                                <input id="contact-name" type="text" class="bn-contact-input" placeholder="John Doe" required>
+                                <input id="contact-name" name="name" type="text" class="bn-contact-input" placeholder="John Doe" required>
                             </div>
                             <div class="bn-contact-input-group">
                                 <label for="contact-email" class="bn-contact-label">Email Address</label>
-                                <input id="contact-email" type="email" class="bn-contact-input" placeholder="you@example.com" required>
+                                <input id="contact-email" name="email" type="email" class="bn-contact-input" placeholder="you@example.com" required>
                             </div>
                             <div class="bn-contact-input-group" style="flex-grow: 1; display: flex; flex-direction: column;">
                                 <label for="contact-message" class="bn-contact-label">Message</label>
-                                <textarea id="contact-message" class="bn-contact-textarea" placeholder="How can we help you?" required style="flex-grow: 1;"></textarea>
+                                <textarea id="contact-message" name="message" class="bn-contact-textarea" placeholder="How can we help you?" required style="flex-grow: 1;"></textarea>
                             </div>
                             <button id="bn-contact-submit-btn" type="submit">Submit Request</button>
                         </form>
                     </div>
+                </div>
+            </div>
+            <!-- Toast Notification -->
+            <div id="bn-contact-toast">
+                <div class="toast-content">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Success! Your message has been submitted.</span>
                 </div>
             </div>
         `;
@@ -302,20 +346,65 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
         };
 
         // --- Form Submission ---
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const message = document.getElementById('contact-message').value;
             
-            console.log("--- Contact Form Submitted ---");
-            console.log("Name:", name);
-            console.log("Email:", email);
-            console.log("Message:", message);
+            const submitButton = document.getElementById('bn-contact-submit-btn');
+            const toast = document.getElementById('bn-contact-toast');
+            const originalText = submitButton.textContent;
             
-            alert("Thank you for your message! We'll be in touch.");
-            hidePopup();
-            contactForm.reset();
+            // Disable submit button
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            
+            try {
+                // Get form data
+                const formData = new FormData(contactForm);
+                
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/mldoylwq', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success toast
+                    if (toast) {
+                        toast.classList.add('show');
+                    }
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide popup after a short delay
+                    setTimeout(() => {
+                        hidePopup();
+                    }, 500);
+                    
+                    // Hide toast after 3 seconds
+                    if (toast) {
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 3000);
+                    }
+                } else {
+                    // Handle error
+                    const data = await response.json();
+                    if (data.errors) {
+                        alert('There was an error submitting your message. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your message. Please try again.');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
         });
 
         // --- Close Logic ---

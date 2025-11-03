@@ -134,6 +134,32 @@
                 margin-bottom: 1.5rem;
             }
         }
+        .about-label {
+            color: white;
+            text-shadow: 
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black,
+                0 0 2px black;
+        }
+        .about-heading {
+            color: white;
+            text-shadow: 
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black,
+                0 0 2px black;
+        }
+        .about-logo {
+            filter: 
+                drop-shadow(-0.5px -0.5px 0 black)
+                drop-shadow(0.5px -0.5px 0 black)
+                drop-shadow(-0.5px 0.5px 0 black)
+                drop-shadow(0.5px 0.5px 0 black)
+                drop-shadow(0 0 1px black);
+        }
     </style>
 </head>
 
@@ -322,224 +348,370 @@
     <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
     
     <main class="mt-24 bg-white poppins-font-section">
-        <section class="py-20 bg-cover bg-center" style="background-image: url('../../ui/img/social.png'); background-position: center -30px;">
-    <div class="container mx-auto px-6 max-w-6xl">
-        <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
-             <div class="flex justify-center mb-2">
-  <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-12 h-12 object-contain">
-</div>
-
-            <span class="inline-block mb-4 text-sm font-medium tracking-wider text-[#d4611c] uppercase">Our Story</span>
-            <h1 class="text-4xl md:text-5xl font-medium mb-6 text-white">
-                <span class="section-title">We</span> are more than development.
-            </h1>
-            <p class="max-w-2xl mx-auto text-gray-300 text-lg">
-                We build digital ecosystems. Founded in Las Cruces, NM, Blacnova crafts tailored solutions for modern businesses. We merge sleek UI/UX with powerful backend logic to create web platforms, applications, and tools that empower you.
-            </p>
-        </div>
-    </div>
-</section>
-
-        <section class="py-20 bg-[#fafafa]">
-    <div class="container mx-auto px-6 max-w-6xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
-                <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                    <i class="fas fa-clipboard-list text-forge-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-medium mb-3 text-gray-900">Transparent Processes</h3>
-                <p class="text-gray-600">From kickoff to deployment, you'll know what's happening and why.</p>
-            </div>
-            
-            <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
-                <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                    <i class="fas fa-chart-pie text-forge-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-medium mb-3 text-gray-900">Powerful Dashboards</h3>
-                <p class="text-gray-600">Manage your site, content, and tools with our Cards Cloud Management Software.</p>
-            </div>
-            
-            <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
-                <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                    <i class="fas fa-plug text-forge-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-medium mb-3 text-gray-900">Integrated API Solutions</h3>
-                <p class="text-gray-600">Seamlessly connect your business with the tech tools you rely on.</p>
-            </div>
-            
-            <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
-                <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                    <i class="fas fa-expand-arrows-alt text-forge-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-medium mb-3 text-gray-900">Built for Scale</h3>
-                <p class="text-gray-600">From startups to enterprises, our stack scales with your growth.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-        
-
-       <section class="py-20 bg-[#fff]">
-    <div class="container mx-auto px-6 max-w-6xl">
-        <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
-<div class="flex justify-center mb-4">
-  <img src="../../ui/img/zia-symbol.png" alt="Blacnova Logo" class="w-12 h-12 object-contain">
-</div>
-
-            <span class="inline-block mb-4 text-sm font-medium tracking-wider text-[#d4611c] uppercase">Our Impact</span>
-            <h2 class="text-3xl font-medium mb-6 text-gray-900">Our Work in the Community</h2>
-            <p class="max-w-2xl mx-auto text-gray-600">
-                At Blacnova, the best way to show what we do is through projects that have real impact.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
-                <div class="h-48 bg-gray-200 overflow-hidden">
-                    <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                        <i class="fas fa-utensils text-forge-600 text-5xl"></i>
+        <!-- Hero Section -->
+        <section class="py-20 bg-cover bg-center relative overflow-hidden" style="background-image: url('../../ui/img/social.png'); background-position: center -30px;">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="container mx-auto px-6 max-w-6xl relative z-10">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4 mt-8">
+                        <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-20 h-20 md:w-24 md:h-24 object-contain about-logo">
                     </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-medium mb-2 text-gray-900">Chef Becky</h3>
-                    <p class="text-gray-600 mb-4">We transformed her catering order process with a fully digital system integrated into a custom management dashboard.</p>
-                    <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Digital Catering</span>
-                </div>
-            </div>
-            
-            <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
-                <div class="h-48 bg-gray-200 overflow-hidden">
-                    <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                        <i class="fas fa-calendar-alt text-forge-600 text-5xl"></i>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-medium mb-2 text-gray-900">Adovada de Mesilla</h3>
-                    <p class="text-gray-600 mb-4">We built a custom website with secure live voting, registration tools, and event branding for this culinary event.</p>
-                    <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Event Technology</span>
-                </div>
-            </div>
-            
-            <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
-                <div class="h-48 bg-gray-200 overflow-hidden">
-                    <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                        <i class="fas fa-broom text-forge-600 text-5xl"></i>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-medium mb-2 text-gray-900">Chios Cleaning</h3>
-                    <p class="text-gray-600 mb-4">We established their digital footprint with a bilingual website, contact system, and Google Business Profile setup.</p>
-                    <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Local Business</span>
-                </div>
-            </div>
-            
-            <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
-                <div class="h-48 bg-gray-200 overflow-hidden">
-                    <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                        <i class="fas fa-tractor text-forge-600 text-5xl"></i>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-medium mb-2 text-gray-900">FARMesilla</h3>
-                    <p class="text-gray-600 mb-4">We created holiday catering forms and an event management dashboard connected to their website.</p>
-                    <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Event Management</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-        <section class="py-20 bg-[#fafafa]">
-            <div class="container mx-auto px-6 max-w-6xl">
-                <div class="mb-16 scroll-animate" data-animation="animate__fadeInDown">
-                    <span class="inline-block mb-4 text-sm font-medium tracking-wider text-[#d4611c] uppercase">Case Studies</span>
-                    <h2 class="text-3xl font-medium mb-6 text-gray-900">Making a Difference Through Technology</h2>
-                </div>
-                
-                <div class="mb-16 scroll-animate" data-animation="animate__fadeInUp">
-                    <h3 class="text-2xl font-medium mb-4 text-gray-900">Chef Becky – Digital Catering Made Simple</h3>
-                    <p class="text-gray-600 mb-6">
-                        We partnered with Chef Becky, New Mexico's Chef Ambassador, to transform her catering order process. Starting from scratch, we created a fully digital version of her physical form and integrated it into a custom management dashboard. She can now update menus, manage orders, and control her offerings directly, without needing to hire a developer for routine changes. This project reflects our focus on practical solutions that put control back in the hands of our clients.
+                    <span class="inline-block mb-6 text-xs md:text-sm font-semibold tracking-wider text-white uppercase about-label">About Blacnova</span>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-medium mb-8 text-white about-heading leading-tight">
+                        Crafting Digital Excellence<br>
+                        <span class="text-[#d4611c]">in Las Cruces</span>
+                    </h1>
+                    <p class="max-w-3xl mx-auto text-gray-200 text-base md:text-lg leading-relaxed">
+                        We're a full-service digital agency based in Las Cruces, New Mexico, dedicated to helping local and regional businesses thrive online through custom web development, strategic SEO, and innovative digital solutions.
                     </p>
-                    <div class="bg-forge-50 p-6 rounded-2xl">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="w-12 h-12 bg-forge-600 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-white"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-medium text-gray-900">Results Delivered</h4>
-                                <ul class="mt-2 text-gray-600 list-disc pl-5">
-                                    <li>Streamlined catering order process</li>
-                                    <li>Custom management dashboard for menu updates</li>
-                                    <li>Reduced dependency on developer for routine changes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                
-                <div class="mb-16 scroll-animate" data-animation="animate__fadeInUp">
-                    <h3 class="text-2xl font-medium mb-4 text-gray-900">Adovada de Mesilla – Highlighting Local Culinary Talent</h3>
-                    <p class="text-gray-600 mb-6">
-                        Blacnova led the digital side of the first-ever Adovada de Mesilla event. We built a modern, custom website and implemented secure, encrypted live voting for attendees. We also handled registration and sponsorship tools, digital ticketing integration, and event branding to unify the experience online. The event was a success, and we are proud to have helped bring attention to Southern New Mexico's culinary traditions.
-                    </p>
-                    <div class="bg-forge-50 p-6 rounded-2xl">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="w-12 h-12 bg-forge-600 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-white"></i>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-medium text-gray-900">Results Delivered</h4>
-                                <ul class="mt-2 text-gray-600 list-disc pl-5">
-                                    <li>Custom event website with secure live voting</li>
-                                    <li>Registration and sponsorship management tools</li>
-                                    <li>Digital ticketing integration</li>
-                                    <li>Unified event branding</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                </div>
+            </div>
         </section>
 
-      
-       <section class="py-20 bg-[#fff]">
-    <div class="container mx-auto px-6 max-w-6xl">
-        <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
- <div class="flex justify-center mb-4">
-        <i class="fas fa-users text-[#d4611c] text-4xl"></i>
-      </div>
-   
-            <span class="inline-block mb-4 text-sm font-medium tracking-wider text-[#d4611c] uppercase">Our Team</span>
-            <h2 class="text-3xl font-medium mb-6 text-gray-900">Who's Behind Blacnova?</h2>
-            <p class="max-w-2xl mx-auto text-gray-600">
-                Founded by Nicholas Xander Davis, Blacnova brings over 10 years of web development and business growth expertise to the table. We deliver innovative, enterprise grade solutions tailored to help regional businesses thrive.
-            </p>
-        </div>
-        
-        <div class="flex justify-center">
-            <div class="team-card max-w-md scroll-animate" data-animation="animate__fadeInUp">
-                <div class="w-32 h-32 mx-auto bg-forge-100 rounded-full mb-6 flex items-center justify-center">
-                    <i class="fas fa-user text-forge-600 text-5xl"></i>
+        <!-- Our Story Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="scroll-animate" data-animation="animate__fadeInLeft">
+                        <div class="flex justify-start mb-4">
+         
+                        </div>
+                        <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Story</span>
+                        <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                            Building Digital Futures Since Day One
+                        </h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Founded in Las Cruces, New Mexico, Blacnova Development was born from a vision to help local businesses compete in an increasingly digital world. We recognized that many businesses in our region lacked access to quality, affordable web development services.
+                        </p>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            What started as a mission to bridge this gap has evolved into a full-service digital agency. Today, we serve clients across New Mexico and beyond, delivering enterprise-grade solutions with local, personalized service.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Our commitment remains unchanged: to empower businesses with technology that drives growth, enhances customer experiences, and delivers measurable results.
+                        </p>
+                    </div>
+                    
+                    <div class="scroll-animate" data-animation="animate__fadeInRight">
+                        <div class="bg-gradient-to-br from-[#d4611c] to-[#c2410c] p-8 rounded-3xl text-white shadow-xl">
+                            <h3 class="text-2xl font-medium mb-6">What Drives Us</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-2">Innovation First</h4>
+                                        <p class="text-white/90 text-sm">We stay ahead of technology trends to bring cutting-edge solutions to our clients.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-heart text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-2">Client Success</h4>
+                                        <p class="text-white/90 text-sm">Your growth is our success. We're invested in delivering solutions that make a real impact.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-handshake text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-2">Community Focus</h4>
+                                        <p class="text-white/90 text-sm">As a local business, we're committed to strengthening our community through technology.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-star text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-2">Excellence in Every Detail</h4>
+                                        <p class="text-white/90 text-sm">We pride ourselves on delivering polished, professional work that exceeds expectations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-medium mb-2 text-gray-900">Nicholas Xander Davis</h3>
-                <p class="text-forge-600 mb-4">Founder & Lead Developer</p>
-                <p class="text-gray-600">
-                    With over 10 years of experience in web development and business growth, Nicholas leads Blacnova in delivering innovative solutions that help businesses thrive in the digital landscape.
-                </p>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="py-20 bg-[#fafafa]">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-12 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                    </div>
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Values</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        What We Stand For
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
+                        <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-shield-alt text-forge-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3 text-gray-900">Quality First</h3>
+                        <p class="text-gray-600">We never compromise on quality. Every project receives enterprise-grade attention to detail.</p>
+                    </div>
+                    
+                    <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-clock text-forge-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3 text-gray-900">On-Time Delivery</h3>
+                        <p class="text-gray-600">We respect your time and deadlines. Projects are delivered when promised.</p>
+                    </div>
+                    
+                    <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
+                        <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-comments text-forge-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3 text-gray-900">Clear Communication</h3>
+                        <p class="text-gray-600">No jargon, no confusion. We keep you informed every step of the way.</p>
+                    </div>
+                    
+                    <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
+                        <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-expand-arrows-alt text-forge-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3 text-gray-900">Built for Growth</h3>
+                        <p class="text-gray-600">Our solutions scale with your business, from startup to enterprise.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+
+       <!-- Our Services Section -->
+       <section class="py-20 bg-[#fff]">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                        </svg>
+                    </div>
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">What We Offer</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        Comprehensive Digital Solutions
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        From concept to launch and beyond, we provide everything you need to succeed online.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
+                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#c2410c] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">Web Development</h3>
+                            <p class="text-gray-600 mb-4">Custom websites and web applications built with modern technologies, responsive design, and optimal performance.</p>
+                            <a href="../../index.html#services" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
+                                Learn More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">SEO & Marketing</h3>
+                            <p class="text-gray-600 mb-4">Strategic SEO optimization and digital marketing to increase your visibility and attract qualified leads.</p>
+                            <a href="../../index.html#services" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
+                                Learn More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
+                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#e67a35] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-cogs text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">Custom Solutions</h3>
+                            <p class="text-gray-600 mb-4">Bespoke software, API integrations, and cloud solutions tailored to your unique business needs.</p>
+                            <a href="../../index.html#services" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
+                                Learn More
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Impact Section -->
+        <section class="py-20 bg-[#fafafa]">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4">
+                        <img src="../../ui/img/zia-symbol.png" alt="New Mexico Zia Symbol" class="w-12 h-12 object-contain">
+                    </div>
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Impact</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        Supporting Local Businesses
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        We're proud to have helped numerous businesses in Las Cruces and Southern New Mexico establish and grow their digital presence.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
+                        <div class="h-48 bg-gray-200 overflow-hidden">
+                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
+                                <i class="fas fa-store text-forge-600 text-5xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">Local Businesses</h3>
+                            <p class="text-gray-600 mb-4">Helping local shops and service providers establish professional online presences that attract customers.</p>
+                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Web Development</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="h-48 bg-gray-200 overflow-hidden">
+                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-forge-600 text-5xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">Community Events</h3>
+                            <p class="text-gray-600 mb-4">Building digital infrastructure for local events, from registration systems to live voting platforms.</p>
+                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Event Technology</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
+                        <div class="h-48 bg-gray-200 overflow-hidden">
+                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
+                                <i class="fas fa-handshake text-forge-600 text-5xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-medium mb-2 text-gray-900">Non-Profits</h3>
+                            <p class="text-gray-600 mb-4">Supporting community organizations with affordable, professional websites and digital tools.</p>
+                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium">Community Service</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Why Choose Blacnova Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                        </svg>
+                    </div>
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Why Choose Us</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        The Blacnova Advantage
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="scroll-animate" data-animation="animate__fadeInUp">
+                        <div class="bg-black p-8 rounded-3xl h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-16 h-16 bg-[#d4611c] rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-tools text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-medium text-white">Powerful Dashboard Access</h3>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Every client gets access to our custom-built Cards Cloud Management System. Update your content, manage your site, and track performance—all without needing a developer.
+                            </p>
+                            <ul class="space-y-2 text-gray-400">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-[#d4611c] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Real-time content updates</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-[#d4611c] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Analytics and insights</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-[#d4611c] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Easy-to-use interface</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="bg-gradient-to-br from-[#d4611c] to-[#c2410c] p-8 rounded-3xl h-full text-white">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-dollar-sign text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-medium">Transparent Pricing</h3>
+                            </div>
+                            <p class="text-white/90 mb-4">
+                                We believe in straightforward, honest pricing. Get a custom quote based on your needs, then just $25/month for ongoing support and hosting.
+                            </p>
+                            <ul class="space-y-2 text-white/80">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-white mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>No hidden fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-white mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Flexible payment options</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-white mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Hosting and support included</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
 
     </main>
     
