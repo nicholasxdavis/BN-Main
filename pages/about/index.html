@@ -113,52 +113,11 @@
     }
     </script>
     <style>
-        .about-section {
-            scroll-margin-top: 7rem;
+        .project-card {
+            @apply bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300;
         }
         .value-card {
-            @apply bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300;
-        }
-        .project-card {
-            @apply bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300;
-        }
-        .team-card {
-            @apply bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300;
-        }
-        .section-pattern {
-            background-color: #faf9ee;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        @media (max-width: 768px) {
-            .value-card, .project-card, .team-card {
-                margin-bottom: 1.5rem;
-            }
-        }
-        .about-label {
-            color: white;
-            text-shadow: 
-                -1px -1px 0 black,
-                1px -1px 0 black,
-                -1px 1px 0 black,
-                1px 1px 0 black,
-                0 0 2px black;
-        }
-        .about-heading {
-            color: white;
-            text-shadow: 
-                -1px -1px 0 black,
-                1px -1px 0 black,
-                -1px 1px 0 black,
-                1px 1px 0 black,
-                0 0 2px black;
-        }
-        .about-logo {
-            filter: 
-                drop-shadow(-0.5px -0.5px 0 black)
-                drop-shadow(0.5px -0.5px 0 black)
-                drop-shadow(-0.5px 0.5px 0 black)
-                drop-shadow(0.5px 0.5px 0 black)
-                drop-shadow(0 0 1px black);
+            @apply bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300;
         }
     </style>
 </head>
@@ -175,13 +134,18 @@
                 
                 <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
                     <div class="flex space-x-8">
+                        <!-- Services Dropdown -->
                         <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-                                Our Services
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
+                            <a href="../../index.html#services" 
+   class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+    Our Services
+    <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
+         :class="{ 'rotate-180': open }" 
+         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M19 9l-7 7-7-7" />
+    </svg>
+</a>
                             <div x-show="open" x-transition:enter="transition ease-out duration-200" 
                                  x-transition:enter-start="opacity-0 translate-y-1" 
                                  x-transition:enter-end="opacity-100 translate-y-0" 
@@ -208,33 +172,38 @@
                                     <div class="col-span-2 p-4">
                                         <div x-show="activeCategory === 'development'" class="space-y-3">
                                             <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
+                                            <a href="../../index.html#web-development" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
+                                            <a href="../../index.html#e-commerce" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
+                                            <a href="../../index.html#api-integration" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
+                                            <a href="../../index.html#cloud-solutions" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
                                         </div>
                                         <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
                                              <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
+                                            <a href="../../index.html#seo-optimization" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
+                                            <a href="../../index.html#digital-marketing" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
                                         </div>
                                         <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
                                              <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
+                                            <a href="../../index.html#graphic-design" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                       <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                       <!-- Tools Dropdown -->
+<div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
+    <a href="../tools/index.html" 
+       class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
         Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
+             :class="{ 'rotate-180': open }" 
+             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
-    </button>
+    </a>
     
+    <!-- Dropdown Panel -->
     <div x-show="open" x-transition:enter="transition ease-out duration-200" 
          x-transition:enter-start="opacity-0 translate-y-1" 
          x-transition:enter-end="opacity-100 translate-y-0" 
@@ -244,6 +213,7 @@
          class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
          @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
         <div class="grid grid-cols-3">
+            <!-- Categories Column -->
             <div class="col-span-1 bg-gray-50 p-4">
                 <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
                 <ul class="space-y-2">
@@ -271,30 +241,34 @@
                 </ul>
             </div>
             
+            <!-- Tools Column -->
             <div class="col-span-2 p-4">
+                <!-- Developer Tools -->
                 <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
                     <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="../tools/ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">SSL Checker</p>
                         <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
                     </a>
                 </div>
                 
+                <!-- Design Tools -->
                 <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
                     <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="../tools/pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">PFP Previewer</p>
                         <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
                     </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="../tools/colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">Color Palette Generator</p>
                         <p class="text-sm text-gray-500">Create beautiful color schemes</p>
                     </a>
                 </div>
                 
+                <!-- Web Utilities -->
                 <div x-show="activeCategory === 'web'" class="space-y-3">
                     <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                    <a href="../tools/qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
                         <p class="font-medium">QR Code Generator</p>
                         <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
                     </a>
@@ -313,13 +287,14 @@
 </div>
 
                         <a href="index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
                         <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
                         <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
                     </div>
                 </nav>
                 
                 <div class="hidden md:flex items-center">
-                    <a href="https://dashboard.blacnova.net" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
+                    <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-2 rounded-3xl transition-all font-medium hover:bg-opacity-90">Dashboard</a>
                 </div>
                 
                 <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white" aria-label="Open menu">
@@ -328,8 +303,75 @@
             </div>
         </div>
     </header>
-    
-    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
+    <script> 
+(function() {
+    // --- START OF CUSTOMIZATION ---
+    // Define your custom shortcuts here.
+    // The script will only shorten links that are listed below.
+    const customShortcuts = {
+        'Our Services': 'Services',
+        'Contact Us': 'Contact',
+        'Get Quote': 'Quote',
+        'About Us': 'About',
+        'Blog': 'Blog'
+    };
+    // --- END OF CUSTOMIZATION ---
+
+    /**
+     * This function checks each navigation link to see if its text is wrapping.
+     * If it wraps AND has a custom shortcut defined, the text is shortened.
+     */
+    function adjustNavLinks() {
+        const navLinks = document.querySelectorAll('header nav .nav-link');
+
+        navLinks.forEach(link => {
+            const originalText = link.dataset.originalText;
+            if (!originalText) return;
+
+            let textNode = null;
+            for (const node of link.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    textNode = node;
+                    break;
+                }
+            }
+            if (!textNode) return;
+
+            // Restore the link to its full original text to measure correctly
+            textNode.nodeValue = originalText;
+            
+            const lineHeight = parseFloat(window.getComputedStyle(link).lineHeight);
+
+            // Check if the element's actual height is greater than a single line's height
+            if (link.scrollHeight > lineHeight + 1) {
+                // If it's wrapping, check if a custom shortcut exists in our dictionary
+                if (customShortcuts[originalText]) {
+                    textNode.nodeValue = customShortcuts[originalText];
+                }
+            }
+        });
+    }
+
+    // --- Script Initialization (No changes needed here) ---
+    window.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('header nav .nav-link');
+
+        navLinks.forEach(link => {
+            for (const node of link.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    link.dataset.originalText = node.nodeValue.trim();
+                    break;
+                }
+            }
+        });
+        
+        adjustNavLinks();
+        window.addEventListener('resize', adjustNavLinks);
+    });
+
+})();
+    </script>
+ <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
         <div class="flex justify-end mb-8">
             <button id="close-menu-button" class="focus:outline-none text-white" aria-label="Close menu">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -337,8 +379,85 @@
         </div>
         
         <nav class="flex flex-col space-y-6">
-            <a href="../../index.html#services" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Our Services</a>
+            <!-- Services Mobile Dropdown -->
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full text-white hover:text-gray-300 text-xl transition-colors">
+                    <span>Our Services</span>
+                    <svg class="w-5 h-5 rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-content mt-2 ml-4">
+                    <!-- Development Services -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Development</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../../index.html#web-development" class="block py-1 text-gray-400 hover:text-white transition-colors">Web Development</a>
+                            <a href="../../index.html#e-commerce" class="block py-1 text-gray-400 hover:text-white transition-colors">E-Commerce</a>
+                            <a href="../../index.html#api-integration" class="block py-1 text-gray-400 hover:text-white transition-colors">API Integration</a>
+                            <a href="../../index.html#cloud-solutions" class="block py-1 text-gray-400 hover:text-white transition-colors">Cloud Solutions</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Growth Services -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Growth</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../../index.html#seo-optimization" class="block py-1 text-gray-400 hover:text-white transition-colors">SEO Optimization</a>
+                            <a href="../../index.html#digital-marketing" class="block py-1 text-gray-400 hover:text-white transition-colors">Digital Marketing</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Creative Services -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Creative</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../../index.html#graphic-design" class="block py-1 text-gray-400 hover:text-white transition-colors">Graphic Design</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tools Mobile Dropdown -->
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full text-white hover:text-gray-300 text-xl transition-colors">
+                    <span>Tools</span>
+                    <svg class="w-5 h-5 rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-content mt-2 ml-4">
+                    <!-- Developer Tools -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Developer Tools</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../tools/ssl/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Design Tools -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Design Tools</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../tools/pfp/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">PFP Previewer</a>
+                            <a href="../tools/colors/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">Color Palette Generator</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Utilities -->
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-300 mb-2">Web Utilities</h4>
+                        <div class="space-y-2 ml-2">
+                            <a href="../tools/qr/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
+                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
+                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <a href="index.html" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">About Us</a>
+            <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Blog</a>
             <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Contact Us</a>
             <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 text-xl transition-colors">Get Quote</a>
             <a href="https://dashboard.blacnova.net/" class="btn-primary px-6 py-3 rounded-3xl transition-all text-center mt-4 font-medium hover:bg-opacity-90">Dashboard</a>
@@ -348,51 +467,40 @@
     <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
     
     <main class="mt-24 bg-white poppins-font-section">
-        <!-- Hero Section -->
-        <section class="py-20 bg-cover bg-center relative overflow-hidden" style="background-image: url('../../ui/img/social.png'); background-position: center -30px;">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="container mx-auto px-6 max-w-6xl relative z-10">
+        <!-- About Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
                 <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
-                    <div class="flex justify-center mb-4 mt-8">
-                        <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-20 h-20 md:w-24 md:h-24 object-contain about-logo">
+                    <div class="flex justify-center mb-4">
+                        <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-12 h-12 object-contain">
                     </div>
-                    <span class="inline-block mb-6 text-xs md:text-sm font-semibold tracking-wider text-white uppercase about-label">About Blacnova</span>
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-medium mb-8 text-white about-heading leading-tight">
-                        Crafting Digital Excellence<br>
-                        <span class="text-[#d4611c]">in Las Cruces</span>
-                    </h1>
-                    <p class="max-w-3xl mx-auto text-gray-200 text-base md:text-lg leading-relaxed">
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">About Blacnova</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        Crafting Digital Excellence in Las Cruces
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
                         We're a full-service digital agency based in Las Cruces, New Mexico, dedicated to helping local and regional businesses thrive online through custom web development, strategic SEO, and innovative digital solutions.
                     </p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Our Story Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-6xl">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="scroll-animate" data-animation="animate__fadeInLeft">
-                        <div class="flex justify-start mb-4">
-         
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
+                        <div class="bg-black p-8 rounded-3xl h-full shadow-xl">
+                            <h3 class="text-2xl font-medium mb-4 text-white">Our Story</h3>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                Founded in Las Cruces, New Mexico, Blacnova Development was born from a vision to help local businesses compete in an increasingly digital world. We recognized that many businesses in our region lacked access to quality, affordable web development services.
+                            </p>
+                            <p class="text-gray-300 mb-4 leading-relaxed">
+                                What started as a mission to bridge this gap has evolved into a full-service digital agency. Today, we serve clients across New Mexico and beyond, delivering enterprise-grade solutions with local, personalized service.
+                            </p>
+                            <p class="text-gray-300 leading-relaxed">
+                                Our commitment remains unchanged: to empower businesses with technology that drives growth, enhances customer experiences, and delivers measurable results.
+                            </p>
                         </div>
-                        <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Story</span>
-                        <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
-                            Building Digital Futures Since Day One
-                        </h2>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            Founded in Las Cruces, New Mexico, Blacnova Development was born from a vision to help local businesses compete in an increasingly digital world. We recognized that many businesses in our region lacked access to quality, affordable web development services.
-                        </p>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            What started as a mission to bridge this gap has evolved into a full-service digital agency. Today, we serve clients across New Mexico and beyond, delivering enterprise-grade solutions with local, personalized service.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed">
-                            Our commitment remains unchanged: to empower businesses with technology that drives growth, enhances customer experiences, and delivers measurable results.
-                        </p>
                     </div>
                     
-                    <div class="scroll-animate" data-animation="animate__fadeInRight">
-                        <div class="bg-gradient-to-br from-[#d4611c] to-[#c2410c] p-8 rounded-3xl text-white shadow-xl">
+                    <div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="bg-gradient-to-br from-[#d4611c] to-[#c2410c] p-8 rounded-3xl text-white shadow-xl h-full">
                             <h3 class="text-2xl font-medium mb-6">What Drives Us</h3>
                             <div class="space-y-6">
                                 <div class="flex items-start gap-4">
@@ -439,9 +547,9 @@
         </section>
 
         <!-- Core Values Section -->
-        <section class="py-20 bg-[#fafafa]">
+        <section class="py-20" style="background-color: #fafbfb;">
             <div class="container mx-auto px-6 max-w-6xl">
-                <div class="text-center mb-12 scroll-animate" data-animation="animate__fadeInDown">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
                     <div class="flex justify-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
@@ -453,7 +561,7 @@
                     </h2>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="value-card text-center scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
                         <div class="w-14 h-14 bg-forge-100 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                             <i class="fas fa-shield-alt text-forge-600 text-2xl"></i>
@@ -492,8 +600,8 @@
 
         
 
-       <!-- Our Services Section -->
-       <section class="py-20 bg-[#fff]">
+        <!-- Our Services Section -->
+        <section class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-6xl">
                 <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
                     <div class="flex justify-center mb-4">
@@ -563,7 +671,7 @@
         </section>
 
         <!-- Community Impact Section -->
-        <section class="py-20 bg-[#fafafa]">
+        <section class="py-20" style="background-color: #fafbfb;">
             <div class="container mx-auto px-6 max-w-6xl">
                 <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
                     <div class="flex justify-center mb-4">
@@ -580,10 +688,8 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
-                        <div class="h-48 bg-gray-200 overflow-hidden">
-                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                                <i class="fas fa-store text-forge-600 text-5xl"></i>
-                            </div>
+                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#c2410c] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-store text-white text-5xl"></i>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-medium mb-2 text-gray-900">Local Businesses</h3>
@@ -593,10 +699,8 @@
                     </div>
                     
                     <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
-                        <div class="h-48 bg-gray-200 overflow-hidden">
-                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                                <i class="fas fa-calendar-alt text-forge-600 text-5xl"></i>
-                            </div>
+                        <div class="h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-calendar-alt text-white text-5xl"></i>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-medium mb-2 text-gray-900">Community Events</h3>
@@ -606,10 +710,8 @@
                     </div>
                     
                     <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
-                        <div class="h-48 bg-gray-200 overflow-hidden">
-                            <div class="w-full h-full bg-forge-100 flex items-center justify-center">
-                                <i class="fas fa-handshake text-forge-600 text-5xl"></i>
-                            </div>
+                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#e67a35] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-handshake text-white text-5xl"></i>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-medium mb-2 text-gray-900">Non-Profits</h3>
@@ -713,12 +815,55 @@
 
 
 
+        <!-- Blog Section -->
+        <section class="py-20" style="background-color: #fafbfb;">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                        </svg>
+                    </div>
+                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Stay Updated</span>
+                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
+                        Our Blog
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-600">
+                        We regularly post updates, insights, and helpful content on our blog. Stay informed about the latest in web development, digital marketing, and technology trends.
+                    </p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp">
+                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#c2410c] overflow-hidden flex items-center justify-center">
+                            <i class="fas fa-blog text-white text-5xl"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-medium mb-4 text-gray-900">Read Our Latest Posts</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Visit our blog at <strong>blog.blacnova.net</strong> to read our latest articles, tutorials, and industry insights. We post regularly with updates on web development best practices, SEO tips, digital marketing strategies, and more.
+                            </p>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Whether you're looking for technical guides, business growth tips, or just want to stay updated with what's happening at Blacnova, our blog is your go-to resource.
+                            </p>
+                            <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
+                                Visit Our Blog
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
     
     <footer class="bg-black text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex justify-center scroll-animate" data-animation="animate__fadeIn">
-                <a href="/" aria-label="Back to homepage">
+                <a href="../../index.html" aria-label="Back to homepage">
                     <img src="../../ui/img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
                 </a>
             </div>
