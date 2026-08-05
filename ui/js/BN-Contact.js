@@ -367,55 +367,51 @@
             const toast = document.getElementById('bn-contact-toast');
             const originalText = submitButton.textContent;
             
-            // Disable submit button
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             
             try {
-                // Get form data
-                const formData = new FormData(contactForm);
-                
-                // Submit to Formspree
-                const response = await fetch('https://formspree.io/f/mldoylwq', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    // Show success toast
-                    if (toast) {
-                        toast.classList.add('show');
-                    }
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Hide popup after a short delay
-                    setTimeout(() => {
-                        hidePopup();
-                    }, 500);
-                    
-                    // Hide toast after 3 seconds
-                    if (toast) {
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 3000);
-                    }
+                const name = contactForm.querySelector('[name="name"]')?.value?.trim() || '';
+                const email = contactForm.querySelector('[name="email"]')?.value?.trim() || '';
+                const message = contactForm.querySelector('[name="message"]')?.value?.trim() || '';
+                const phone = contactForm.querySelector('[name="phone"]')?.value?.trim() || '';
+
+                if (window.BlacnovaCMS) {
+                    await window.BlacnovaCMS.submit({
+                        name,
+                        email,
+                        phone,
+                        subject: 'Contact form',
+                        message,
+                        source: 'Contact popup',
+                    });
                 } else {
-                    // Handle error
-                    const data = await response.json();
-                    if (data.errors) {
-                        alert('There was an error submitting your message. Please try again.');
-                    }
+                    const response = await fetch('https://blacnova-api.nic-58f.workers.dev/v1/public/submissions', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            domain: 'www.blacnova.net',
+                            name,
+                            email,
+                            phone,
+                            subject: 'Contact form',
+                            message,
+                            source: 'Contact popup',
+                        }),
+                    });
+                    if (!response.ok) throw new Error('Submission failed');
+                }
+
+                if (toast) toast.classList.add('show');
+                contactForm.reset();
+                setTimeout(() => hidePopup(), 500);
+                if (toast) {
+                    setTimeout(() => toast.classList.remove('show'), 3000);
                 }
             } catch (error) {
                 console.error('Error:', error);
                 alert('There was an error submitting your message. Please try again.');
             } finally {
-                // Re-enable submit button
                 submitButton.disabled = false;
                 submitButton.textContent = originalText;
             }
