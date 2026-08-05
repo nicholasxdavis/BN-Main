@@ -105,11 +105,21 @@
   window.BlacnovaCMS = {
     api: API,
     domain: DOMAIN,
+    formStartedAt: Date.now(),
     submit: async function (payload) {
+      var body = Object.assign(
+        {
+          domain: DOMAIN,
+          _t: window.BlacnovaCMS.formStartedAt || Date.now(),
+          website: '',
+          _gotcha: '',
+        },
+        payload,
+      )
       var res = await fetch(API + '/v1/public/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.assign({ domain: DOMAIN }, payload)),
+        body: JSON.stringify(body),
       })
       if (!res.ok) {
         var err = await res.json().catch(function () {
@@ -117,6 +127,7 @@
         })
         throw new Error(err.error || 'Submission failed')
       }
+      window.BlacnovaCMS.formStartedAt = Date.now()
       return res.json()
     },
   }

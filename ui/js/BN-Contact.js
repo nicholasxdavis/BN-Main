@@ -240,18 +240,23 @@
                     <h1 id="bn-contact-form-title">Contact Us</h1>
                     <div id="bn-contact-inner-box">
                         <p style="text-align: center; margin: 0 0 1.1rem; color: #6b7280; font-size: 0.875rem; font-weight: 400;">Fill out this form. We'll get back to you as soon as possible.</p>
-                        <form id="bn-contact-form" action="https://formspree.io/f/mldoylwq" method="POST" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0;">
+                        <form id="bn-contact-form" action="#" method="POST" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0;">
+                            <div class="bn-contact-input-group" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                                <label for="contact-website">Website</label>
+                                <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                            </div>
+                            <input type="hidden" name="_t" id="contact-started" value="">
                             <div class="bn-contact-input-group">
                                 <label for="contact-name" class="bn-contact-label">Full Name</label>
-                                <input id="contact-name" name="name" type="text" class="bn-contact-input" placeholder="John Doe" required>
+                                <input id="contact-name" name="name" type="text" class="bn-contact-input" placeholder="John Doe" required maxlength="120" autocomplete="name">
                             </div>
                             <div class="bn-contact-input-group">
                                 <label for="contact-email" class="bn-contact-label">Email Address</label>
-                                <input id="contact-email" name="email" type="email" class="bn-contact-input" placeholder="you@example.com" required>
+                                <input id="contact-email" name="email" type="email" class="bn-contact-input" placeholder="you@example.com" required maxlength="254" autocomplete="email">
                             </div>
                             <div class="bn-contact-input-group" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0;">
                                 <label for="contact-message" class="bn-contact-label">Message</label>
-                                <textarea id="contact-message" name="message" class="bn-contact-textarea" placeholder="How can we help you?" required style="flex-grow: 1;"></textarea>
+                                <textarea id="contact-message" name="message" class="bn-contact-textarea" placeholder="How can we help you?" required maxlength="5000" style="flex-grow: 1;"></textarea>
                             </div>
                             <button id="bn-contact-submit-btn" type="submit">Submit Request</button>
                         </form>
@@ -360,6 +365,9 @@
         };
 
         // --- Form Submission ---
+        const startedInput = document.getElementById('contact-started')
+        if (startedInput) startedInput.value = String(Date.now())
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -375,42 +383,47 @@
                 const email = contactForm.querySelector('[name="email"]')?.value?.trim() || '';
                 const message = contactForm.querySelector('[name="message"]')?.value?.trim() || '';
                 const phone = contactForm.querySelector('[name="phone"]')?.value?.trim() || '';
+                const website = contactForm.querySelector('[name="website"]')?.value || '';
+                const startedAt = Number(contactForm.querySelector('[name="_t"]')?.value) || Date.now();
+
+                const payload = {
+                    name,
+                    email,
+                    phone,
+                    subject: 'Contact form',
+                    message,
+                    source: 'Contact popup',
+                    website,
+                    _t: startedAt,
+                };
 
                 if (window.BlacnovaCMS) {
-                    await window.BlacnovaCMS.submit({
-                        name,
-                        email,
-                        phone,
-                        subject: 'Contact form',
-                        message,
-                        source: 'Contact popup',
-                    });
+                    await window.BlacnovaCMS.submit(payload);
                 } else {
                     const response = await fetch('https://blacnova-api.nic-58f.workers.dev/v1/public/submissions', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             domain: 'www.blacnova.net',
-                            name,
-                            email,
-                            phone,
-                            subject: 'Contact form',
-                            message,
-                            source: 'Contact popup',
+                            ...payload,
                         }),
                     });
-                    if (!response.ok) throw new Error('Submission failed');
+                    if (!response.ok) {
+                        const err = await response.json().catch(() => ({}));
+                        throw new Error(err.error || 'Submission failed');
+                    }
                 }
 
                 if (toast) toast.classList.add('show');
                 contactForm.reset();
+                if (startedInput) startedInput.value = String(Date.now());
                 setTimeout(() => hidePopup(), 500);
                 if (toast) {
                     setTimeout(() => toast.classList.remove('show'), 3000);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('There was an error submitting your message. Please try again.');
+                alert(error?.message || 'There was an error submitting your message. Please try again.');
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = originalText;

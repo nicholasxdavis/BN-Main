@@ -588,15 +588,20 @@
                 
                 <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300">
                     <div class="p-8 md:p-10">
-                        <form id="quote-form" class="space-y-6" action="https://formspree.io/f/xdkprdlj" method="POST">
+                        <form id="quote-form" class="space-y-6" action="#" method="POST" style="position:relative;">
+                            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                                <label for="quote-website">Website</label>
+                                <input id="quote-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                            </div>
+                            <input type="hidden" name="_t" id="quote-started" value="">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="John Doe">
+                                    <input type="text" id="name" name="name" required maxlength="120" autocomplete="name" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="John Doe">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="you@example.com">
+                                    <input type="email" id="email" name="email" required maxlength="254" autocomplete="email" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="you@example.com">
                                 </div>
                             </div>
                             
@@ -999,6 +1004,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const toast = document.getElementById('toast-notification');
     
     if (form && toast) {
+        const started = document.getElementById('quote-started');
+        if (started) started.value = String(Date.now());
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1012,6 +1020,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const email = form.querySelector('#email')?.value?.trim() || '';
                 const service = form.querySelector('#service')?.value || 'General';
                 const message = form.querySelector('#message')?.value?.trim() || '';
+                const website = form.querySelector('[name="website"]')?.value || '';
+                const startedAt = Number(form.querySelector('[name="_t"]')?.value) || Date.now();
 
                 if (window.BlacnovaCMS) {
                     await window.BlacnovaCMS.submit({
@@ -1020,6 +1030,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         subject: service || 'Quote request',
                         message,
                         source: 'Quote form',
+                        website,
+                        _t: startedAt,
                     });
                 } else {
                     throw new Error('CMS unavailable');
@@ -1027,12 +1039,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 toast.classList.add('show');
                 form.reset();
+                if (started) started.value = String(Date.now());
                 setTimeout(function() {
                     toast.classList.remove('show');
                 }, 3000);
             } catch (error) {
                 console.error('Error:', error);
-                alert('There was an error submitting your form. Please try again.');
+                alert(error?.message || 'There was an error submitting your form. Please try again.');
             } finally {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
