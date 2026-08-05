@@ -36,7 +36,6 @@
     )
     overlay.innerHTML =
       '<div style="max-width:480px">' +
-      '<div style="width:48px;height:48px;border-radius:12px;background:#d4611c;margin:0 auto 20px"></div>' +
       '<h1 style="font-size:28px;font-weight:500;margin:0 0 12px">' +
       escapeHtml(maintenance.title || "We'll be right back") +
       '</h1>' +
