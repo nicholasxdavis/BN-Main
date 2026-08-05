@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
@@ -117,6 +117,7 @@
             @apply bg-white rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300;
         }
     </style>
+    <script src="../../ui/js/bn-cms.js"></script>
 </head>
 
 <body>
@@ -349,7 +350,8 @@
         <!-- Client Screenshots -->
         <section id="clients" class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-5xl">
-                <h2 class="text-3xl md:text-4xl text-center text-gray-900 mb-12">Client Projects</h2>
+                <h2 class="text-3xl md:text-4xl text-center text-gray-900 mb-4" data-bn-content="c_proj_page_title">Client Projects</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto" data-bn-content="c_proj_page_desc">A look at websites and digital products we have shipped for businesses across Southern New Mexico.</p>
 
                 <div class="relative" x-data="{
                     slides: [

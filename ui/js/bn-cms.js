@@ -1,5 +1,5 @@
 /**
- * Blacnova CMS bridge — maintenance, published content, pageview analytics.
+ * Blacnova CMS bridge — maintenance, published content, media, pageview analytics.
  */
 ;(function () {
   const API = 'https://blacnova-api.nic-58f.workers.dev'
@@ -22,6 +22,34 @@
         else el.textContent = block.value
       })
     })
+  }
+
+  function applyMedia(media) {
+    if (!Array.isArray(media)) return
+    var byName = {}
+    media.forEach(function (item) {
+      if (item && item.name && item.url) byName[item.name] = item.url
+    })
+    document.querySelectorAll('[data-bn-media]').forEach(function (el) {
+      var key = el.getAttribute('data-bn-media')
+      if (!key || !byName[key]) return
+      if (el.tagName === 'IMG') el.setAttribute('src', byName[key])
+      else el.style.backgroundImage = 'url("' + byName[key] + '")'
+    })
+    // Patch Alpine carousel slides that reference ui/img filenames
+    if (typeof Alpine !== 'undefined' && typeof Alpine.$data === 'function') {
+      document.querySelectorAll('[x-data]').forEach(function (el) {
+        try {
+          var data = Alpine.$data(el)
+          if (!data || !Array.isArray(data.slides)) return
+          data.slides.forEach(function (slide) {
+            if (!slide || !slide.src) return
+            var name = String(slide.src).split('/').pop().split('?')[0]
+            if (byName[name]) slide.src = byName[name]
+          })
+        } catch (e) {}
+      })
+    }
   }
 
   function showMaintenance(maintenance) {
@@ -80,7 +108,6 @@
 
   async function load() {
     try {
-      // Prefer live API; fall back to static maintenance.json from GitHub Pages
       var res = await fetch(API + '/v1/public/' + encodeURIComponent(DOMAIN) + '/site', {
         cache: 'no-store',
       })
@@ -89,6 +116,7 @@
         showMaintenance(data.maintenance)
         if (!(data.maintenance && data.maintenance.enabled)) {
           applyContent(data.content)
+          applyMedia(data.media)
         }
       } else {
         var fallback = await fetch('/maintenance.json', { cache: 'no-store' }).catch(function () {
@@ -120,7 +148,6 @@
         },
         payload,
       )
-      // Prefer formStarted; keep _t for older clients
       if (body.formStarted == null && body._t != null) body.formStarted = body._t
       var res = await fetch(API + '/v1/public/submissions', {
         method: 'POST',
