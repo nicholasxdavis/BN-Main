@@ -107,15 +107,21 @@
     domain: DOMAIN,
     formStartedAt: Date.now(),
     submit: async function (payload) {
+      var started =
+        payload && (payload.formStarted || payload._t)
+          ? payload.formStarted || payload._t
+          : window.BlacnovaCMS.formStartedAt || Date.now()
       var body = Object.assign(
         {
           domain: DOMAIN,
-          _t: window.BlacnovaCMS.formStartedAt || Date.now(),
+          formStarted: started,
           website: '',
           _gotcha: '',
         },
         payload,
       )
+      // Prefer formStarted; keep _t for older clients
+      if (body.formStarted == null && body._t != null) body.formStarted = body._t
       var res = await fetch(API + '/v1/public/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
