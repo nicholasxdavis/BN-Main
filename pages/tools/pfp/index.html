@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
@@ -32,8 +32,8 @@
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
     <link rel="icon" href="../../../ui/img/bn.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -199,149 +199,63 @@
                     </a>
                 </div>
                 
-                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-                    <div class="flex space-x-8">
-                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+                    <div class="flex items-center gap-x-4 lg:gap-x-5">
+                        <!-- Services Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../../../index.html#services" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
                                 Our Services
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                 </svg>
-                            </button>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-                                 x-transition:enter-start="opacity-0 translate-y-1" 
-                                 x-transition:enter-end="opacity-100 translate-y-0" 
-                                 x-transition:leave="transition ease-in duration-150" 
-                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
                                  x-transition:leave-end="opacity-0 translate-y-1"
-                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
                                  @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-                                <div class="grid grid-cols-3">
-                                    <div class="col-span-1 bg-gray-50 p-4">
-                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                                        <ul class="space-y-2">
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-span-2 p-4">
-                                        <div x-show="activeCategory === 'development'" class="space-y-3">
-                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="../../../index.html#web-development" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Web Development</a>
+                                <a href="../../../index.html#e-commerce" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">E-Commerce</a>
+                                <a href="../../../index.html#api-integration" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">API Integration</a>
+                                <a href="../../../index.html#cloud-solutions" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Cloud Solutions</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../../../index.html#seo-optimization" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">SEO Optimization</a>
                             </div>
                         </div>
 
-                       <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-        Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </button>
-    
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-         x-transition:enter-start="opacity-0 translate-y-1" 
-         x-transition:enter-end="opacity-100 translate-y-0" 
-         x-transition:leave="transition ease-in duration-150" 
-         x-transition:leave-start="opacity-100 translate-y-0" 
-         x-transition:leave-end="opacity-0 translate-y-1"
-         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
-         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-        <div class="grid grid-cols-3">
-            <div class="col-span-1 bg-gray-50 p-4">
-                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <button @mouseenter="activeCategory = 'devtools'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Developer Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'design'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Design Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'web'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Web Utilities
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="col-span-2 p-4">
-                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="../ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">SSL Checker</p>
-                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
-                    </a>
-                </div>
-                
-                <div x-show="activeCategory === 'design'" class="space-y-3">
-                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">PFP Previewer</p>
-                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
-                    </a>
-                    <a href="../colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Color Palette Generator</p>
-                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
-                    </a>
-                </div>
-                
-                <div x-show="activeCategory === 'web'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="../qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">QR Code Generator</p>
-                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Shortener</p>
-                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Tree</p>
-                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Tools Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../index.html" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Tools
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <a href="../pfp/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">PFP Previewer</a>
+                                <a href="../colors/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Color Palette Generator</a>
+                                <a href="../qr/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">QR Code Generator</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../index.html" class="block px-4 py-2.5 text-sm text-gray-500 transition-colors hover:bg-white/[0.04] hover:text-white">View all tools</a>
+                            </div>
+                        </div>
 
-                        <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
-                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
-                        <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
-                        <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                        <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Blog</a>
+                        <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Contact Us</a>
+                        <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Get Quote</a>
                     </div>
                 </nav>
                 
@@ -398,7 +312,7 @@
                         platforms: [
                             {
                                 name: 'Instagram',
-                                icon: 'fab fa-instagram',
+                                icon: 'ph ph-instagram-logo',
                                 color: 'bg-gradient-to-r from-purple-500 to-pink-500',
                                 username: '@yourusername',
                                 handle: 'yourusername',
@@ -410,7 +324,7 @@
                             },
                             {
                                 name: 'TikTok',
-                                icon: 'fab fa-tiktok',
+                                icon: 'ph ph-tiktok-logo',
                                 color: 'bg-black',
                                 username: '@yourusername',
                                 handle: 'yourusername',
@@ -422,7 +336,7 @@
                             },
                             {
                                 name: 'Twitter',
-                                icon: 'fab fa-twitter',
+                                icon: 'ph ph-twitter-logo',
                                 color: 'bg-blue-400',
                                 username: 'Your Name',
                                 handle: '@yourhandle',
@@ -494,7 +408,7 @@
                         downloadPreview(event) {
                             const button = event.currentTarget;
                             const originalButtonText = button.innerHTML;
-                            button.innerHTML = `<i class='fas fa-spinner fa-spin mr-2'></i>Preparing...`;
+                            button.innerHTML = `<i class='ph ph-spinner animate-spin mr-2'></i>Preparing...`;
                             button.disabled = true;
 
                             const element = document.getElementById('previews-container');
@@ -558,7 +472,7 @@
                                     
                                     <template x-if="!imageUrl">
                                         <div>
-                                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                            <i class="ph ph-cloud-arrow-up text-4xl text-gray-400 mb-4"></i>
                                             <p class="text-lg font-medium text-gray-700 mb-2">Drag and drop your image here</p>
                                             <p class="text-sm text-gray-500 mb-4">or</p>
                                             <button class="px-6 py-3 bg-forge-500 text-white rounded-3xl font-medium hover:bg-forge-600 transition-colors">
@@ -581,7 +495,7 @@
                                                     class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors"
                                                     type="button"
                                                 >
-                                                    <i class="fas fa-times"></i>
+                                                    <i class="ph ph-x"></i>
                                                 </button>
                                             </div>
                                             <p class="text-sm text-gray-600" x-text="uploadedImage.name"></p>
@@ -606,7 +520,7 @@
                                 <div class="platforms-grid grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                                     <div class="platform-card bg-white rounded-2xl border border-gray-200 overflow-hidden" x-show="platforms[0].isActive">
                                         <div class="p-5 border-b border-gray-200 flex items-center">
-                                            <i class="fab fa-instagram text-2xl text-pink-500 mr-3 relative transform -translate-y-0.5"></i>
+                                            <i class="ph ph-instagram-logo text-2xl text-pink-500 mr-3 relative transform -translate-y-0.5"></i>
                                             <span class="font-medium">Instagram</span>
                                         </div>
                                         <div class="p-5">
@@ -652,7 +566,7 @@
                                     
                                     <div class="platform-card bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col" x-show="platforms[1].isActive">
                                         <div class="p-5 border-b border-gray-200 flex items-center">
-                                            <i class="fab fa-tiktok text-2xl text-black mr-3 relative transform -translate-y-0.5"></i>
+                                            <i class="ph ph-tiktok-logo text-2xl text-black mr-3 relative transform -translate-y-0.5"></i>
                                             <span class="font-medium">TikTok</span>
                                         </div>
                                         <div class="p-5 flex-grow flex flex-col justify-between">
@@ -701,23 +615,23 @@
                                             
                                             <div class="mt-4 pt-3 border-t border-gray-100 flex justify-around items-center text-gray-400">
                                                 <div class="flex flex-col items-center text-xs space-y-1">
-                                                    <i class="fas fa-home text-xl"></i>
+                                                    <i class="ph ph-house text-xl"></i>
                                                     <span>Home</span>
                                                 </div>
                                                 <div class="flex flex-col items-center text-xs space-y-1">
-                                                    <i class="far fa-compass text-xl"></i>
+                                                    <i class="ph ph-compass text-xl"></i>
                                                     <span>Discover</span>
                                                 </div>
                                                 <div class="flex flex-col items-center text-xs space-y-1">
-                                                    <i class="fas fa-plus-square text-xl"></i>
+                                                    <i class="ph ph-plus-square text-xl"></i>
                                                     <span>Add</span>
                                                 </div>
                                                 <div class="flex flex-col items-center text-xs space-y-1">
-                                                    <i class="far fa-paper-plane text-xl"></i>
+                                                    <i class="ph ph-paper-plane-tilt text-xl"></i>
                                                     <span>Inbox</span>
                                                 </div>
                                                 <div class="flex flex-col items-center text-xs space-y-1 text-black">
-                                                    <i class="fas fa-user text-xl"></i>
+                                                    <i class="ph ph-user text-xl"></i>
                                                     <span>Profile</span>
                                                 </div>
                                             </div>
@@ -726,7 +640,7 @@
                                     
                                     <div class="platform-card bg-white rounded-2xl border border-gray-200 overflow-hidden" x-show="platforms[2].isActive">
                                         <div class="p-5 border-b border-gray-200 flex items-center">
-                                            <i class="fab fa-twitter text-2xl text-blue-400 mr-3 relative transform -translate-y-0.5"></i>
+                                            <i class="ph ph-twitter-logo text-2xl text-blue-400 mr-3 relative transform -translate-y-0.5"></i>
                                             <span class="font-medium">Twitter</span>
                                         </div>
                                         <div class="p-5">
@@ -771,11 +685,11 @@
                                                             <p class="text-sm mt-1">Love the new profile picture! 👌</p>
                                                             <div class="flex items-center space-x-6 mt-2 text-gray-500">
                                                                 <div class="flex items-center space-x-1 hover:text-blue-400 cursor-pointer">
-                                                                    <i class="far fa-comment text-base"></i>
+                                                                    <i class="ph ph-chat-circle text-base"></i>
                                                                     <span class="text-xs">12</span>
                                                                 </div>
                                                                 <div class="flex items-center space-x-1 hover:text-pink-500 cursor-pointer">
-                                                                    <i class="far fa-heart text-base"></i>
+                                                                    <i class="ph ph-heart text-base"></i>
                                                                     <span class="text-xs">153</span>
                                                                 </div>
                                                             </div>
@@ -791,11 +705,11 @@
                                                             <p class="text-sm mt-1">Looks great! A really strong look.</p>
                                                             <div class="flex items-center space-x-6 mt-2 text-gray-500">
                                                                 <div class="flex items-center space-x-1 hover:text-blue-400 cursor-pointer">
-                                                                    <i class="far fa-comment text-base"></i>
+                                                                    <i class="ph ph-chat-circle text-base"></i>
                                                                     <span class="text-xs">3</span>
                                                                 </div>
                                                                 <div class="flex items-center space-x-1 hover:text-pink-500 cursor-pointer">
-                                                                    <i class="far fa-heart text-base"></i>
+                                                                    <i class="ph ph-heart text-base"></i>
                                                                     <span class="text-xs">48</span>
                                                                 </div>
                                                             </div>
@@ -811,11 +725,11 @@
                                                             <p class="text-sm mt-1">Clean and professional. Really stands out. 👍</p>
                                                             <div class="flex items-center space-x-6 mt-2 text-gray-500">
                                                                 <div class="flex items-center space-x-1 hover:text-blue-400 cursor-pointer">
-                                                                    <i class="far fa-comment text-base"></i>
+                                                                    <i class="ph ph-chat-circle text-base"></i>
                                                                     <span class="text-xs">27</span>
                                                                 </div>
                                                                 <div class="flex items-center space-x-1 hover:text-pink-500 cursor-pointer">
-                                                                    <i class="far fa-heart text-base"></i>
+                                                                    <i class="ph ph-heart text-base"></i>
                                                                     <span class="text-xs">219</span>
                                                                 </div>
                                                             </div>
@@ -831,14 +745,14 @@
 
                              <div class="mt-8 text-center">
                                 <button @click="downloadPreview($event)" class="px-8 py-3 bg-forge-500 text-white rounded-3xl font-medium hover:bg-forge-600 transition-colors inline-flex items-center">
-                                    <i class="fas fa-download mr-2"></i>
+                                    <i class="ph ph-download-simple mr-2"></i>
                                     Download Previews as PNG
                                 </button>
                             </div>
                         </div>
 
                         <div class="text-center py-12" x-show="!imageUrl">
-                            <i class="fas fa-user-circle text-6xl text-gray-300 mb-4"></i>
+                            <i class="ph ph-user-circle text-6xl text-gray-300 mb-4"></i>
                             <h3 class="text-xl font-medium text-gray-700 mb-2">Upload a profile picture to get started</h3>
                             <p class="text-gray-500">Your preview will appear here once you upload an image.</p>
                         </div>

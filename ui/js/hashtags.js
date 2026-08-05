@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿document.addEventListener('DOMContentLoaded', function() {
     // Service content definitions with hero icons
     const services = {
         'web-development': {
-            icon: 'fas fa-laptop-code',
+            icon: 'ph ph-code',
             title: 'Web Development Services',
             description: 'Comprehensive solutions to build, optimize, and maintain your digital presence.',
             features: [
                 {
-                    icon: 'fas fa-laptop-code',
+                    icon: 'ph ph-code',
                     title: 'Custom Website Development',
                     description: 'We build responsive, high-performing websites that are secure, scalable, and tailored to your brand. From simple landing pages to complex web applications, our solutions drive user engagement and conversions.',
                     points: [
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-shopping-cart',
+                    icon: 'ph ph-shopping-cart',
                     title: 'E-Commerce Solutions',
                     description: 'Launch and grow your online store with our end-to-end e-commerce solutions. We build secure, user-friendly platforms with seamless payment gateway integration that boost sales.',
                     points: [
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-cogs',
+                    icon: 'ph ph-gear',
                     title: 'CMS Integration',
                     description: 'Take control of your content with our easy-to-use content management solutions. Update your website without needing developer assistance.',
                     points: [
@@ -41,53 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ]
         },
-        'graphic-design': {
-            icon: 'fas fa-palette',
-            title: 'Graphic Design Services',
-            description: 'Visual storytelling that captivates your audience and strengthens your brand identity.',
-            features: [
-                {
-                    icon: 'fas fa-palette',
-                    title: 'Brand Identity Design',
-                    description: 'Create a memorable brand identity with custom logos, color schemes, and visual elements that authentically represent your business values.',
-                    points: [
-                        'Logo design and branding',
-                        'Color palette development',
-                        'Typography selection',
-                        'Brand style guides'
-                    ]
-                },
-                {
-                    icon: 'fas fa-images',
-                    title: 'Marketing Materials',
-                    description: 'Design compelling marketing materials that capture attention and communicate your message effectively across all channels.',
-                    points: [
-                        'Brochures and flyers',
-                        'Social media graphics',
-                        'Presentation design',
-                        'Advertisement layouts'
-                    ]
-                },
-                {
-                    icon: 'fas fa-pencil-alt',
-                    title: 'Digital Illustrations',
-                    description: 'Custom illustrations that enhance your content and create a unique visual experience for your audience.',
-                    points: [
-                        'Custom artwork creation',
-                        'Infographic design',
-                        'Icon and element design',
-                        'Visual storytelling'
-                    ]
-                }
-            ]
-        },
         'seo-optimization': {
-            icon: 'fas fa-search',
+            icon: 'ph ph-magnifying-glass',
             title: 'SEO Optimization Services',
             description: 'Boost your online visibility with tailored SEO strategies that drive organic traffic and increase conversions.',
             features: [
                 {
-                    icon: 'fas fa-chart-line',
+                    icon: 'ph ph-chart-line-up',
                     title: 'On-Page SEO',
                     description: 'Optimize your website\'s content and structure to rank higher on search engines and attract qualified leads that convert.',
                     points: [
@@ -98,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-link',
+                    icon: 'ph ph-link',
                     title: 'Off-Page SEO',
                     description: 'Build your website\'s authority through strategic link-building and online reputation management that establishes trust.',
                     points: [
@@ -109,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-tools',
+                    icon: 'ph ph-wrench',
                     title: 'Technical SEO',
                     description: 'Ensure your website is crawlable, fast, and secure to maximize search engine performance and user experience.',
                     points: [
@@ -122,12 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'cloud-solutions': {
-            icon: 'fas fa-cloud',
+            icon: 'ph ph-cloud',
             title: 'Cloud Solutions Services',
             description: 'Harness the power of the cloud to enhance scalability, security, and efficiency for your business operations.',
             features: [
                 {
-                    icon: 'fas fa-cloud-upload-alt',
+                    icon: 'ph ph-cloud-arrow-up',
                     title: 'Cloud Migration',
                     description: 'Seamlessly transition your applications and data to the cloud with minimal downtime and disruption to your business.',
                     points: [
@@ -138,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-server',
+                    icon: 'ph ph-hard-drives',
                     title: 'Infrastructure Management',
                     description: 'Optimize and maintain your cloud infrastructure for performance, cost-efficiency, and reliability that scales with your business.',
                     points: [
@@ -149,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-code-branch',
+                    icon: 'ph ph-git-branch',
                     title: 'Cloud-Native Development',
                     description: 'Build scalable, resilient applications designed specifically for cloud environments that future-proof your business.',
                     points: [
@@ -161,53 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ]
         },
-        'digital-marketing': {
-            icon: 'fas fa-bullhorn',
-            title: 'Digital Marketing Services',
-            description: 'Engage your audience and grow your brand with data-driven digital marketing campaigns that deliver measurable results.',
-            features: [
-                {
-                    icon: 'fas fa-bullhorn',
-                    title: 'Content Marketing',
-                    description: 'Create compelling content that resonates with your audience and drives meaningful engagement and conversions.',
-                    points: [
-                        'Blog and article creation',
-                        'Video and infographic production',
-                        'Content strategy planning',
-                        'Email marketing campaigns'
-                    ]
-                },
-                {
-                    icon: 'fas fa-ad',
-                    title: 'PPC Advertising',
-                    description: 'Maximize ROI with targeted pay-per-click campaigns on Google Ads and social platforms that reach your ideal customers.',
-                    points: [
-                        'Keyword and audience targeting',
-                        'Ad copy and creative design',
-                        'Bid management and optimization',
-                        'Performance tracking and reporting'
-                    ]
-                },
-                {
-                    icon: 'fas fa-share-alt',
-                    title: 'Social Media Marketing',
-                    description: 'Build your brand and connect with customers through strategic social media campaigns that foster community and loyalty.',
-                    points: [
-                        'Platform-specific strategies',
-                        'Engaging content creation',
-                        'Community management',
-                        'Analytics and insights'
-                    ]
-                }
-            ]
-        },
         'e-commerce': {
-            icon: 'fas fa-shopping-cart',
+            icon: 'ph ph-shopping-cart',
             title: 'E-Commerce Services',
             description: 'Launch and scale your online store with secure, user-friendly e-commerce platforms that drive sales and growth.',
             features: [
                 {
-                    icon: 'fas fa-shopping-cart',
+                    icon: 'ph ph-shopping-cart',
                     title: 'Store Development',
                     description: 'Build a robust e-commerce platform tailored to your business needs and customer expectations that converts visitors into buyers.',
                     points: [
@@ -218,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-box-open',
+                    icon: 'ph ph-package',
                     title: 'Inventory Management',
                     description: 'Streamline your operations with efficient inventory and order management systems that save time and reduce errors.',
                     points: [
@@ -229,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-chart-bar',
+                    icon: 'ph ph-chart-bar',
                     title: 'Analytics & Optimization',
                     description: 'Drive sales with data-driven insights and continuous optimization of your e-commerce platform that maximizes revenue.',
                     points: [
@@ -242,12 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'api-integration': {
-            icon: 'fas fa-plug',
+            icon: 'ph ph-plugs',
             title: 'API Integration Services',
             description: 'Connect your systems and automate workflows with seamless API integrations that streamline operations and boost productivity.',
             features: [
                 {
-                    icon: 'fas fa-cogs',
+                    icon: 'ph ph-gear',
                     title: 'Custom API Development',
                     description: 'Build secure, scalable APIs to connect your applications and enable seamless data exchange that powers your business.',
                     points: [
@@ -258,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-plug',
+                    icon: 'ph ph-plugs',
                     title: 'Third-Party Integration',
                     description: 'Integrate with popular platforms to enhance functionality and streamline operations across your entire tech stack.',
                     points: [
@@ -269,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-sync-alt',
+                    icon: 'ph ph-arrows-clockwise',
                     title: 'Data Synchronization',
                     description: 'Ensure real-time data consistency across your applications and platforms that eliminates data silos and errors.',
                     points: [
@@ -282,12 +202,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'initiatives': {
-            icon: 'fas fa-hands-helping',
+            icon: 'ph ph-hand-heart',
             title: 'Community Focused',
             description: 'We reinvest in local businesses and support the growth of the Mesilla Valley\'s digital economy because your success is our success.',
             features: [
                 {
-                    icon: 'fas fa-hands-helping',
+                    icon: 'ph ph-hand-heart',
                     title: 'Local Business Support',
                     description: 'We prioritize working with local businesses to strengthen our community\'s economic foundation and foster mutual growth.',
                     points: [
@@ -298,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-seedling',
+                    icon: 'ph ph-plant',
                     title: 'Digital Growth Initiatives',
                     description: 'Programs designed to help local businesses thrive in the digital economy and compete effectively in today\'s market.',
                     points: [
@@ -309,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-heart',
+                    icon: 'ph ph-heart',
                     title: 'Community Investment',
                     description: 'We believe in giving back to the community that supports our business and making a positive impact where we live and work.',
                     points: [
@@ -322,12 +242,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'meet-us': {
-            icon: 'fas fa-handshake',
+            icon: 'ph ph-handshake',
             title: 'Personal Service',
             description: 'Unlike national agencies, we offer face-to-face consultations and personalized support because you deserve more than a ticket number.',
             features: [
                 {
-                    icon: 'fas fa-handshake',
+                    icon: 'ph ph-handshake',
                     title: 'Local Presence',
                     description: 'We\'re your neighbors, with a physical presence in the Mesilla Valley community who understands your unique market challenges.',
                     points: [
@@ -338,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-user-friends',
+                    icon: 'ph ph-users',
                     title: 'Dedicated Support',
                     description: 'Work directly with our team, not a call center or automated system, for personalized service that understands your vision.',
                     points: [
@@ -349,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 {
-                    icon: 'fas fa-lightbulb',
+                    icon: 'ph ph-lightbulb',
                     title: 'Collaborative Process',
                     description: 'We work with you, not just for you, to ensure your vision becomes reality through transparent communication and partnership.',
                     points: [
@@ -363,30 +283,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Function to create a feature card
+    // Function to create a feature cell (bento grid)
     function createFeatureCard(feature, index) {
+        const num = String(index + 1).padStart(2, '0');
         return `
-            <div class="${index < 2 ? 'mb-12 pb-12 border-b border-[#333333]' : 'mb-12'}">
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-2xl">
-                            <i class="${feature.icon}" style="color: #d4611c;"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-medium mb-4 text-white">${feature.title}</h3>
-                        <p class="text-gray-400 mb-4">${feature.description}</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            ${feature.points.map(point => `
-                                <div class="flex items-start">
-                                    <span class="text-[#d4611c] mr-3 mt-1">•</span>
-                                    <span class="text-gray-400">${point}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
+            <article class="bn-connected-cell service-bento-cell flex flex-col">
+                <div class="mb-5 text-xs tracking-[0.18em] text-[#d4611c]">${num}</div>
+                <div class="mb-3 flex items-center gap-2.5">
+                    <i class="${feature.icon} text-xl text-[#d4611c]" aria-hidden="true"></i>
+                    <h3 class="text-lg text-gray-900 leading-snug">${feature.title}</h3>
                 </div>
-            </div>
+                <p class="mb-5 text-sm leading-relaxed text-gray-500">${feature.description}</p>
+                <ul class="space-y-2.5 flex-1">
+                    ${feature.points.map(point => `
+                        <li class="flex items-start gap-2.5 text-sm text-gray-600">
+                            <span class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-[#d4611c]"></span>
+                            <span>${point}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            </article>
         `;
     }
 
@@ -394,119 +310,80 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to create a service section
     function createServiceSection(serviceId, serviceData) {
         const section = document.createElement('section');
-        section.className = 'service-section py-20 bg-black poppins-font-section relative';
-        section.style.marginTop = '25px';
+        section.className = 'service-section relative min-h-screen bg-white poppins-font-section';
         section.dataset.serviceId = serviceId;
 
         const container = document.createElement('div');
-        container.className = 'container mx-auto px-6 max-w-4xl';
+        container.className = 'container mx-auto max-w-6xl px-5 pb-24 pt-28';
 
-        // Back button
-        const backButtonContainer = document.createElement('div');
-        backButtonContainer.className = 'fixed left-0 top-1/2 transform -translate-y-1/2 z-50 group';
-        const backButton = document.createElement('a');
-        backButton.href = '#';
-        backButton.className = 'flex items-center bg-[#1a1a1a] text-white rounded-r-3xl border border-[#d4611c] border-l-0 transition-all duration-300 overflow-hidden';
-        backButton.style.width = '40px';
-        backButton.style.height = '40px';
-        backButton.innerHTML = `
-            <span class="flex items-center justify-center w-10 h-10 min-w-[40px]">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
-            </span>
-            <span class="whitespace-nowrap pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Back to Homepage
-            </span>
-        `;
-
-        // Calculate text width for hover effect
-        const tempSpan = document.createElement('span');
-        tempSpan.className = 'whitespace-nowrap pr-4';
-        tempSpan.textContent = 'Back to Homepage';
-        tempSpan.style.visibility = 'hidden';
-        tempSpan.style.position = 'absolute';
-        document.body.appendChild(tempSpan);
-        const textWidth = tempSpan.offsetWidth;
-        document.body.removeChild(tempSpan);
-
-        backButton.addEventListener('mouseenter', function() {
-            this.style.width = `${40 + textWidth + 4}px`;
-        });
-
-        backButton.addEventListener('mouseleave', function() {
-            this.style.width = '40px';
-        });
-
-        backButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-            handleHashChange();
-        });
-
-        backButtonContainer.appendChild(backButton);
-
-        // Heading with hero icon
         const headingDiv = document.createElement('div');
-        headingDiv.className = 'text-center mb-16';
+        headingDiv.className = 'mb-12 max-w-2xl';
         headingDiv.innerHTML = `
-            <div class="flex justify-center mb-4">
-                <div class="w-16 h-16 flex items-center justify-center text-3xl">
-                    <i class="${serviceData.icon}" style="color: #d4611c;"></i>
-                </div>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-medium mb-6 text-white">
-                ${serviceData.title}
-            </h2>
-            <p class="max-w-2xl mx-auto text-gray-400">${serviceData.description}</p>
+            <p class="mb-3 text-xs uppercase tracking-[0.2em] text-[#d4611c]">Service</p>
+            <h2 class="mb-4 text-3xl text-gray-900 md:text-4xl">${serviceData.title}</h2>
+            <p class="text-sm leading-relaxed text-gray-500 md:text-base">${serviceData.description}</p>
         `;
 
-        // Content
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'bg-[#1a1a1a] p-8 md:p-12 rounded-3xl shadow-lg border border-[#333333]';
-        serviceData.features.forEach((feature, index) => {
-            contentDiv.innerHTML += createFeatureCard(feature, index);
-        });
+        const featureCount = serviceData.features.length;
+        const gridCols =
+            featureCount >= 3 ? 'md:grid-cols-3' :
+            featureCount === 2 ? 'md:grid-cols-2' :
+            'md:grid-cols-1';
 
-        // Conditional CTA based on serviceId
-        let ctaHtml = '';
+        let ctaInner = '';
         if (serviceId === 'initiatives') {
-            // No button for initiatives
-            ctaHtml = `
-                <div class="text-center mt-12">
-                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
-                </div>
+            ctaInner = `
+                <p class="text-sm text-gray-500">Questions? <a href="#contact" class="text-[#d4611c] transition-colors hover:text-[#c55718]">Contact our team</a></p>
             `;
         } else if (serviceId === 'meet-us') {
-            // "Schedule Meeting" button for meet-us
-            ctaHtml = `
-                <div class="text-center mt-12">
-                    <button onclick="showMeetingPopup()" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
+            ctaInner = `
+                <div class="flex flex-wrap items-center gap-4">
+                    <button onclick="showMeetingPopup()" class="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-2.5 text-sm text-white transition-opacity hover:opacity-90">
                         Schedule Meeting
                     </button>
-                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-gray-800">
+                        Contact our team <i class="ph ph-arrow-right text-xs"></i>
+                    </a>
                 </div>
             `;
         } else {
-            // Default "Get Started" button
-            ctaHtml = `
-                <div class="text-center mt-12">
-                    <a href="#quote" id="quote-cta" class="inline-block px-8 py-4 bg-[#d4611c] text-white rounded-3xl font-semibold hover:bg-[#e67a35] transition-colors group btn-pulse-outline">
-                        Get Started
-                    </a>
-                    <p class="text-gray-500 mt-4 text-sm">Have questions? <a href="#contact" class="text-[#d4611c] hover:underline">Contact our team</a></p>
+            ctaInner = `
+                <div class="flex flex-wrap items-center justify-between gap-4 w-full">
+                    <div>
+                        <p class="text-sm text-gray-900">Ready to get started?</p>
+                        <p class="text-sm text-gray-500 mt-0.5">Tell us about your project and we will follow up quickly.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#quote" id="quote-cta" class="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-2.5 text-sm text-white transition-opacity hover:opacity-90">
+                            Get a Quote
+                        </a>
+                        <a href="#contact" class="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-gray-800">
+                            Contact our team <i class="ph ph-arrow-right text-xs"></i>
+                        </a>
+                    </div>
                 </div>
             `;
         }
-        
-        contentDiv.innerHTML += ctaHtml;
+
+        const ctaWrap = document.createElement('div');
+        ctaWrap.className = 'bn-connected-cell service-bento-cta';
+        ctaWrap.innerHTML = ctaInner;
+
+        const bentoWrap = document.createElement('div');
+        bentoWrap.className = 'bn-connected overflow-hidden';
+
+        const featuresOnly = document.createElement('div');
+        featuresOnly.className = `bn-connected-row grid grid-cols-1 ${gridCols}`;
+        serviceData.features.forEach((feature, index) => {
+            featuresOnly.innerHTML += createFeatureCard(feature, index);
+        });
+        bentoWrap.appendChild(featuresOnly);
+        bentoWrap.appendChild(ctaWrap);
 
         container.appendChild(headingDiv);
-        container.appendChild(contentDiv);
-        section.appendChild(backButtonContainer);
+        container.appendChild(bentoWrap);
         section.appendChild(container);
 
-        // Add event listener for quote CTA only if it exists
         if (serviceId !== 'initiatives' && serviceId !== 'meet-us') {
             setTimeout(() => {
                 const quoteCta = document.getElementById('quote-cta');
@@ -547,6 +424,14 @@ document.addEventListener('DOMContentLoaded', function() {
             sections.forEach(section => {
                 section.style.display = 'none';
             });
+            if (footer) footer.style.display = 'none';
+            const main = document.querySelector('main');
+            if (main) main.style.display = 'none';
+            document.documentElement.classList.add('service-view');
+            document.documentElement.style.backgroundColor = '#ffffff';
+            document.body.classList.add('service-view');
+            document.body.style.backgroundColor = '#ffffff';
+            if (window.BNPreviousPage) window.BNPreviousPage.show();
 
             // Find or create service section
             let serviceSection = document.querySelector(`.service-section[data-service-id="${hash}"]`);
@@ -555,7 +440,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 header.insertAdjacentElement('afterend', serviceSection);
             } else {
                 serviceSection.style.display = 'block';
-                serviceSection.style.marginTop = '25px';
             }
 
             // Set current service
@@ -578,6 +462,14 @@ document.addEventListener('DOMContentLoaded', function() {
             sections.forEach(section => {
                 section.style.display = 'block';
             });
+            if (footer) footer.style.display = '';
+            const main = document.querySelector('main');
+            if (main) main.style.display = '';
+            document.documentElement.classList.remove('service-view');
+            document.documentElement.style.backgroundColor = '';
+            document.body.classList.remove('service-view');
+            document.body.style.backgroundColor = '';
+            if (window.BNPreviousPage) window.BNPreviousPage.hide();
 
             // Hide all service sections
             document.querySelectorAll('.service-section').forEach(section => {
@@ -601,6 +493,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial check
     handleHashChange();
+    window.BNHandleHashChange = handleHashChange;
 
     // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
@@ -12,26 +12,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Our Tools | Blacnova Development</title>
-    <meta name="description" content="Explore our collection of free web tools and utilities designed to help businesses and developers work smarter.">
-    <meta name="keywords" content="web tools, free utilities, developer tools, design tools, Las Cruces">
+    <title>BN Web Tools | Blacnova Development</title>
+    <meta name="description" content="Free web tools from Blacnova Development: QR code generator, PFP previewer, and color palette generator.">
+    <meta name="keywords" content="web tools, QR code generator, PFP previewer, color palette, free utilities, Blacnova">
     <link rel="canonical" href="https://www.blacnova.com/tools">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.blacnova.com/tools">
-    <meta property="og:title" content="Our Tools | Blacnova Development">
-    <meta property="og:description" content="Explore our collection of free web tools and utilities designed to help businesses and developers.">
+    <meta property="og:title" content="BN Web Tools | Blacnova Development">
+    <meta property="og:description" content="Free web tools from Blacnova Development: QR code generator, PFP previewer, and color palette generator.">
     <meta property="og:image" content="https://www.blacnova.com/img/hero.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.blacnova.com/tools">
-    <meta property="twitter:title" content="Our Tools | Blacnova Development">
-    <meta property="twitter:description" content="Explore our collection of free web tools and utilities designed to help businesses and developers.">
+    <meta property="twitter:title" content="BN Web Tools | Blacnova Development">
+    <meta property="twitter:description" content="Free web tools from Blacnova Development: QR code generator, PFP previewer, and color palette generator.">
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
     <link rel="icon" href="../../ui/img/bn.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-     <link rel="stylesheet" type="text/css" href="../../ui/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../ui/css/styles.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -130,163 +130,62 @@
                 </div>
                 
                 <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-                    <div class="flex space-x-8">
+                    <div class="flex items-center gap-x-4 lg:gap-x-5">
                         <!-- Services Dropdown -->
-                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <a href="../../index.html#services" 
-   class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-    Our Services
-    <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-         :class="{ 'rotate-180': open }" 
-         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-              d="M19 9l-7 7-7-7" />
-    </svg>
-</a>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-                                 x-transition:enter-start="opacity-0 translate-y-1" 
-                                 x-transition:enter-end="opacity-100 translate-y-0" 
-                                 x-transition:leave="transition ease-in duration-150" 
-                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../../index.html#services" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Our Services
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
                                  x-transition:leave-end="opacity-0 translate-y-1"
-                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
                                  @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-                                <div class="grid grid-cols-3">
-                                    <div class="col-span-1 bg-gray-50 p-4">
-                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                                        <ul class="space-y-2">
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-span-2 p-4">
-                                        <div x-show="activeCategory === 'development'" class="space-y-3">
-                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="../../index.html#web-development" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="../../index.html#e-commerce" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="../../index.html#api-integration" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="../../index.html#cloud-solutions" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="../../index.html#seo-optimization" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="../../index.html#digital-marketing" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="../../index.html#graphic-design" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="../../index.html#web-development" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Web Development</a>
+                                <a href="../../index.html#e-commerce" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">E-Commerce</a>
+                                <a href="../../index.html#api-integration" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">API Integration</a>
+                                <a href="../../index.html#cloud-solutions" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Cloud Solutions</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../../index.html#seo-optimization" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">SEO Optimization</a>
                             </div>
                         </div>
 
-                       <!-- Tools Dropdown -->
-<div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <a href="index.html" 
-       class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-        Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-             :class="{ 'rotate-180': open }" 
-             fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </a>
-    
-    <!-- Dropdown Panel -->
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-         x-transition:enter-start="opacity-0 translate-y-1" 
-         x-transition:enter-end="opacity-100 translate-y-0" 
-         x-transition:leave="transition ease-in duration-150" 
-         x-transition:leave-start="opacity-100 translate-y-0" 
-         x-transition:leave-end="opacity-0 translate-y-1"
-         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
-         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-        <div class="grid grid-cols-3">
-            <!-- Categories Column -->
-            <div class="col-span-1 bg-gray-50 p-4">
-                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <button @mouseenter="activeCategory = 'devtools'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Developer Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'design'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Design Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'web'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Web Utilities
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Tools Column -->
-            <div class="col-span-2 p-4">
-                <!-- Developer Tools -->
-                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">SSL Checker</p>
-                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
-                    </a>
-                </div>
-                
-                <!-- Design Tools -->
-                <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">PFP Previewer</p>
-                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
-                    </a>
-                    <a href="colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Color Palette Generator</p>
-                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
-                    </a>
-                </div>
-                
-                <!-- Web Utilities -->
-                <div x-show="activeCategory === 'web'" class="space-y-3">
-                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">QR Code Generator</p>
-                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Shortener</p>
-                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Tree</p>
-                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Tools Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="index.html" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Tools
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <a href="pfp/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">PFP Previewer</a>
+                                <a href="colors/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Color Palette Generator</a>
+                                <a href="qr/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">QR Code Generator</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="index.html" class="block px-4 py-2.5 text-sm text-gray-500 transition-colors hover:bg-white/[0.04] hover:text-white">View all tools</a>
+                            </div>
+                        </div>
 
-                        <a href="../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
-                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
-                        <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
-                        <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                        <a href="../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Blog</a>
+                        <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Contact Us</a>
+                        <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Get Quote</a>
                     </div>
                 </nav>
                 
@@ -302,22 +201,14 @@
     </header>
     <script> 
 (function() {
-    // --- START OF CUSTOMIZATION ---
-    // Define your custom shortcuts here.
-    // The script will only shorten links that are listed below.
-        const customShortcuts = {
-            'Our Services': 'Services',
-            'Contact Us': 'Contact',
-            'Get Quote': 'Quote',
-            'About Us': 'About',
-            'Blog': 'Blog'
-        };
-    // --- END OF CUSTOMIZATION ---
+    const customShortcuts = {
+        'Our Services': 'Services',
+        'Contact Us': 'Contact',
+        'Get Quote': 'Quote',
+        'About Us': 'About',
+        'Blog': 'Blog'
+    };
 
-    /**
-     * This function checks each navigation link to see if its text is wrapping.
-     * If it wraps AND has a custom shortcut defined, the text is shortened.
-     */
     function adjustNavLinks() {
         const navLinks = document.querySelectorAll('header nav .nav-link');
 
@@ -334,14 +225,11 @@
             }
             if (!textNode) return;
 
-            // Restore the link to its full original text to measure correctly
             textNode.nodeValue = originalText;
             
             const lineHeight = parseFloat(window.getComputedStyle(link).lineHeight);
 
-            // Check if the element's actual height is greater than a single line's height
             if (link.scrollHeight > lineHeight + 1) {
-                // If it's wrapping, check if a custom shortcut exists in our dictionary
                 if (customShortcuts[originalText]) {
                     textNode.nodeValue = customShortcuts[originalText];
                 }
@@ -349,7 +237,6 @@
         });
     }
 
-    // --- Script Initialization (No changes needed here) ---
     window.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.querySelectorAll('header nav .nav-link');
 
@@ -368,7 +255,7 @@
 
 })();
     </script>
- <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 shadow-xl z-50 p-6 closed">
         <div class="flex justify-end mb-8">
             <button id="close-menu-button" class="focus:outline-none text-white" aria-label="Close menu">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -385,7 +272,6 @@
                     </svg>
                 </button>
                 <div class="mobile-dropdown-content mt-2 ml-4">
-                    <!-- Development Services -->
                     <div class="mb-4">
                         <h4 class="font-medium text-gray-300 mb-2">Development</h4>
                         <div class="space-y-2 ml-2">
@@ -396,20 +282,10 @@
                         </div>
                     </div>
                     
-                    <!-- Growth Services -->
                     <div class="mb-4">
                         <h4 class="font-medium text-gray-300 mb-2">Growth</h4>
                         <div class="space-y-2 ml-2">
                             <a href="../../index.html#seo-optimization" class="block py-1 text-gray-400 hover:text-white transition-colors">SEO Optimization</a>
-                            <a href="../../index.html#digital-marketing" class="block py-1 text-gray-400 hover:text-white transition-colors">Digital Marketing</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Creative Services -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Creative</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="../../index.html#graphic-design" class="block py-1 text-gray-400 hover:text-white transition-colors">Graphic Design</a>
                         </div>
                     </div>
                 </div>
@@ -424,30 +300,11 @@
                     </svg>
                 </button>
                 <div class="mobile-dropdown-content mt-2 ml-4">
-                    <!-- Developer Tools -->
                     <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Developer Tools</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="ssl/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Design Tools -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Design Tools</h4>
                         <div class="space-y-2 ml-2">
                             <a href="pfp/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">PFP Previewer</a>
                             <a href="colors/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">Color Palette Generator</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Web Utilities -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Web Utilities</h4>
-                        <div class="space-y-2 ml-2">
                             <a href="qr/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
                         </div>
                     </div>
                 </div>
@@ -464,139 +321,71 @@
     <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
     
     <main class="mt-24 bg-white poppins-font-section">
-      
-
-        <!-- BN Tools Section -->
         <section class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-6xl">
                 <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
-<div class="flex justify-center mb-4">
-                        <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-12 h-12 object-contain">
-</div>
-                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Free Utilities</span>
-                    <h2 class="text-3xl md:text-4xl font-medium mb-6 text-gray-900">
-                        BN Web Tools
-            </h2>
-                    <p class="max-w-2xl mx-auto text-gray-600">
-                        Our collection of free web tools and utilities designed to help businesses and developers work smarter.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.1s">
-                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#c2410c] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-lock text-white text-5xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Developer Tools</span>
-                            <h3 class="text-xl font-medium mb-2 text-gray-900">SSL Checker</h3>
-                            <p class="text-gray-600 mb-4">Verify SSL certificates for any website and ensure your site's security is up to date.</p>
-                            <a href="ssl/index.html" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
-                                Try Now
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                    </a>
+                    <img src="../../ui/img/bn_orange.png" alt="Blacnova Logo" class="w-12 h-12 object-contain mx-auto mb-6">
+                    <h1 class="text-3xl md:text-4xl text-gray-900 mb-4">BN Web Tools</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Free utilities built by Blacnova to help you generate QR codes, preview profile pictures, and create color palettes.</p>
                 </div>
-            </div>
-            
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
-                        <div class="h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-qrcode text-white text-5xl"></i>
+
+                <div class="bn-connected grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="bn-connected-cell project-card scroll-animate overflow-hidden" data-animation="animate__fadeInUp" data-delay="0.1s">
+                        <div class="h-48 bg-[#f3f4f6] flex items-center justify-center">
+                            <i class="ph ph-qr-code text-gray-700 text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Web Utilities</span>
                             <h3 class="text-xl font-medium mb-2 text-gray-900">QR Code Generator</h3>
-                            <p class="text-gray-600 mb-4">Generate QR codes for any URL or text to share information quickly and easily.</p>
+                            <p class="text-gray-600 mb-4">Create custom QR codes for URLs and text, then download as PNG or SVG.</p>
                             <a href="qr/index.html" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
                                 Try Now
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
-                    </a>
-                </div>
-            </div>
-            
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.3s">
-                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#e67a35] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-user-circle text-white text-5xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bn-connected-cell project-card scroll-animate overflow-hidden" data-animation="animate__fadeInUp" data-delay="0.2s">
+                        <div class="h-48 bg-[#f3f4f6] flex items-center justify-center">
+                            <i class="ph ph-user-circle text-gray-700 text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Design Tools</span>
                             <h3 class="text-xl font-medium mb-2 text-gray-900">PFP Previewer</h3>
-                            <p class="text-gray-600 mb-4">View how your profile pictures will appear across different social media platforms.</p>
+                            <p class="text-gray-600 mb-4">Preview how your profile picture looks across popular social platforms.</p>
                             <a href="pfp/index.html" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
                                 Try Now
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
-                    </a>
-                </div>
-            </div>
-            
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
-                        <div class="h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-palette text-white text-5xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bn-connected-cell project-card scroll-animate overflow-hidden" data-animation="animate__fadeInUp" data-delay="0.3s">
+                        <div class="h-48 bg-[#f3f4f6] flex items-center justify-center">
+                            <i class="ph ph-palette text-gray-700 text-5xl"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Design Tools</span>
                             <h3 class="text-xl font-medium mb-2 text-gray-900">Color Palette Generator</h3>
-                            <p class="text-gray-600 mb-4">Create beautiful color schemes and palettes for your design projects.</p>
+                            <p class="text-gray-600 mb-4">Build and export cohesive color palettes for your next design project.</p>
                             <a href="colors/index.html" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
                                 Try Now
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
-                    </a>
-                </div>
-            </div>
-            
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.5s">
-                        <div class="h-48 bg-gradient-to-br from-[#d4611c] to-[#c2410c] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-link text-white text-5xl"></i>
+                            </a>
                         </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Web Utilities</span>
-                            <h3 class="text-xl font-medium mb-2 text-gray-900">Link Shortener</h3>
-                            <p class="text-gray-600 mb-4">Shorten long URLs to more manageable links for sharing on social media.</p>
-                            <a href="#" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
-                                Coming Soon
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                    </a>
+                    </div>
                 </div>
             </div>
-            
-                    <div class="project-card scroll-animate" data-animation="animate__fadeInUp" data-delay="0.6s">
-                        <div class="h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] overflow-hidden flex items-center justify-center">
-                            <i class="fas fa-sitemap text-white text-5xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-forge-100 text-forge-800 rounded-full text-sm font-medium mb-3">Web Utilities</span>
-                            <h3 class="text-xl font-medium mb-2 text-gray-900">Link Tree</h3>
-                            <p class="text-gray-600 mb-4">Create a list of links to share with one URL, perfect for social media bios.</p>
-                            <a href="#" class="text-[#d4611c] font-medium hover:underline inline-flex items-center">
-                                Coming Soon
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-       
-
-
+        </section>
     </main>
     
     <footer class="bg-black text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex justify-center scroll-animate" data-animation="animate__fadeIn">
-                <a href="/" aria-label="Back to homepage">
+                <a href="../../index.html" aria-label="Back to homepage">
                     <img src="../../ui/img/bn.png" alt="Blacnova Development Icon" class="h-20 mx-auto">
                 </a>
             </div>
@@ -607,7 +396,7 @@
         </div>
     </footer>
     
-   <script src="../../ui/js/ui.js"></script>
+    <script src="../../ui/js/ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -652,10 +441,8 @@
                 });
             }
 
-            // Update footer year
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeMenuButton = document.getElementById('close-menu-button');
@@ -679,4 +466,3 @@
     </script>
 </body>
 </html>
-

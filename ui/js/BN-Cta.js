@@ -32,27 +32,37 @@
                 bottom: 1.25rem;
                 right: 1.25rem;
                 padding: 1.25rem;
-                width: calc(100% - 40px);
+                width: auto;
+                min-width: 249px;
                 background-color: #000;
                 color: #fff;
-                border: 1px solid #2d3748; /* border-gray-800 */
+                border: 1px solid #2d3748;
                 cursor: pointer;
-                border-radius: 1.5rem; /* rounded-3xl */
+                border-radius: 1.5rem;
                 display: flex;
                 align-items: center;
                 gap: 1rem;
-                transition: transform 0.3s ease-in-out;
                 z-index: 9999;
-            }
-            
-            #bn-network-popup:hover {
-                transform: scale(1.01);
+                opacity: 0;
+                pointer-events: none;
+                transform: translate3d(0, calc(100% + 2rem), 0);
+                transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+                will-change: transform, opacity;
             }
 
-            @media (min-width: 640px) { /* sm: breakpoint */
+            #bn-network-popup.bn-cta-visible {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translate3d(0, 0, 0);
+            }
+            
+            #bn-network-popup.bn-cta-visible:hover {
+                transform: translate3d(0, 0, 0) scale(1.01);
+            }
+
+            @media (max-width: 767px) {
                 #bn-network-popup {
-                    width: auto;
-                    min-width: 249px;
+                    display: none !important;
                 }
             }
 
@@ -114,6 +124,17 @@
                  background-color: #1f2937; /* hover:bg-gray-800 */
             }
 
+            #bn-network-popup .bn-content-scrim {
+                position: absolute;
+                inset: 0;
+                z-index: 5;
+                border-radius: 1.5rem;
+                pointer-events: none;
+                background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.25) 100%);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+            }
+
             #bn-network-popup .bn-content-wrapper {
                 width: 100%;
                 z-index: 10;
@@ -168,6 +189,7 @@
             <div id="bn-network-popup" role="button">
                 <canvas id="particle-canvas"></canvas>
                 <div class="bn-gradient-blur"><div></div></div>
+                <div class="bn-content-scrim" aria-hidden="true"></div>
                 <button id="close-bn-popup" type="button" aria-label="Hide upsell banner">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="stroke-width: 2; width: 1rem; height: 1rem;">
                         <path d="M6 6L18 18M18 6L6 18" stroke="currentColor"></path>
@@ -248,10 +270,35 @@
             requestAnimationFrame(animate);
         }
 
-        // Event Listeners
+        // Initial setup
+        resizeCanvas();
+        initParticles();
+        animate();
+
+        const DESKTOP_MQ = window.matchMedia('(min-width: 768px)');
+        let showTimer = null;
+
+        function revealCta() {
+            if (!DESKTOP_MQ.matches || popup.dataset.dismissed === '1') return;
+            popup.classList.add('bn-cta-visible');
+            resizeCanvas();
+        }
+
+        function scheduleReveal() {
+            clearTimeout(showTimer);
+            if (!DESKTOP_MQ.matches || popup.dataset.dismissed === '1') {
+                popup.classList.remove('bn-cta-visible');
+                return;
+            }
+            showTimer = setTimeout(revealCta, 7000);
+        }
+
         closeButton.addEventListener('click', (event) => {
             event.stopPropagation();
-            popup.style.display = 'none';
+            popup.dataset.dismissed = '1';
+            popup.classList.remove('bn-cta-visible');
+            clearTimeout(showTimer);
+            setTimeout(() => { popup.style.display = 'none'; }, 700);
         });
 
         window.addEventListener('resize', () => {
@@ -259,10 +306,13 @@
             initParticles();
         });
 
-        // Initial setup
-        resizeCanvas();
-        initParticles();
-        animate();
+        if (typeof DESKTOP_MQ.addEventListener === 'function') {
+            DESKTOP_MQ.addEventListener('change', scheduleReveal);
+        } else if (typeof DESKTOP_MQ.addListener === 'function') {
+            DESKTOP_MQ.addListener(scheduleReveal);
+        }
+
+        scheduleReveal();
     }
 
     // --- Execution ---

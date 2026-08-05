@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
@@ -30,8 +30,8 @@
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
     <link rel="icon" href="../../ui/img/bn.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -204,161 +204,63 @@
                     </a>
                 </div>
                 
-                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-                    <div class="flex space-x-8">
+                                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+                    <div class="flex items-center gap-x-4 lg:gap-x-5">
                         <!-- Services Dropdown -->
-                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <a href="../../index.html#services" 
-   class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-    Our Services
-    <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-         :class="{ 'rotate-180': open }" 
-         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-              d="M19 9l-7 7-7-7" />
-    </svg>
-</a>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-                                 x-transition:enter-start="opacity-0 translate-y-1" 
-                                 x-transition:enter-end="opacity-100 translate-y-0" 
-                                 x-transition:leave="transition ease-in duration-150" 
-                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../../index.html#services" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Our Services
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
                                  x-transition:leave-end="opacity-0 translate-y-1"
-                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
                                  @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-                                <div class="grid grid-cols-3">
-                                    <div class="col-span-1 bg-gray-50 p-4">
-                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                                        <ul class="space-y-2">
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-span-2 p-4">
-                                        <div x-show="activeCategory === 'development'" class="space-y-3">
-                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="../../index.html#web-development" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="../../index.html#e-commerce" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="../../index.html#api-integration" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="../../index.html#cloud-solutions" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="../../index.html#seo-optimization" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="../../index.html#digital-marketing" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="../../index.html#graphic-design" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="../../index.html#web-development" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Web Development</a>
+                                <a href="../../index.html#e-commerce" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">E-Commerce</a>
+                                <a href="../../index.html#api-integration" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">API Integration</a>
+                                <a href="../../index.html#cloud-solutions" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Cloud Solutions</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../../index.html#seo-optimization" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">SEO Optimization</a>
                             </div>
                         </div>
 
-                       <!-- Tools Dropdown -->
-<div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <a href="../tools/index.html" 
-       class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-        Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-             :class="{ 'rotate-180': open }" 
-             fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </a>
-    
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-         x-transition:enter-start="opacity-0 translate-y-1" 
-         x-transition:enter-end="opacity-100 translate-y-0" 
-         x-transition:leave="transition ease-in duration-150" 
-         x-transition:leave-start="opacity-100 translate-y-0" 
-         x-transition:leave-end="opacity-0 translate-y-1"
-         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
-         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-        <div class="grid grid-cols-3">
-            <div class="col-span-1 bg-gray-50 p-4">
-                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <button @mouseenter="activeCategory = 'devtools'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Developer Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'design'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Design Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'web'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Web Utilities
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="col-span-2 p-4">
-                <!-- Developer Tools -->
-                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="../tools/ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">SSL Checker</p>
-                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
-                    </a>
-                </div>
-                
-                <!-- Design Tools -->
-                <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="../tools/pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">PFP Previewer</p>
-                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
-                    </a>
-                    <a href="../tools/colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Color Palette Generator</p>
-                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
-                    </a>
-                </div>
-                
-                <!-- Web Utilities -->
-                <div x-show="activeCategory === 'web'" class="space-y-3">
-                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="../tools/qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">QR Code Generator</p>
-                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Shortener</p>
-                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Tree</p>
-                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Tools Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../tools/index.html" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Tools
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <a href="../tools/pfp/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">PFP Previewer</a>
+                                <a href="../tools/colors/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Color Palette Generator</a>
+                                <a href="../tools/qr/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">QR Code Generator</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../tools/index.html" class="block px-4 py-2.5 text-sm text-gray-500 transition-colors hover:bg-white/[0.04] hover:text-white">View all tools</a>
+                            </div>
+                        </div>
 
-                        <a href="../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
-                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
-                        <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
-                        <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                        <a href="../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Blog</a>
+                        <a href="../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Contact Us</a>
+                        <a href="../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Get Quote</a>
                     </div>
                 </nav>
                 
@@ -473,15 +375,6 @@
                         <h4 class="font-medium text-gray-300 mb-2">Growth</h4>
                         <div class="space-y-2 ml-2">
                             <a href="../../index.html#seo-optimization" class="block py-1 text-gray-400 hover:text-white transition-colors">SEO Optimization</a>
-                            <a href="../../index.html#digital-marketing" class="block py-1 text-gray-400 hover:text-white transition-colors">Digital Marketing</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Creative Services -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Creative</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="../../index.html#graphic-design" class="block py-1 text-gray-400 hover:text-white transition-colors">Graphic Design</a>
                         </div>
                     </div>
                 </div>
@@ -496,13 +389,6 @@
                     </svg>
                 </button>
                 <div class="mobile-dropdown-content mt-2 ml-4">
-                    <!-- Developer Tools -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Developer Tools</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="../tools/ssl/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
-                        </div>
-                    </div>
                     
                     <!-- Design Tools -->
                     <div class="mb-4">
@@ -518,8 +404,6 @@
                         <h4 class="font-medium text-gray-300 mb-2">Web Utilities</h4>
                         <div class="space-y-2 ml-2">
                             <a href="../tools/qr/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
                         </div>
                     </div>
                 </div>
@@ -553,19 +437,19 @@
             <!-- Tab Navigation -->
             <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-animate" data-animation="animate__fadeInUp">
                 <button onclick="showTab('terms')" id="btn-terms" class="tab-button active px-8 py-4 rounded-3xl font-medium transition-all duration-300 flex items-center gap-2">
-                    <i class="fas fa-file-contract"></i>
+                    <i class="ph ph-file-text"></i>
                     <span>Terms & Conditions</span>
                 </button>
                 <button onclick="showTab('privacy')" id="btn-privacy" class="tab-button px-8 py-4 rounded-3xl font-medium transition-all duration-300 flex items-center gap-2">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="ph ph-shield-check"></i>
                     <span>Privacy Policy</span>
                 </button>
                 <button onclick="showTab('cookies')" id="btn-cookies" class="tab-button px-8 py-4 rounded-3xl font-medium transition-all duration-300 flex items-center gap-2">
-                    <i class="fas fa-cookie-bite"></i>
+                    <i class="ph ph-cookie"></i>
                     <span>Cookies Policy</span>
                 </button>
                 <button onclick="showTab('contact')" id="btn-contact" class="tab-button px-8 py-4 rounded-3xl font-medium transition-all duration-300 flex items-center gap-2">
-                    <i class="fas fa-envelope"></i>
+                    <i class="ph ph-envelope"></i>
                     <span>Contact Us</span>
                 </button>
             </div>
@@ -580,7 +464,7 @@
                             <section id="terms" class="legal-section">
                                 <h2 class="text-3xl font-medium mb-6 text-gray-900">📜 Terms & Conditions</h2>
                                 <div class="inline-block px-4 py-2 bg-white rounded-3xl border border-gray-200 mb-8">
-                                    <p class="text-sm text-gray-600"><i class="far fa-calendar-alt text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
+                                    <p class="text-sm text-gray-600"><i class="ph ph-calendar text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
                                 </div>
                                 
                                 <p class="mb-6">Welcome to Blacnova Development ("Blacnova," "we," "our," "us"). By accessing or using our websites, tools, or services (including Forge by Blacnova, Forge Extensions, Orbit Workspace, Cards CMS, and other digital tools), you agree to the following Terms & Conditions.</p>
@@ -594,7 +478,7 @@
                                     <li>Access to proprietary tools (BN Tools, Forge, Orbit Workspace, Cards CMS, etc.).</li>
                                     <li>Digital solutions, including hosting integrations, plugins, and productivity software.</li>
                                 </ul>
-                                <p>We issue updates to our tools and websites 3–5 times per month, but schedules are not guaranteed.</p>
+                                <p>We issue updates to our tools and websites 3-5 times per month, but schedules are not guaranteed.</p>
                                 
                                 <h3>2. Eligibility</h3>
                                 <p>You must be at least 18 years old, or have parental/guardian consent, to use our services.</p>
@@ -607,7 +491,7 @@
                                 <p>Blacnova is not responsible for losses caused by compromised accounts due to your negligence.</p>
                                 
                                 <h3>4. Payment & Subscriptions</h3>
-                                <p>Many services are available under a custom project fee plus a $25/month ongoing service and support subscription, unless otherwise stated.</p>
+                                <p>Many services are available under a custom project fee, with optional ongoing service and support as agreed for your project.</p>
                                 <p>Payments are non-refundable unless required by law.</p>
                                 <p>Failure to pay may result in suspension or termination of services.</p>
                                 
@@ -670,7 +554,7 @@
                             <section id="privacy" class="legal-section">
                                 <h2 class="text-3xl font-medium mb-6 text-gray-900">🔒 Privacy Policy</h2>
                                 <div class="inline-block px-4 py-2 bg-white rounded-3xl border border-gray-200 mb-8">
-                                    <p class="text-sm text-gray-600"><i class="far fa-calendar-alt text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
+                                    <p class="text-sm text-gray-600"><i class="ph ph-calendar text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
                                 </div>
                                 
                                 <p class="mb-6">Blacnova respects your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our websites and tools.</p>
@@ -724,7 +608,7 @@
                             <section id="cookies" class="legal-section">
                                 <h2 class="text-3xl font-medium mb-6 text-gray-900">🍪 Cookies Policy</h2>
                                 <div class="inline-block px-4 py-2 bg-white rounded-3xl border border-gray-200 mb-8">
-                                    <p class="text-sm text-gray-600"><i class="far fa-calendar-alt text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
+                                    <p class="text-sm text-gray-600"><i class="ph ph-calendar text-[#d4611c] mr-2"></i><strong>Last Updated:</strong> September 5, 2025</p>
                                 </div>
                                 
                                 <p class="mb-6">Blacnova uses cookies and local storage across its websites and tools.</p>
@@ -759,17 +643,17 @@
                                 <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-3xl border border-gray-200 hover:shadow-md transition-all duration-300">
                                     <div class="flex items-start gap-4">
                                         <div class="w-12 h-12 bg-gradient-to-br from-[#d4611c] to-[#e67a35] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                            <i class="fas fa-envelope text-white text-xl"></i>
+                                            <i class="ph ph-envelope text-white text-xl"></i>
                                         </div>
                                         <div>
                                             <p class="font-medium text-lg text-gray-900">Blacnova Development</p>
                                             <p class="text-gray-600">Las Cruces, New Mexico</p>
                                             <p class="mt-3 flex items-center gap-2 text-gray-700">
-                                                <i class="fas fa-envelope text-[#d4611c]"></i>
+                                                <i class="ph ph-envelope text-[#d4611c]"></i>
                                                 <span>Email: <a href="mailto:nic@blacnova.net" class="text-[#d4611c] hover:underline font-medium">nic@blacnova.net</a></span>
                                             </p>
                                             <p class="mt-2 flex items-center gap-2 text-gray-700">
-                                                <i class="fas fa-globe text-[#d4611c]"></i>
+                                                <i class="ph ph-globe text-[#d4611c]"></i>
                                                 <span>Website: <a href="https://www.blacnova.net" class="text-[#d4611c] hover:underline font-medium">www.blacnova.net</a></span>
                                             </p>
                                         </div>

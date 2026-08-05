@@ -33,8 +33,8 @@
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
     <link rel="icon" href="ui/img/bn.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -64,6 +64,7 @@
             opacity: 1;
         }
     </style>
+    <script src="ui/js/PreviousPage.js"></script>
     <script src="ui/js/hashtags.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -94,8 +95,8 @@
                         },
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['inter', 'sans-serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
                     }
                 }
             }
@@ -154,163 +155,62 @@
                 </div>
                 
                 <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-                    <div class="flex space-x-8">
+                    <div class="flex items-center gap-x-4 lg:gap-x-5">
                         <!-- Services Dropdown -->
-                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <a href="#services" 
-   class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-    Our Services
-    <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-         :class="{ 'rotate-180': open }" 
-         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-              d="M19 9l-7 7-7-7" />
-    </svg>
-</a>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-                                 x-transition:enter-start="opacity-0 translate-y-1" 
-                                 x-transition:enter-end="opacity-100 translate-y-0" 
-                                 x-transition:leave="transition ease-in duration-150" 
-                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="#services" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Our Services
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
                                  x-transition:leave-end="opacity-0 translate-y-1"
-                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
                                  @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-                                <div class="grid grid-cols-3">
-                                    <div class="col-span-1 bg-gray-50 p-4">
-                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                                        <ul class="space-y-2">
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-span-2 p-4">
-                                        <div x-show="activeCategory === 'development'" class="space-y-3">
-                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="#web-development" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="#e-commerce" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="#api-integration" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="#cloud-solutions" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="#seo-optimization" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="#digital-marketing" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="#graphic-design" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="#web-development" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Web Development</a>
+                                <a href="#e-commerce" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">E-Commerce</a>
+                                <a href="#api-integration" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">API Integration</a>
+                                <a href="#cloud-solutions" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Cloud Solutions</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="#seo-optimization" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">SEO Optimization</a>
                             </div>
                         </div>
 
-                       <!-- Tools Dropdown Integrated Here -->
-<div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <a href="pages/tools/index.html" 
-       class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-        Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" 
-             :class="{ 'rotate-180': open }" 
-             fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </a>
-    
-    <!-- Dropdown Panel -->
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-         x-transition:enter-start="opacity-0 translate-y-1" 
-         x-transition:enter-end="opacity-100 translate-y-0" 
-         x-transition:leave="transition ease-in duration-150" 
-         x-transition:leave-start="opacity-100 translate-y-0" 
-         x-transition:leave-end="opacity-0 translate-y-1"
-         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
-         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-        <div class="grid grid-cols-3">
-            <!-- Categories Column -->
-            <div class="col-span-1 bg-gray-50 p-4">
-                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <button @mouseenter="activeCategory = 'devtools'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Developer Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'design'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Design Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'web'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Web Utilities
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Tools Column -->
-            <div class="col-span-2 p-4">
-                <!-- Developer Tools -->
-                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="pages/tools/ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">SSL Checker</p>
-                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
-                    </a>
-                </div>
-                
-                <!-- Design Tools -->
-                <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="pages/tools/pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">PFP Previewer</p>
-                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
-                    </a>
-                    <a href="pages/tools/colors/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Color Palette Generator</p>
-                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
-                    </a>
-                </div>
-                
-                <!-- Web Utilities -->
-                <div x-show="activeCategory === 'web'" class="space-y-3">
-                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="pages/tools/qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">QR Code Generator</p>
-                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Shortener</p>
-                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Tree</p>
-                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Tools Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="pages/tools/index.html" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Tools
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <a href="pages/tools/pfp/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">PFP Previewer</a>
+                                <a href="pages/tools/colors/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Color Palette Generator</a>
+                                <a href="pages/tools/qr/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">QR Code Generator</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="pages/tools/index.html" class="block px-4 py-2.5 text-sm text-gray-500 transition-colors hover:bg-white/[0.04] hover:text-white">View all tools</a>
+                            </div>
+                        </div>
 
-                        <a href="pages/about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
-                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
-                        <a href="#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
-                        <a href="#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                        <a href="pages/about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Blog</a>
+                        <a href="#contact" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Contact Us</a>
+                        <a href="#quote" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Get Quote</a>
                     </div>
                 </nav>
                 
@@ -425,15 +325,6 @@
                         <h4 class="font-medium text-gray-300 mb-2">Growth</h4>
                         <div class="space-y-2 ml-2">
                             <a href="#seo-optimization" class="block py-1 text-gray-400 hover:text-white transition-colors">SEO Optimization</a>
-                            <a href="#digital-marketing" class="block py-1 text-gray-400 hover:text-white transition-colors">Digital Marketing</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Creative Services -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Creative</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="#graphic-design" class="block py-1 text-gray-400 hover:text-white transition-colors">Graphic Design</a>
                         </div>
                     </div>
                 </div>
@@ -448,30 +339,11 @@
                     </svg>
                 </button>
                 <div class="mobile-dropdown-content mt-2 ml-4">
-                    <!-- Developer Tools -->
                     <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Developer Tools</h4>
-                        <div class="space-y-2 ml-2">
-                            <a href="pages/tools/ssl/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">SSL Checker</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Design Tools -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Design Tools</h4>
                         <div class="space-y-2 ml-2">
                             <a href="pages/tools/pfp/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">PFP Previewer</a>
                             <a href="pages/tools/colors/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">Color Palette Generator</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Web Utilities -->
-                    <div class="mb-4">
-                        <h4 class="font-medium text-gray-300 mb-2">Web Utilities</h4>
-                        <div class="space-y-2 ml-2">
                             <a href="pages/tools/qr/index.html" class="block py-1 text-gray-400 hover:text-white transition-colors">QR Code Generator</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Shortener</a>
-                            <a href="#" class="block py-1 text-gray-400 hover:text-white transition-colors">Link Tree</a>
                         </div>
                     </div>
                 </div>
@@ -511,14 +383,14 @@
                             <a href="#quote" class="btn-primary px-6 py-3 rounded-3xl text-base text-center font-medium transition-all">
                                 Start Your Project
                             </a>
-                            <a href="#services" class="px-6 py-3 rounded-3xl text-base text-center font-medium border border-white text-white hover:bg-white hover:text-black transition-colors">
+                            <a href="#services" class="btn-primary px-6 py-3 rounded-3xl text-base text-center font-medium transition-all">
                                 Our Services
                             </a>
                         </div>
                     </div>
                     
 <div class="hidden lg:block lg:w-1/2 relative mt-12 lg:mt-0">
-    <div class="laptop-mockup no-animation transform transition-all duration-500 hover:scale-105">
+    <div class="laptop-mockup no-animation">
         <div class="laptop-frame">
             <div class="laptop-screen">
                 <img src="ui/img/one.png" alt="Blacnova portfolio website screenshot" class="laptop-image">
@@ -528,7 +400,7 @@
             <div class="laptop-notch"></div>
         </div>
     </div>
-    <div class="phone-mockup no-animation transform transition-all duration-500 hover:scale-105">
+    <div class="phone-mockup no-animation">
         <div class="phone-frame">
             <div class="phone-screen">
                 <img src="ui/img/three.png" alt="Blacnova mobile app screenshot" class="phone-image">
@@ -596,430 +468,126 @@
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp">
+        <div class="bn-connected grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6">
+            <div class="bn-connected-cell single-service scroll-animate lg:col-span-2" data-animation="animate__fadeInUp">
                 <div class="content">
-                    <span class="icon"><i class="fas fa-laptop-code"></i></span>
+                    <span class="icon"><i class="ph ph-code"></i></span>
                     <h3 class="title">Web Development</h3>
                     <p class="description">
                         We build responsive, high-performing websites that are secure, scalable, and tailored to your brand. From simple landing pages to complex web applications, our solutions drive user engagement.
                     </p>
                     <a href="#web-development" class="learn-more group">
                         Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                        <span class="inline-block ml-1">?</span>
                     </a>
                 </div>
-                <span class="circle-before"></span>
             </div>
             
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
+            <div class="bn-connected-cell single-service scroll-animate lg:col-span-2" data-animation="animate__fadeInUp" data-delay="0.2s">
                 <div class="content">
-                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="icon"><i class="ph ph-chart-line-up"></i></span>
                     <h3 class="title">SEO Optimization</h3>
                     <p class="description">
                         Increase your online visibility and rank higher on search engines. We use proven strategies for on-page, off-page, and technical SEO to attract organic traffic and generate qualified leads.
                     </p>
                     <a href="#seo-optimization" class="learn-more group">
                         Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                        <span class="inline-block ml-1">?</span>
                     </a>
                 </div>
-                <span class="circle-before"></span>
             </div>
             
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
+            <div class="bn-connected-cell single-service scroll-animate lg:col-span-2" data-animation="animate__fadeInUp" data-delay="0.4s">
                 <div class="content">
-                    <span class="icon"><i class="fas fa-cloud-upload-alt"></i></span>
+                    <span class="icon"><i class="ph ph-cloud-arrow-up"></i></span>
                     <h3 class="title">Cloud Solutions</h3>
                     <p class="description">
                         Leverage the power of the cloud with our expert services. We offer cloud migration, infrastructure management, and custom cloud-native application development to enhance your business agility.
                     </p>
                     <a href="#cloud-solutions" class="learn-more group">
                         Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                        <span class="inline-block ml-1">?</span>
                     </a>
                 </div>
-                <span class="circle-before"></span>
             </div>
             
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp">
+            <div class="bn-connected-cell single-service scroll-animate lg:col-span-3" data-animation="animate__fadeInUp" data-delay="0.2s">
                 <div class="content">
-                    <span class="icon"><i class="fas fa-bullhorn"></i></span>
-                    <h3 class="title">Digital Marketing</h3>
-                    <p class="description">
-                        Our comprehensive digital marketing campaigns are designed to build your brand and engage your target audience. We specialize in content marketing, social media, and PPC advertising.
-                    </p>
-                    <a href="#digital-marketing" class="learn-more group">
-                        Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
-                    </a>
-                </div>
-                <span class="circle-before"></span>
-            </div>
-            
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.2s">
-                <div class="content">
-                    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="icon"><i class="ph ph-shopping-cart"></i></span>
                     <h3 class="title">E-Commerce</h3>
                     <p class="description">
                         Launch and grow your online store with our end-to-end e-commerce solutions. We build secure, user-friendly platforms with seamless payment gateway integration and inventory management.
                     </p>
                     <a href="#e-commerce" class="learn-more group">
                         Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                        <span class="inline-block ml-1">?</span>
                     </a>
                 </div>
-                <span class="circle-before"></span>
             </div>
             
-            <div class="single-service transform transition-all duration-500 hover:-translate-y-2 rounded-3xl scroll-animate" data-animation="animate__fadeInUp" data-delay="0.4s">
+            <div class="bn-connected-cell single-service scroll-animate lg:col-span-3" data-animation="animate__fadeInUp" data-delay="0.4s">
                 <div class="content">
-                    <span class="icon"><i class="fas fa-cogs"></i></span>
+                    <span class="icon"><i class="ph ph-gear"></i></span>
                     <h3 class="title">API Integration</h3>
                     <p class="description">
                         Connect your software systems and automate workflows with our custom API integration services. We ensure seamless data flow between your applications to improve efficiency and productivity.
                     </p>
                     <a href="#api-integration" class="learn-more group">
                         Learn More
-                        <span class="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+                        <span class="inline-block ml-1">?</span>
                     </a>
                 </div>
-                <span class="circle-before"></span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="bn-apps-compact-cta" class="relative py-10 md:py-14 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
-    
+<section id="web-dev-cta" class="web-dev-cta relative py-14 md:py-20 overflow-hidden" style="background-color: #d4611c; background-image: url('https://transparenttextures.com/patterns/transparent-square-tiles.png');">
+    <div class="web-dev-float-icons" aria-hidden="true">
+        <i class="ph ph-device-mobile web-dev-float f1"></i>
+        <i class="ph ph-gauge web-dev-float f2"></i>
+        <i class="ph ph-magnifying-glass web-dev-float f3"></i>
+        <i class="ph ph-lock web-dev-float f4"></i>
+        <i class="ph ph-pencil-simple web-dev-float f5"></i>
+        <i class="ph ph-trend-up web-dev-float f6"></i>
+        <i class="ph ph-code web-dev-float f7"></i>
+        <i class="ph ph-browser web-dev-float f8"></i>
+    </div>
+    <div class="relative z-10 container mx-auto px-6 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div class="lg:col-span-5 order-2 lg:order-1 hidden lg:block">
+                <ul class="web-dev-feature-list space-y-3.5 max-w-xs mx-auto lg:mx-0">
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">Responsive Design</li>
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">Fast Performance</li>
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">SEO Ready</li>
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">Secure & Reliable</li>
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">Easy to Update</li>
+                    <li class="text-[#ffffff] text-sm md:text-base tracking-wide">Built to Convert</li>
+                </ul>
+            </div>
 
-    
-    <div class="relative container mx-auto px-6 max-w-7xl">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div class="lg:col-span-7 text-center lg:text-left">
-                <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Introducing BN Tools</span>
-                <h2 class="text-3xl lg:text-4xl font-medium text-[#ffffff] mb-3">
-                    All The Tools You Need. One Suite.
+            <div class="lg:col-span-7 order-1 lg:order-2 text-center lg:text-left">
+                <span class="inline-block mb-2 text-sm tracking-wider text-[#ffffffe6] uppercase">Web Development</span>
+                <h2 class="text-3xl lg:text-4xl text-[#ffffff] mb-5">
+                    Custom Websites Built for Your Business
                 </h2>
-                <div class="flex justify-center lg:justify-start">
-                    <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
-                </div>
                 <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
-                    From invoicing and link management to cloud storage and AI-enhanced documents, BN Tools are built to help you work smarter, not harder.
+                    From landing pages to full-scale web apps, we design and develop fast, responsive sites that look sharp and convert visitors into customers.
                 </p>
-                <a href="pages/tools/index.html" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
-                    Explore Tools
+                <a href="#quote" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-colors">
+                    Start Your Project
                 </a>
             </div>
-
-            <div class="lg:col-span-5 flex items-center justify-center lg:justify-end">
-                <div class="grid grid-cols-3 gap-x-4 gap-y-4 max-w-[300px]">
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="fas fa-link text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Links</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="far fa-file-alt text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Forms</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="fas fa-envelope text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Email</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="fab fa-google-drive text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">Workspace</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="fas fa-file-invoice-dollar text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Invoice</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-2 transition-transform duration-300 hover:scale-110">
-                        <i class="fas fa-layer-group text-3xl md:text-4xl text-[#ffffff] mb-2"></i>
-                        <span class="text-[#ffffff] font-medium text-xs text-center">BN Cards</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
 
-<section id="projects" class="py-24 relative overflow-hidden bg-[#fafbfb] poppins-font-section">
-    <!-- This script is for a particle background effect, assuming you have it configured -->
-    <div id="particles-js" class="absolute inset-0 z-0 opacity-100"></div>
-    
-    <div class="container mx-auto px-6 max-w-7xl relative z-10">
-        <div class="text-center mb-20">
-            <div class="flex justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
-                     stroke="#d4611c" class="w-10 h-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                          d="M3 7h18M3 7a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
-                </svg>
-            </div>
-            <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Portfolio</span>
-            <h2 class="text-4xl md:text-5xl font-medium mb-6 text-[#1a1a1a]">
-                <span class="section-title">Showcasing Our</span> Best Work
-            </h2>
-            <p class="max-w-2xl mx-auto text-gray-600">
-                Explore our portfolio of innovative digital solutions that have helped businesses transform and grow.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            
-            <!-- Project Card 1: SEO & Analytics -->
-            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="ui/img/src5.png" alt="SEO Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-between p-8">
-                    <!-- Top Content: Label -->
-                    <div>
-                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">App Suite</span>
-                    </div>
-                    <!-- Bottom Content: Title, Description, Link -->
-                    <div>
-                        <h3 class="text-2xl font-medium mb-2 text-white">BN Tools</h3>
-                        <p class="text-gray-300 mb-4">All-in-one toolkit with invoicing, forms, link tools, and AI-powered productivity apps.</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 2:  -->
-            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="ui/img/src4.png" alt="E-Commerce Platform" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-between p-8">
-                    <!-- Top Content: Label -->
-                    <div>
-                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">Web Development</span>
-                    </div>
-                    <!-- Bottom Content: Title, Description, Link -->
-                    <div>
-                        <h3 class="text-2xl font-medium mb-2 text-white">Cards MMS</h3>
-                        <p class="text-gray-300 mb-4">A universal json powered content tool for menus, products, events, and structured data.</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 3: Cloud Solutions -->
-            <div class="project-card group relative rounded-3xl overflow-hidden shadow-lg h-96 hover:shadow-xl transition-all duration-500">
-                <img src="ui/img/src6.png" alt="Cloud Migration" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-between p-8">
-                    <!-- Top Content: Label -->
-                    <div>
-                        <span class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-semibold bg-[#d4611c]/80 text-white rounded-full w-fit">AI Productivity Suite</span>
-                    </div>
-                    <!-- Bottom Content: Title, Description, Link -->
-                    <div>
-                        <h3 class="text-2xl font-medium mb-2 text-white">Orbit Workspace</h3>
-                        <p class="text-gray-300 mb-4">An AI-powered dashboard that links tools like Google Docs, Gmail, and more for smarter work automation.</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                            <a href="#" class="inline-flex items-center text-white font-medium group-hover:text-[#d4611c] transition-colors">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-16">
-            <a href="pages/projects/index.html" class="inline-flex items-center px-8 py-4 border border-[#d4611c] text-[#d4611c] font-semibold rounded-3xl hover:bg-[#d4611c] hover:text-white transition-all duration-300 group">
-                View All Projects
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
 
 
-        <section id="about" class="py-24 bg-white poppins-font-section">
-            <div class="absolute top-0 left-0 w-full h-[300px] pointer-events-none" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);"></div>
-            
-            <div class="container mx-auto px-4 max-w-7xl">
-                <div class="text-center mb-20 scroll-animate" data-animation="animate__fadeInDown">
-                     <div class="flex justify-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
-                     stroke="#d4611c" class="w-10 h-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                          d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V7a2 2 0 012-2h3.5l1-2h3l1 2H17a2 2 0 012 2v11a2 2 0 01-2 2z" />
-                </svg>
-            </div>
-                    <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Methodology</span>
-                    <h2 class="text-4xl md:text-5xl font-medium mb-6 text-[#1a1a1a]">
-                        <span class="section-title">How We Deliver</span> Excellence
-                    </h2>
-                    <p class="max-w-2xl mx-auto text-gray-600">
-                        A proven process that ensures quality, efficiency, and results at every stage of your project.
-                    </p>
-                </div>
-                
-                <div class="flex flex-col lg:flex-row gap-10 items-stretch">
-                    <div class="lg:w-1/2 scroll-animate" data-animation="animate__fadeInLeft">
-                        <div class="h-full bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-                            <div class="flex items-center justify-between mb-8">
-                                <h3 class="text-3xl font-medium text-gray-900">Our Process</h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-800">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h3.5l1-1h3l1 1H17a2 2 0 012 2v12a2 2 0 01-2 2z" />
-                                </svg>
-                            </div>
-                            
-                            <div class="space-y-8">
-                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
-                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-medium text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">1</div>
-                                    <div class="flex items-start gap-5 ml-4">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <i class="fas fa-comments"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Discovery & Strategy</h4>
-                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">
-                                                You fill out our Project Intake Form to share your vision, goals, and technical requirements, so we can understand your project before moving forward.
-                                                <a href="pages/intake/index.html">
-                        <span class="badge border border-[#d4611c] text-[#d4611c] bg-transparent relative -top-px px-2 py-1 rounded-md font-medium mt-3" style="background-color: transparent;">
-                            View Intake Form
-                        </span>
-                    </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
-                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-medium text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">2</div>
-                                    <div class="flex items-start gap-5 ml-4">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <i class="fas fa-code"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Design & Development</h4>
-                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">Our team crafts pixel-perfect designs and robust code with iterative feedback cycles.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="process-step group relative bg-white p-6 rounded-3xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-orange-200">
-                                    <div class="step-number absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center text-orange-500 font-medium text-xl shadow-md transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white">3</div>
-                                    <div class="flex items-start gap-5 ml-4">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="process-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <i class="fas fa-rocket"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">Launch & Growth</h4>
-                                            <p class="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">We deploy with precision and provide ongoing optimization for your business needs.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:w-1/2 scroll-animate" data-animation="animate__fadeInRight">
-                        <div class="h-full bg-black p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
-                            <div class="flex items-center justify-between mb-8">
-                                <h3 class="text-3xl font-medium text-white">Why Choose Us</h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
-                                </svg>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 gap-6">
-                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
-                                    <div class="flex items-start gap-5">
-                                        <div class="flex-shrink-0">
-                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <i class="fas fa-cloud"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-white group-hover:text-orange-400 transition-colors">Blacnova Dashboard</h4>
-                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Manage and update your website—no developer needed. Edit blog posts, tweak content, and take control with our powerful Cards - Cloud Management System.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
-                                    <div class="flex items-start gap-5">
-                                        <div class="flex-shrink-0">
-                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <img src="ui/img/bn.png" alt="BN Icon" class="w-8 h-8 object-contain" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-white group-hover:text-orange-400 transition-colors">BN Tools & Plugins</h4>
-                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                                                Get full access to our suite of Blacnova tools and plugins designed to supercharge your business. 
-                                                <a href="pages/tools/index.html">
-                                                    <span class="badge border-0 text-white relative -top-px px-2 py-1 rounded-md font-medium ml-2" style="background-color: #d4611c;">
-                                                        View Tools
-                                                    </span>
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="feature-card group bg-[#161618] p-6 rounded-3xl border border-white/20 transition-all duration-300 hover:shadow-lg hover:border-white/40 hover:bg-[#2a2a2a]">
-                                    <div class="flex items-start gap-5">
-                                        <div class="flex-shrink-0">
-                                            <div class="feature-icon w-14 h-14 rounded-3xl bg-[#1a1a1a] group-hover:bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center text-white text-2xl transition-all duration-300">
-                                                <i class="fas fa-dollar-sign"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-medium mb-2 text-white group-hover:text-orange-400 transition-colors">Transparent Pricing</h4>
-                                            <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                                                We provide a tailored quote based on your project's scope, then it's just 
-                                                <span style="color: #d4611c; font-weight: 600;">$25/month</span> 
-                                                for ongoing service and support. No surprises, no hidden fees.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="quote" class="py-20 bg-[#fafbfb] poppins-font-section">
+        <section id="quote" class="pt-16 pb-16 sm:pt-20 sm:pb-20 bg-[#fafbfb] poppins-font-section">
             <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-10">
                        <div class="flex justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" 
                      fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
@@ -1058,7 +626,7 @@
                                     <option value="Web Development">Web Development</option>
                                     <option value="SEO Optimization">SEO Optimization</option>
                                     <option value="Cloud Solutions">Cloud Solutions</option>
-                                    <option value="Digital Marketing">Digital Marketing</option>
+                                    <option value="SEO Optimization">SEO Optimization</option>
                                     <option value="E-Commerce">E-Commerce</option>
                                     <option value="API Integration">API Integration</option>
                                 </select>
@@ -1074,7 +642,7 @@
 
 <button type="submit" class="px-8 py-4 bg-black text-white rounded-3xl font-semibold btn-contact btn-pulse-outline">
   Submit Request
-  <span class="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+  <span class="inline-block ml-2">?</span>
 </button>
 
                             </div>
@@ -1101,17 +669,14 @@
                 
                 <!-- Left Side: Text Content -->
                 <div class="lg:col-span-6 text-center lg:text-left">
-                    <span class="inline-block mb-2 text-sm font-semibold tracking-wider text-[#ffffffe6] uppercase">Featured Projects</span>
-                    <h2 class="text-3xl lg:text-4xl font-medium text-[#ffffff] mb-3">
+                    <span class="inline-block mb-2 text-sm tracking-wider text-[#ffffffe6] uppercase">Featured Projects</span>
+                    <h2 class="text-3xl lg:text-4xl text-[#ffffff] mb-5">
                         Client Website Showcase
                     </h2>
-                    <div class="flex justify-center lg:justify-start">
-                        <div class="w-[50px] h-[3px] bg-[#ffffff] rounded-full mt-2 mb-5"></div>
-                    </div>
                     <p class="text-[#ffffffe6] mb-6 max-w-lg mx-auto lg:mx-0">
                         Check out our latest projects. We work closely with our clients to deliver modern, responsive, and high-performing websites that meet all their goals.
                     </p>
-                    <a href="pages/projects/index.html#clients" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    <a href="pages/projects/index.html#clients" class="inline-block px-8 py-3 rounded-3xl text-base font-medium text-[#d4611c] bg-[#ffffff] transition-colors">
                         View Client Projects
                     </a>
                 </div>
@@ -1133,90 +698,28 @@
         </div>
     </section>
 
-        <section class="relative py-24 overflow-hidden poppins-font-section" style="background-color: #ffffff;">
-            <div class="absolute top-0 left-0 w-full h-[300px] pointer-events-none" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);"></div>
-            <div class="container mx-auto px-6 max-w-5xl relative z-10">
-                <div class="p-1 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 relative overflow-hidden scroll-animate" data-animation="animate__zoomIn">
-                    <div class="absolute inset-0 flex justify-center items-center overflow-hidden rounded-3xl">
-                        <div class="w-80 h-80 bg-gradient-to-r from-[#d4611c]/20 via-[#e67a35]/20 to-[#d4611c]/20 opacity-20 absolute filter blur-3xl rounded-full"></div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-black/90 to-black/95 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
-                        <canvas id="cta-particles" class="absolute inset-0 w-full h-full pointer-events-none rounded-3xl"></canvas>
-<div class="flex justify-center mb-4 relative">
-  <!-- Wrapper that moves -->
-  <div class="relative rocket-wrapper">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#d4611c" class="w-10 h-10 rocket">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-    </svg>
-    
-  </div>
-</div>
 
-
-                        <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase relative z-10">Let's Build Together</span>
-                        <h2 class="text-4xl md:text-5xl font-medium mb-6 text-white relative z-10">
-                            Ready to Elevate Your Digital Presence?
-                        </h2>
-                        <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto relative z-10">
-                            We craft custom solutions that drive results. Schedule your free consultation today.
-                        </p>
-                        
-                        <div class="flex flex-col sm:flex-row justify-center gap-5 relative z-10">
-                            <a href="#quote" class="group relative px-8 py-4 bg-[#d4611c] text-white font-semibold rounded-3xl overflow-hidden transition-all duration-500 hover:bg-[#e67a35] hover:shadow-xl">
-                                <span class="relative z-10 flex items-center justify-center">
-                                    Start Your Project
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                                <span class="absolute inset-0 bg-gradient-to-r from-[#d4611c] to-[#e67a35] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                            </a>
-                            
-                            <a href="#services" class="group relative px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-3xl overflow-hidden transition-all duration-500 hover:border-white/60 hover:shadow-lg">
-                                <span class="relative z-10 flex items-center justify-center">
-                                    Explore Services
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                                <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-       <section id="local" class="py-20 bg-black poppins-font-section relative">
+       <section id="local" class="py-20 bg-white poppins-font-section relative">
     <div class="container mx-auto px-6 max-w-7xl relative z-10">
         <div class="text-center mb-16">
             <img src="ui/img/zia-symbol.png" alt="Zia Symbol" class="mx-auto mb-6 w-16 h-16">
             <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Our Roots</span>
-            <h2 class="text-4xl md:text-5xl font-medium mb-6 text-white">
+            <h2 class="text-4xl md:text-5xl font-medium mb-6 text-[#1a1a1a]">
                 <span class="section-title">Proudly Serving</span> Las Cruces
             </h2>
-            <p class="max-w-2xl mx-auto text-gray-400">
+            <p class="max-w-2xl mx-auto text-gray-600">
                 As a locally owned business, we're committed to helping our community thrive through technology.
             </p>
         </div>
         
-        <!-- Ambient glow element -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <div class="ambient-glow"></div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        <div class="bn-connected grid grid-cols-1 md:grid-cols-3 relative z-10">
             <!-- Card 1 -->
-            <div class="local-card p-8 rounded-3xl">
-                <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3 class="text-2xl font-medium mb-4 text-white">Community Focused</h3>
-                <p class="text-gray-400 mb-4">
+            <div class="bn-connected-cell local-card p-8">
+                <h3 class="text-2xl font-medium mb-4 text-[#1a1a1a]">Community Focused</h3>
+                <p class="text-gray-600 mb-4">
                     We reinvest in local businesses and support the growth of the Mesilla Valley's digital economy.
                 </p>
-                <a href="#initiatives" class="flex items-center text-[#d4611c] font-medium hover:underline">
+                <a href="#initiatives" class="flex items-center text-[#d4611c] font-medium">
                     <span>Learn about our initiatives</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -1225,15 +728,12 @@
             </div>
             
             <!-- Card 2 -->
-            <div class="local-card p-8 rounded-3xl">
-                <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="text-2xl font-medium mb-4 text-white">Local Expertise</h3>
-                <p class="text-gray-400 mb-4">
+            <div class="bn-connected-cell local-card p-8">
+                <h3 class="text-2xl font-medium mb-4 text-[#1a1a1a]">Local Expertise</h3>
+                <p class="text-gray-600 mb-4">
                     Our team understands the unique needs and challenges of businesses in Southern New Mexico.
                 </p>
-                <a href="pages/about/index.html" class="flex items-center text-[#d4611c] font-medium hover:underline">
+                <a href="pages/about/index.html" class="flex items-center text-[#d4611c] font-medium">
                     <span>Learn more</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -1242,17 +742,14 @@
             </div>
             
             <!-- Card 3 -->
-            <div class="local-card p-8 rounded-3xl">
-                <div class="local-icon w-16 h-16 rounded-xl flex items-center justify-center text-white text-2xl mb-6">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3 class="text-2xl font-medium mb-4 text-white">Personal Service</h3>
-                <p class="text-gray-400 mb-4">
+            <div class="bn-connected-cell local-card p-8">
+                <h3 class="text-2xl font-medium mb-4 text-[#1a1a1a]">Personal Service</h3>
+                <p class="text-gray-600 mb-4">
                     Unlike national agencies, we offer face-to-face consultations and personalized support.
                 </p>
-                <a href="#meet-us" class="flex items-center text-[#d4611c] font-medium hover:underline">
+                <a href="#meet-us" class="flex items-center text-[#d4611c] font-medium">
                     <span>Schedule a meeting</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="CurrentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </a>
@@ -1260,27 +757,6 @@
         </div>
     </div>
     
-    <style>
-        .ambient-glow {
-            position: absolute;
-            width: 60%;
-            max-width: 800px;
-            height: 300px;
-            background: #df722dbe;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        /* Ensure cards stay above the glow */
-        .local-card {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-    </style>
 </section>
 
     </main>
@@ -1305,7 +781,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/shimmerjs@1.0.3/dist/shimmer.min.js"></script>
 
     <script src="ui/js/BN-Cta.js"></script>
@@ -1412,7 +887,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const applyHoverToCard = (card) => {
-        card.classList.add('hover', 'shadow-lg');
+        card.classList.add('hover');
 
         if (card.classList.contains('feature-card')) {
             card.classList.add('bg-[#2a2a2a]', 'border-white/40');
@@ -1458,14 +933,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (card.classList.contains('local-card')) {
             // Manually apply the CSS that would normally be triggered by :hover
-            card.style.transform = 'translateY(-5px)';
-            card.style.boxShadow = '0 10px 30px rgba(212, 97, 28, 0.2)';
+            card.style.transform = '';
+            card.style.boxShadow = '';
             card.style.borderColor = 'rgba(212, 97, 28, 0.3)';
 
             const icon = card.querySelector('.local-icon');
             if (icon) {
-                icon.style.transform = 'rotate(5deg) scale(1.1)';
-                icon.style.boxShadow = '0 8px 20px rgba(212, 97, 28, 0.4)';
+                icon.style.transform = '';
+                icon.style.boxShadow = '';
                 icon.classList.remove('bg-[#1a1a1a]');
                 icon.style.background = 'linear-gradient(135deg, #d4611c 0%, #e67a35 100%)';
             }

@@ -21,12 +21,10 @@
     // --- Configuration ---
     // Easily change the popup's appearance and behavior here.
     const config = {
-        fontFamily: "'Inter', sans-serif",
-        fontUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
-
-  gradientTop: "#000000",
-  gradientBottom: "#484848",
-
+        fontFamily: "'Poppins', sans-serif",
+        fontUrl: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap",
+        gradientTop: "#000000",
+        gradientBottom: "#000000",
         submitButtonBg: "#000000",
     };
 
@@ -38,16 +36,14 @@
     function createContactPopup() {
         // 1. Inject CSS and Fonts into the document's <head>
         const styleSheet = `
-            /* Injected Font */
             @import url('${config.fontUrl}');
 
-            /* Main Popup Styles */
             #bn-contact-overlay {
                 font-family: ${config.fontFamily};
                 position: fixed;
-                top: 0; right: 0; bottom: 0; left: 0;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: none; /* Hidden by default */
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.55);
+                display: none;
                 align-items: center;
                 justify-content: center;
                 padding: 1rem;
@@ -58,126 +54,133 @@
 
             #bn-contact-popup-container {
                 position: relative;
-                width: 385px; /* Increased width */
-                height: 610px;
-                border-radius: 1.5rem; /* rounded-3xl */
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); /* shadow-2xl */
+                width: min(385px, calc(100vw - 2rem));
+                max-height: min(640px, 90vh);
+                border-radius: 1.5rem;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
                 display: flex;
-                align-items: flex-end; /* Aligns the inner box to the bottom */
-                justify-content: center;
+                flex-direction: column;
                 overflow: hidden;
-                padding-bottom: 1.25rem; /* pb-5 */
-background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gradientBottom});
-
+                background: #000;
                 color: white;
             }
 
             #bn-contact-particle-canvas {
                 position: absolute;
-                top: 0; left: 0;
+                inset: 0;
                 width: 100%;
                 height: 100%;
                 z-index: 10;
+                pointer-events: none;
             }
-            
+
             #bn-contact-close-button {
                 position: absolute;
-                top: 1.5rem; /* top-6 */
-                right: 1.5rem; /* right-6 */
+                top: 1.15rem;
+                right: 1.15rem;
                 color: #eeeeee;
-                z-index: 30;
+                z-index: 50;
                 background: none;
                 border: none;
                 cursor: pointer;
-                padding: 0;
-                transition: color 0.2s ease-in-out;
+                padding: 0.4rem;
+                border-radius: 5px;
+                transition: color 0.2s ease;
+                pointer-events: auto;
+                line-height: 0;
             }
-            #bn-contact-close-button:hover {
-                color: white;
+            #bn-contact-close-button:hover { color: white; }
+            #bn-contact-close-button:focus-visible {
+                outline: 2px solid #d4611c;
+                outline-offset: 2px;
             }
 
             #bn-contact-form-title {
-    position: absolute;
-    top: 1.5rem; /* top-8 */
-    left: 1.2rem; /* left-8 */
-    font-size: 1.575rem; /* text-3xl */
-    font-weight: 100; /* font-bold */
-    text-align: left;
-    z-index: 30;
-    margin: 0;
-    background: linear-gradient(to bottom, white 65%, transparent 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
+                position: relative;
+                z-index: 20;
+                margin: 0;
+                padding: 1.35rem 3.25rem 1rem 1.25rem;
+                font-size: 1.35rem;
+                font-weight: 400;
+                text-align: left;
+                color: #fff;
+                pointer-events: none;
+            }
 
             #bn-contact-inner-box {
-                width: 360px; /* Increased width */
-                height: 485px;
-                background-color: #ffffff;
-            opacity: 98%;
-                color: #1a1a1a;
-                border-radius: 1rem; /* rounded-2xl */
+                position: relative;
                 z-index: 20;
-                padding: 1.5rem 2rem;
+                margin: 0 0.75rem 0.75rem;
+                flex: 1;
+                min-height: 0;
+                background-color: #ffffff;
+                color: #1a1a1a;
+                border-radius: 1rem;
+                padding: 1.25rem 1.35rem 1.25rem;
                 display: flex;
                 flex-direction: column;
                 box-sizing: border-box;
+                overflow: auto;
             }
-            
-            .bn-contact-input-group {
-                margin-bottom: 1rem;
-            }
+
+            .bn-contact-input-group { margin-bottom: 0.85rem; }
 
             .bn-contact-label {
                 display: block;
-                margin-bottom: 0.5rem; /* mb-2 */
-                font-size: 0.875rem; /* text-sm */
-                font-weight: 500; /* font-medium */
-                color: #374151; /* text-gray-700 */
+                margin-bottom: 0.4rem;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                color: #484848;
             }
 
             .bn-contact-input, .bn-contact-textarea {
                 width: 100%;
-                padding: 0.75rem; /* p-3 */
-                font-size: 1rem; /* text-base */
-                border: 1px solid #d1d5db; /* border-gray-300 */
-                border-radius: 0.5rem; /* rounded-lg */
-                box-sizing: border-box; /* Important for padding and width */
+                padding: 0.7rem 0.75rem;
+                font-size: 0.9375rem;
+                font-family: inherit;
+                font-weight: 400;
+                border: 1px solid #d1d5db;
+                border-radius: 5px;
+                box-sizing: border-box;
+                background: #f9fafb;
                 transition: border-color 0.2s, box-shadow 0.2s;
             }
-            .bn-contact-input:focus, .bn-contact-textarea:focus {
+            .bn-contact-input:focus, .bn-contact-textarea:focus,
+            .bn-contact-input:focus-visible, .bn-contact-textarea:focus-visible {
                 outline: none;
-                border-color: #000000;
-                box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+                border-color: #d4611c;
+                box-shadow: 0 0 0 2px rgba(212, 97, 28, 0.2);
             }
 
             .bn-contact-textarea {
-                resize: none; /* Disabled resize to work with flex-grow */
+                resize: none;
+                min-height: 96px;
             }
 
             #bn-contact-submit-btn {
                 width: 100%;
-                margin-top: 0.5rem; /* mt- */
-                padding: 0.875rem 0; /* py-3.5 */
+                margin-top: auto;
+                padding: 0.8rem 0;
                 color: white;
-                font-weight: 600; /* font-semibold */
-                font-size: 1rem;
-                border-radius: 1.5rem; /* rounded-lg */
+                font-weight: 400;
+                font-size: 0.9375rem;
+                font-family: inherit;
+                border-radius: 999px;
                 background-color: ${config.submitButtonBg};
                 transition: opacity 0.2s;
                 border: none;
                 cursor: pointer;
             }
-            #bn-contact-submit-btn:hover {
-                opacity: 0.85;
+            #bn-contact-submit-btn:hover { opacity: 0.9; }
+            #bn-contact-submit-btn:focus-visible {
+                outline: 2px solid #d4611c;
+                outline-offset: 2px;
             }
             #bn-contact-submit-btn:disabled {
                 opacity: 0.6;
                 cursor: not-allowed;
             }
-            
-            /* Toast Notification Styles */
+
             #bn-contact-toast {
                 position: fixed;
                 bottom: 20px;
@@ -188,10 +191,11 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
                 border-radius: 12px;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                 z-index: 10001;
-                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                transition: transform 0.35s ease, opacity 0.35s ease;
                 transform: translateY(200%);
                 opacity: 0;
                 max-width: 400px;
+                font-weight: 400;
             }
             #bn-contact-toast.show {
                 transform: translateY(0);
@@ -207,6 +211,17 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
                 margin-right: 8px;
                 flex-shrink: 0;
             }
+
+            @media (max-width: 420px) {
+                #bn-contact-popup-container {
+                    width: calc(100vw - 1.5rem);
+                    max-height: 88vh;
+                }
+                #bn-contact-inner-box {
+                    margin: 0 0.55rem 0.55rem;
+                    padding: 1rem;
+                }
+            }
         `;
         const styleElement = document.createElement('style');
         styleElement.textContent = styleSheet;
@@ -217,15 +232,15 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
             <div id="bn-contact-overlay">
                 <div id="bn-contact-popup-container">
                     <canvas id="bn-contact-particle-canvas"></canvas>
-                    <button id="bn-contact-close-button" aria-label="Close popup">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="height: 1.5rem; width: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <button type="button" id="bn-contact-close-button" aria-label="Close popup">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="height: 1.5rem; width: 1.5rem; pointer-events: none;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                     <h1 id="bn-contact-form-title">Contact Us</h1>
                     <div id="bn-contact-inner-box">
-                        <p style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: #4b5563;">Fill out this form, We'll get back to you as soon as possible.</p>
-                        <form id="bn-contact-form" action="https://formspree.io/f/mldoylwq" method="POST" style="flex-grow: 1; display: flex; flex-direction: column;">
+                        <p style="text-align: center; margin: 0 0 1.1rem; color: #6b7280; font-size: 0.875rem; font-weight: 400;">Fill out this form. We'll get back to you as soon as possible.</p>
+                        <form id="bn-contact-form" action="https://formspree.io/f/mldoylwq" method="POST" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0;">
                             <div class="bn-contact-input-group">
                                 <label for="contact-name" class="bn-contact-label">Full Name</label>
                                 <input id="contact-name" name="name" type="text" class="bn-contact-input" placeholder="John Doe" required>
@@ -234,7 +249,7 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
                                 <label for="contact-email" class="bn-contact-label">Email Address</label>
                                 <input id="contact-email" name="email" type="email" class="bn-contact-input" placeholder="you@example.com" required>
                             </div>
-                            <div class="bn-contact-input-group" style="flex-grow: 1; display: flex; flex-direction: column;">
+                            <div class="bn-contact-input-group" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0;">
                                 <label for="contact-message" class="bn-contact-label">Message</label>
                                 <textarea id="contact-message" name="message" class="bn-contact-textarea" placeholder="How can we help you?" required style="flex-grow: 1;"></textarea>
                             </div>
@@ -243,7 +258,6 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
                     </div>
                 </div>
             </div>
-            <!-- Toast Notification -->
             <div id="bn-contact-toast">
                 <div class="toast-content">
                     <svg fill="currentColor" viewBox="0 0 20 20">
@@ -408,9 +422,18 @@ background-image: linear-gradient(to bottom, ${config.gradientTop}, ${config.gra
         });
 
         // --- Close Logic ---
-        closeButton.addEventListener('click', hidePopup);
+        closeButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            hidePopup();
+        });
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
+                hidePopup();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.style.display === 'flex') {
                 hidePopup();
             }
         });

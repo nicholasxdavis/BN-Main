@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPY1G645JS"></script>
@@ -30,8 +30,8 @@
     <meta property="twitter:image" content="https://www.blacnova.com/img/hero.png">
 
     <link rel="icon" href="../../../ui/img/bn.png" type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../../ui/js/palette-tool.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
     <script>
@@ -112,123 +113,7 @@
       ] 
     }
     </script>
-    <style>
-        .color-preview {
-            transition: all 0.3s ease;
-        }
-        .color-circle {
-            outline: 2px solid #1a1a1a;
-        }
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .popup-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .popup-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-        .popup-overlay.show .popup-content {
-            transform: scale(1);
-        }
-        .popup-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #1a1a1a;
-            transition: color 0.2s ease;
-        }
-        .popup-close:hover {
-            color: #f97316;
-        }
-        .info-icon {
-            transform: scale(0.8);
-        }
-        .scrollbar-orange::-webkit-scrollbar {
-            height: 8px;
-        }
-        .scrollbar-orange::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        .scrollbar-orange::-webkit-scrollbar-thumb {
-            background: #f97316;
-            border-radius: 4px;
-        }
-        .scrollbar-orange::-webkit-scrollbar-thumb:hover {
-            background: #ea580c;
-        }
-        .color-swatch {
-            height: 120px;
-            border-radius: 0.75rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        .color-swatch:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .color-value {
-            font-family: monospace;
-            font-size: 0.875rem;
-            opacity: 0.8;
-            transition: opacity 0.2s ease;
-        }
-        .color-value:hover {
-            opacity: 1;
-        }
-        @media (max-width: 640px) {
-            .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            .palette-option {
-                padding: 0.5rem;
-            }
-            .palette-option .color-circle {
-                width: 1.5rem !important;
-                height: 1.5rem !important;
-            }
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .popup-content {
-                width: 95%;
-                padding: 1.5rem;
-            }
-            .form-input, .form-checkbox, .form-radio {
-                padding: 0.5rem;
-            }
-            .color-swatch {
-                height: 100px;
-            }
-        }
-    </style>
+    <style>[x-cloak]{display:none!important}</style>
 </head>
 
 <body>
@@ -241,149 +126,63 @@
                     </a>
                 </div>
                 
-                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-                    <div class="flex space-x-8">
-                        <div class="relative group" x-data="{ open: false, activeCategory: 'development' }" @mouseenter="open = true" @mouseleave="open = false">
-                            <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
+                                <nav class="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+                    <div class="flex items-center gap-x-4 lg:gap-x-5">
+                        <!-- Services Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../../../index.html#services" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
                                 Our Services
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                 </svg>
-                            </button>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-                                 x-transition:enter-start="opacity-0 translate-y-1" 
-                                 x-transition:enter-end="opacity-100 translate-y-0" 
-                                 x-transition:leave="transition ease-in duration-150" 
-                                 x-transition:leave-start="opacity-100 translate-y-0" 
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
                                  x-transition:leave-end="opacity-0 translate-y-1"
-                                 class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
                                  @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-                                <div class="grid grid-cols-3">
-                                    <div class="col-span-1 bg-gray-50 p-4">
-                                        <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                                        <ul class="space-y-2">
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'development'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'development'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Development</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'growth'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'growth'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Growth</button>
-                                            </li>
-                                            <li>
-                                                <button @mouseenter="activeCategory = 'creative'" :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'creative'}" class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">Creative</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-span-2 p-4">
-                                        <div x-show="activeCategory === 'development'" class="space-y-3">
-                                            <h4 class="font-medium text-gray-900 mb-2">Development Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Web Development</p><p class="text-sm text-gray-500">Custom sites and applications.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">E-Commerce</p><p class="text-sm text-gray-500">Full-featured online stores.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">API Integration</p><p class="text-sm text-gray-500">Connect your software systems.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Cloud Solutions</p><p class="text-sm text-gray-500">Scalable cloud infrastructure.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'growth'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Growth Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">SEO Optimization</p><p class="text-sm text-gray-500">Increase your online visibility.</p></a>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Digital Marketing</p><p class="text-sm text-gray-500">Engage your target audience.</p></a>
-                                        </div>
-                                        <div x-show="activeCategory === 'creative'" class="space-y-3" style="display: none;">
-                                             <h4 class="font-medium text-gray-900 mb-2">Creative Services</h4>
-                                            <a href="#services" class="block p-2 rounded-md hover:bg-gray-50 transition-colors"><p class="font-medium">Graphic Design</p><p class="text-sm text-gray-500">Visuals that tell your story.</p></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="../../../index.html#web-development" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Web Development</a>
+                                <a href="../../../index.html#e-commerce" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">E-Commerce</a>
+                                <a href="../../../index.html#api-integration" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">API Integration</a>
+                                <a href="../../../index.html#cloud-solutions" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Cloud Solutions</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../../../index.html#seo-optimization" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">SEO Optimization</a>
                             </div>
                         </div>
 
-                       <div class="relative group" x-data="{ open: false, activeCategory: 'web' }" @mouseenter="open = true" @mouseleave="open = false">
-    <button class="nav-link text-white hover:text-gray-300 transition-colors font-medium flex items-center">
-        Tools
-        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </button>
-    
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" 
-         x-transition:enter-start="opacity-0 translate-y-1" 
-         x-transition:enter-end="opacity-100 translate-y-0" 
-         x-transition:leave="transition ease-in duration-150" 
-         x-transition:leave-start="opacity-100 translate-y-0" 
-         x-transition:leave-end="opacity-0 translate-y-1"
-         class="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 text-gray-800"
-         @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
-        <div class="grid grid-cols-3">
-            <div class="col-span-1 bg-gray-50 p-4">
-                <h3 class="font-medium text-gray-900 mb-3">Categories</h3>
-                <ul class="space-y-2">
-                    <li>
-                        <button @mouseenter="activeCategory = 'devtools'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'devtools', 'text-gray-700': activeCategory !== 'devtools' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Developer Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'design'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'design', 'text-gray-700': activeCategory !== 'design' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Design Tools
-                        </button>
-                    </li>
-                    <li>
-                        <button @mouseenter="activeCategory = 'web'" 
-                                :class="{ 'text-forge-600 bg-white shadow-sm': activeCategory === 'web', 'text-gray-700': activeCategory !== 'web' }"
-                                class="w-full text-left px-3 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
-                            Web Utilities
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="col-span-2 p-4">
-                <div x-show="activeCategory === 'devtools'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Developer Tools</h4>
-                    <a href="../ssl/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">SSL Checker</p>
-                        <p class="text-sm text-gray-500">Verify SSL certificates for any website</p>
-                    </a>
-                </div>
-                
-                <div x-show="activeCategory === 'design'" class="space-y-3" style="display: none;">
-                    <h4 class="font-medium text-gray-900 mb-2">Design Tools</h4>
-                    <a href="../pfp/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">PFP Previewer</p>
-                        <p class="text-sm text-gray-500">View how profile pictures appear on social media</p>
-                    </a>
-                    <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Color Palette Generator</p>
-                        <p class="text-sm text-gray-500">Create beautiful color schemes</p>
-                    </a>
-                </div>
-                
-                <div x-show="activeCategory === 'web'" class="space-y-3">
-                    <h4 class="font-medium text-gray-900 mb-2">Web Utilities</h4>
-                    <a href="../qr/index.html" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">QR Code Generator</p>
-                        <p class="text-sm text-gray-500">Generate QR codes for any URL or text</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Shortener</p>
-                        <p class="text-sm text-gray-500">Shorten long URLs to more manageable links</p>
-                    </a>
-                    <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 transition-colors">
-                        <p class="font-medium">Link Tree</p>
-                        <p class="text-sm text-gray-500">Create a list of links to share with one URL</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Tools Dropdown -->
+                        <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                            <a href="../index.html" class="nav-link text-white hover:text-gray-300 transition-colors flex items-center text-sm whitespace-nowrap">
+                                Tools
+                                <svg class="w-3.5 h-3.5 ml-0.5 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div x-show="open"
+                                 x-transition:enter="transition ease-out duration-150"
+                                 x-transition:enter-start="opacity-0 translate-y-1"
+                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                 x-transition:leave="transition ease-in duration-100"
+                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                 x-transition:leave-end="opacity-0 translate-y-1"
+                                 class="absolute left-1/2 z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] py-2 shadow-xl"
+                                 @mouseenter="open = true" @mouseleave="open = false" style="display: none;">
+                                <a href="../pfp/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">PFP Previewer</a>
+                                <a href="../colors/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">Color Palette Generator</a>
+                                <a href="../qr/index.html" class="block px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/[0.04] hover:text-white">QR Code Generator</a>
+                                <div class="my-1.5 border-t border-white/10"></div>
+                                <a href="../index.html" class="block px-4 py-2.5 text-sm text-gray-500 transition-colors hover:bg-white/[0.04] hover:text-white">View all tools</a>
+                            </div>
+                        </div>
 
-                        <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors">About Us</a>
-                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors">Blog</a>
-                        <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors">Contact Us</a>
-                        <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors">Get Quote</a>
+                        <a href="../../about/index.html" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">About Us</a>
+                        <a href="https://blog.blacnova.net" target="_blank" rel="noopener noreferrer" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Blog</a>
+                        <a href="../../../index.html#contact" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Contact Us</a>
+                        <a href="../../../index.html#quote" class="nav-link text-white hover:text-gray-300 transition-colors text-sm whitespace-nowrap">Get Quote</a>
                     </div>
                 </nav>
                 
@@ -417,444 +216,71 @@
     
     <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-40 hidden"></div>
     
-    <main class="mt-24 py-20 bg-white poppins-font-section">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16 scroll-animate" data-animation="animate__fadeInDown">
-                <img src="../../../ui/img/tools/colors.svg" alt="Color Pallete Icon" 
-                     class="mx-auto mb-3 w-14 h-14 fade-bottom-right">
-                <span class="inline-block mb-4 text-sm font-semibold tracking-wider text-[#d4611c] uppercase">Free Tool</span>
-                <h2 class="text-4xl md:text-5xl font-medium mb-6 text-[#1a1a1a]">
-                    <span class="section-title">Color Palette</span> Generator
-                </h2>
-                <p class="max-w-2xl mx-auto text-gray-600">
-                    Create beautiful, harmonious color palettes for your designs. Generate random color schemes and export them in multiple formats.
-                </p>
+    <main class="mt-24 py-16 md:py-20 bg-white poppins-font-section">
+        <div class="container mx-auto px-6 max-w-3xl" x-data="paletteTool">
+            <div class="text-center mb-10">
+                <img src="../../../ui/img/tools/colors.svg" alt="" class="mx-auto mb-4 w-12 h-12">
+                <p class="mb-3 text-sm tracking-wider text-[#d4611c] uppercase">Free Tool</p>
+                <h1 class="text-3xl md:text-4xl text-gray-900 mb-3">Color Palette Generator</h1>
+                <p class="text-gray-600 max-w-xl mx-auto text-sm md:text-base">Pick a color, choose a style, then click any swatch to copy its hex code.</p>
             </div>
-            
-            <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300">
-                <div class="p-8 md:p-10">
-                    <form class="space-y-12" id="palette-form" x-data="{ 
-                        useBaseColor: false,
-                        baseColor: '#3B82F6',
-                        paletteType: 'complementary',
-                        paletteColors: [],
-                        outputFormat: 'hex',
-                        showPopup: false,
-                        popupContent: { title: '', description: '', visual: '' },
-                        isGenerating: false,
-                        
-                        // Initialize with a random palette
-                        init() {
-                            this.generatePalette();
-                        },
-                        
-                        generatePalette() {
-                            if (this.useBaseColor) {
-                                this.generateFromBase();
-                            } else {
-                                this.generateRandomPalette();
-                            }
-                        },
 
-                        generateRandomPalette() {
-                            this.isGenerating = true;
-                            this.paletteColors = [];
-                            const harmony = this.paletteType;
-                            const baseHsl = { h: Math.floor(Math.random() * 360), s: Math.floor(Math.random() * 20) + 70, l: Math.floor(Math.random() * 20) + 40 };
-                            
-                            switch(harmony) {
-                                case 'complementary': this.generateComplementaryPalette(baseHsl); break;
-                                case 'analogous': this.generateAnalogousPalette(baseHsl); break;
-                                case 'triadic': this.generateTriadicPalette(baseHsl); break;
-                                case 'tetradic': this.generateTetradicPalette(baseHsl); break;
-                                case 'splitComplementary': this.generateSplitComplementaryPalette(baseHsl); break;
-                                case 'monochromatic': this.generateMonochromaticPalette(baseHsl); break;
-                                case 'shades': this.generateShadesPalette(baseHsl); break;
-                            }
-                            this.isGenerating = false;
-                        },
-
-                        generateFromBase() {
-                            this.isGenerating = true;
-                            this.paletteColors = [];
-                            const baseHsl = this.hexToHsl(this.baseColor);
-
-                            switch(this.paletteType) {
-                                case 'complementary': this.generateComplementaryPalette(baseHsl); break;
-                                case 'analogous': this.generateAnalogousPalette(baseHsl); break;
-                                case 'triadic': this.generateTriadicPalette(baseHsl); break;
-                                case 'tetradic': this.generateTetradicPalette(baseHsl); break;
-                                case 'monochromatic': this.generateMonochromaticPalette(baseHsl); break;
-                                case 'splitComplementary': this.generateSplitComplementaryPalette(baseHsl); break;
-                                case 'shades': this.generateShadesPalette(baseHsl); break;
-                            }
-                            this.isGenerating = false;
-                        },
-                        
-                        // Color conversion functions
-                        hexToHsl(hex) {
-                            // Remove the # if present
-                            hex = hex.replace('#', '');
-                            
-                            // Parse the r, g, b values
-                            let r, g, b;
-                            
-                            if (hex.length === 3) {
-                                r = parseInt(hex[0] + hex[0], 16);
-                                g = parseInt(hex[1] + hex[1], 16);
-                                b = parseInt(hex[2] + hex[2], 16);
-                            } else if (hex.length === 6) {
-                                r = parseInt(hex.substring(0, 2), 16);
-                                g = parseInt(hex.substring(2, 4), 16);
-                                b = parseInt(hex.substring(4, 6), 16);
-                            } else {
-                                return { h: 0, s: 0, l: 0 };
-                            }
-                            
-                            // Normalize to 0-1
-                            r /= 255;
-                            g /= 255;
-                            b /= 255;
-                            
-                            // Find min and max
-                            const max = Math.max(r, g, b);
-                            const min = Math.min(r, g, b);
-                            let h, s, l = (max + min) / 2;
-                            
-                            if (max === min) {
-                                h = s = 0; // achromatic
-                            } else {
-                                const d = max - min;
-                                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-                                
-                                switch (max) {
-                                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                                    case g: h = (b - r) / d + 2; break;
-                                    case b: h = (r - g) / d + 4; break;
-                                }
-                                
-                                h /= 6;
-                            }
-                            
-                            return {
-                                h: Math.round(h * 360),
-                                s: Math.round(s * 100),
-                                l: Math.round(l * 100)
-                            };
-                        },
-                        
-                        hslToHex(h, s, l) {
-                            h /= 360;
-                            s /= 100;
-                            l /= 100;
-                            
-                            let r, g, b;
-                            
-                            if (s === 0) {
-                                r = g = b = l; // achromatic
-                            } else {
-                                const hue2rgb = (p, q, t) => {
-                                    if (t < 0) t += 1;
-                                    if (t > 1) t -= 1;
-                                    if (t < 1/6) return p + (q - p) * 6 * t;
-                                    if (t < 1/2) return q;
-                                    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-                                    return p;
-                                };
-                                
-                                const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                                const p = 2 * l - q;
-                                
-                                r = hue2rgb(p, q, h + 1/3);
-                                g = hue2rgb(p, q, h);
-                                b = hue2rgb(p, q, h - 1/3);
-                            }
-                            
-                            const toHex = (x) => {
-                                const hex = Math.round(x * 255).toString(16);
-                                return hex.length === 1 ? '0' + hex : hex;
-                            };
-                            
-                            return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
-                        },
-                        
-                        hexToRgb(hex) {
-                            hex = hex.replace('#', '');
-                            if (hex.length === 3) {
-                                hex = hex.split('').map(char => char + char).join('');
-                            }
-                            const bigint = parseInt(hex, 16);
-                            const r = (bigint >> 16) & 255;
-                            const g = (bigint >> 8) & 255;
-                            const b = bigint & 255;
-                            return `rgb(${r}, ${g}, ${b})`;
-                        },
-                        
-                        getFormattedColor(hex) {
-                            switch(this.outputFormat) {
-                                case 'rgb':
-                                    return this.hexToRgb(hex);
-                                case 'hsl':
-                                    const hsl = this.hexToHsl(hex);
-                                    return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
-                                case 'hex':
-                                default:
-                                    return hex;
-                            }
-                        },
-
-                        // Palette generation functions
-                        generateComplementaryPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            const compHue = (baseHsl.h + 180) % 360;
-                            colors.push(this.hslToHex(compHue, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.min(baseHsl.l + 20, 95)));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.max(baseHsl.l - 20, 5)));
-                            colors.push(this.hslToHex(compHue, baseHsl.s, Math.min(baseHsl.l + 20, 95)));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateAnalogousPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 330) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 30) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 15) % 360, baseHsl.s, Math.min(baseHsl.l + 15, 95)));
-                            colors.push(this.hslToHex((baseHsl.h + 345) % 360, baseHsl.s, Math.max(baseHsl.l - 15, 5)));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateTriadicPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 120) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 240) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.min(baseHsl.l + 20, 95)));
-                            colors.push(this.hslToHex((baseHsl.h + 120) % 360, baseHsl.s, Math.max(baseHsl.l - 20, 5)));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateTetradicPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 90) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 180) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 270) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, Math.min(baseHsl.s + 20, 100), baseHsl.l));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateMonochromaticPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.max(baseHsl.l - 40, 5)));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.max(baseHsl.l - 20, 5)));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.min(baseHsl.l + 20, 95)));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.min(baseHsl.l + 40, 95)));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateSplitComplementaryPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 150) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex((baseHsl.h + 210) % 360, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, Math.min(baseHsl.l + 20, 95)));
-                            colors.push(this.hslToHex((baseHsl.h + 150) % 360, Math.min(baseHsl.s + 20, 100), baseHsl.l));
-                            this.paletteColors = colors;
-                        },
-                        
-                        generateShadesPalette(baseHsl) {
-                            const colors = [];
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, 20));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, 40));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, baseHsl.l));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, 70));
-                            colors.push(this.hslToHex(baseHsl.h, baseHsl.s, 90));
-                            this.paletteColors = colors;
-                        },
-                        
-                        copyColorToClipboard(color) {
-                            navigator.clipboard.writeText(color).then(() => {
-                                const originalText = event.target.innerHTML;
-                                event.target.innerHTML = 'Copied!';
-                                setTimeout(() => {
-                                    event.target.innerHTML = originalText;
-                                }, 2000);
-                            });
-                        },
-                        
-                        exportPalette(format) {
-                            if (!this.paletteColors.length) return;
-                            
-                            let content = '';
-                            let filename = 'color-palette';
-                            
-                            if (format === 'css') {
-                                content = `:root {\n`;
-                                this.paletteColors.forEach((color, index) => {
-                                    content += `  --color-${index + 1}: ${color};\n`;
-                                });
-                                content += `}`;
-                                filename += '.css';
-                            } else if (format === 'json') {
-                                content = JSON.stringify({
-                                    palette: this.paletteColors,
-                                    type: this.paletteType,
-                                    baseColor: this.useBaseColor ? this.baseColor : null
-                                }, null, 2);
-                                filename += '.json';
-                            } else if (format === 'text') {
-                                content = `Color Palette (${this.paletteType}):\n\n`;
-                                this.paletteColors.forEach((color, index) => {
-                                    content += `Color ${index + 1}: ${color}\n`;
-                                });
-                                filename += '.txt';
-                            }
-                            
-                            const blob = new Blob([content], { type: 'text/plain' });
-                            const url = URL.createObjectURL(blob);
-                            const link = document.createElement('a');
-                            link.href = url;
-                            link.download = filename;
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                            URL.revokeObjectURL(url);
-                        }
-                    }" @submit.prevent="generatePalette">
-                        <div class="popup-overlay" :class="{ 'show': showPopup }" @click="showPopup = false">
-                            <div class="popup-content" @click.stop>
-                                <span class="popup-close" @click="showPopup = false">&times;</span>
-                                <h3 class="text-xl font-medium mb-4" x-text="popupContent.title"></h3>
-                                <p class="text-gray-600 mb-4" x-text="popupContent.description"></p>
-                                <div class="visual-example" x-html="popupContent.visual"></div>
-                            </div>
+            <div class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-8 space-y-8">
+                <div class="flex flex-col sm:flex-row sm:items-end gap-4">
+                    <div class="flex-1">
+                        <label class="block text-sm text-gray-600 mb-2" for="palette-hex">Base color</label>
+                        <div class="flex items-center gap-3">
+                            <input id="palette-picker" type="color" :value="base" @input="onPicker($event)" class="h-11 w-14 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 shrink-0" aria-label="Pick base color">
+                            <input id="palette-hex" type="text" :value="base" @input="onHexInput($event)" maxlength="7" spellcheck="false" class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 focus:border-gray-400 focus:outline-none" placeholder="#d4611c">
                         </div>
+                    </div>
+                    <button type="button" @click="randomize()" class="inline-flex items-center justify-center rounded-full border border-gray-200 px-5 py-2.5 text-sm text-gray-800 hover:border-gray-400 transition-colors shrink-0">
+                        Surprise me
+                    </button>
+                </div>
 
-                        <div class="space-y-6">
-                            <div class="flex items-center">
-                                <input type="checkbox" id="useBaseColor" x-model="useBaseColor" class="form-checkbox text-[#f2651c] h-5 w-5 rounded focus:ring-[#f2651c]">
-                                <label for="useBaseColor" class="ml-3 text-lg font-medium text-gray-900">Generate from a base color</label>
-                            </div>
-
-                            <div x-show="useBaseColor" class="space-y-6">
-                                <h3 class="text-2xl font-medium text-gray-900 flex items-center">
-                                    Base Color
-                                </h3>
-                                <div class="flex items-center space-x-4">
-                                    <input type="color" id="baseColor" x-model="baseColor" class="w-16 h-16 rounded cursor-pointer">
-                                    <input type="text" x-model="baseColor" class="w-full px-4 py-3 rounded-3xl form-input focus:ring-2 focus:ring-[#f2651c] focus:border-transparent uppercase">
-                                </div>
-                            </div>
-
-                            <div class="space-y-6">
-                                <h3 class="text-2xl font-medium text-gray-900 flex items-center">
-                                    Palette Type
-                                </h3>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="complementary" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'complementary', 'border-transparent hover:border-[#f2651c]': paletteType !== 'complementary' }">
-                                            <i class="fas fa-exchange-alt text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Complementary</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="analogous" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'analogous', 'border-transparent hover:border-[#f2651c]': paletteType !== 'analogous' }">
-                                            <i class="fas fa-arrows-alt-h text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Analogous</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="triadic" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'triadic', 'border-transparent hover:border-[#f2651c]': paletteType !== 'triadic' }">
-                                            <i class="fas fa-braille text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Triadic</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="tetradic" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'tetradic', 'border-transparent hover:border-[#f2651c]': paletteType !== 'tetradic' }">
-                                            <i class="fas fa-th-large text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Tetradic</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="monochromatic" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'monochromatic', 'border-transparent hover:border-[#f2651c]': paletteType !== 'monochromatic' }">
-                                            <i class="fas fa-tint text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Monochromatic</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="splitComplementary" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'splitComplementary', 'border-transparent hover:border-[#f2651c]': paletteType !== 'splitComplementary' }">
-                                            <i class="fas fa-code-branch text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Split Complementary</p>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="paletteType" x-model="paletteType" value="shades" class="sr-only">
-                                        <div class="p-4 rounded-xl border-2 text-center" :class="{ 'border-[#f2651c]': paletteType === 'shades', 'border-transparent hover:border-[#f2651c]': paletteType !== 'shades' }">
-                                            <i class="fas fa-sliders-h text-2xl mb-2 text-gray-700"></i>
-                                            <p class="text-sm font-medium">Shades</p>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="px-8 py-4 bg-black text-white rounded-3xl font-semibold btn-contact hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300" :disabled="isGenerating">
-                                <span x-show="!isGenerating">Generate Palette</span>
-                                <span x-show="isGenerating">Generating...</span>
-                                <span class="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+                <div>
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <label class="block text-sm text-gray-600">Style</label>
+                        <p class="text-xs text-gray-400" x-text="styleHint()"></p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <template x-for="opt in styles" :key="opt.id">
+                            <button type="button" @click="setStyle(opt.id)"
+                                class="rounded-xl border px-3 py-2.5 text-sm transition-colors"
+                                :class="style === opt.id ? 'border-[#d4611c] bg-[#d4611c]/[0.06] text-gray-900' : 'border-gray-200 text-gray-600 hover:border-gray-300'">
+                                <span x-text="opt.label"></span>
                             </button>
-                        </div>
+                        </template>
+                    </div>
+                </div>
 
-                        <div class="space-y-6" x-show="paletteColors.length">
-                            <h3 class="text-2xl font-medium text-gray-900 text-center">Your Color Palette</h3>
+                <div>
+                    <div class="flex h-16 sm:h-20 overflow-hidden rounded-2xl border border-gray-100 mb-4">
+                        <template x-for="(color, i) in colors" :key="'strip-' + i">
+                            <div class="flex-1" :style="'background:' + color"></div>
+                        </template>
+                    </div>
 
-                            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
-                                <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="radio" x-model="outputFormat" value="hex" name="outputFormat" class="radio checked:bg-[#f2651c] radio-sm">
-                                    <span class="text-sm font-medium">HEX</span>
-                                </label>
-                                <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="radio" x-model="outputFormat" value="rgb" name="outputFormat" class="radio checked:bg-[#f2651c] radio-sm">
-                                    <span class="text-sm font-medium">RGB</span>
-                                </label>
-                                <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="radio" x-model="outputFormat" value="hsl" name="outputFormat" class="radio checked:bg-[#f2651c] radio-sm">
-                                    <span class="text-sm font-medium">HSL</span>
-                                </label>
-                            </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        <template x-for="(color, i) in colors" :key="'swatch-' + i">
+                            <button type="button" @click="copyColor(color)" class="text-left rounded-xl border border-gray-100 p-2 hover:border-gray-300 transition-colors">
+                                <div class="aspect-square rounded-lg mb-2 border border-black/5" :style="'background:' + color"></div>
+                                <p class="text-xs text-gray-800 truncate" x-text="copied === color ? 'Copied' : color"></p>
+                                <p class="text-[11px] text-gray-400 truncate" x-text="rgb(color)"></p>
+                            </button>
+                        </template>
+                    </div>
+                </div>
 
-                            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                <template x-for="(color, index) in paletteColors" :key="index">
-                                    <div class="flex flex-col items-center">
-                                        <div class="color-swatch w-full mb-2" :style="'background-color: ' + color" @click="copyColorToClipboard(getFormattedColor(color))"></div>
-                                        <div class="color-value text-sm cursor-pointer" @click="copyColorToClipboard(getFormattedColor(color))" x-text="getFormattedColor(color)"></div>
-                                    </div>
-                                </template>
-                            </div>
-                            
-                            <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                <button type="button" @click="exportPalette('css')" class="px-6 py-2 bg-forge-500 text-white rounded-3xl font-medium hover:bg-forge-600 transition-colors">
-                                    Export CSS
-                                </button>
-                                <button type="button" @click="exportPalette('json')" class="px-6 py-2 bg-forge-500 text-white rounded-3xl font-medium hover:bg-forge-600 transition-colors">
-                                    Export JSON
-                                </button>
-                                <button type="button" @click="exportPalette('text')" class="px-6 py-2 bg-forge-500 text-white rounded-3xl font-medium hover:bg-forge-600 transition-colors">
-                                    Export Text
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="flex flex-wrap items-center gap-3 pt-1">
+                    <button type="button" @click="copyAll()" class="inline-flex items-center justify-center rounded-full bg-[#d4611c] px-5 py-2.5 text-sm text-white hover:bg-[#c55718] transition-colors">
+                        <span x-text="copied === 'all' ? 'Copied all' : 'Copy all hex'"></span>
+                    </button>
+                    <button type="button" @click="copyCss()" class="inline-flex items-center justify-center rounded-full border border-gray-200 px-5 py-2.5 text-sm text-gray-800 hover:border-gray-400 transition-colors">
+                        <span x-text="copied === 'css' ? 'Copied CSS' : 'Copy as CSS'"></span>
+                    </button>
+                    <p class="text-xs text-red-500" x-show="status" x-text="status"></p>
                 </div>
             </div>
         </div>
@@ -886,62 +312,19 @@
     <script src="../../../ui/js/BN-Cta.js"></script>
     <script src="../../../ui/js/BN-Contact.js"></script>
     <script src="../../../ui/js/BN-PageScroll.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
-
-            if ("IntersectionObserver" in window) {
-                elementsToAnimate.forEach(el => {
-                    el.style.opacity = '0';
-                });
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const el = entry.target;
-                            const animation = el.getAttribute('data-animation');
-                            const delay = el.getAttribute('data-delay') || '0s';
-
-                            el.style.transition = `opacity 0.5s ease ${delay}, transform 0.5s ease ${delay}`;
-                            el.style.opacity = '1';
-                            el.classList.add(animation);
-
-                            observer.unobserve(el);
-                        }
-                    });
-                }, {
-                    threshold: 0.2
-                });
-
-                elementsToAnimate.forEach(el => {
-                    observer.observe(el);
-                });
-            }
-
-            // Update footer year
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // Mobile menu toggle
+            const year = document.getElementById('year');
+            if (year) year.textContent = new Date().getFullYear();
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeMenuButton = document.getElementById('close-menu-button');
             const menuOverlay = document.getElementById('menu-overlay');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('closed');
-                menuOverlay.classList.toggle('hidden');
-            });
-
-            closeMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.add('closed');
-                menuOverlay.classList.add('hidden');
-            });
-
-            menuOverlay.addEventListener('click', () => {
-                mobileMenu.classList.add('closed');
-                menuOverlay.classList.add('hidden');
-            });
+            if (mobileMenuButton && mobileMenu && closeMenuButton && menuOverlay) {
+                mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('closed'); menuOverlay.classList.toggle('hidden'); });
+                closeMenuButton.addEventListener('click', () => { mobileMenu.classList.add('closed'); menuOverlay.classList.add('hidden'); });
+                menuOverlay.addEventListener('click', () => { mobileMenu.classList.add('closed'); menuOverlay.classList.add('hidden'); });
+            }
         });
     </script>
 </body>

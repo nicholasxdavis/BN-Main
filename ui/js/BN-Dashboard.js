@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Dashboard Help Guide Injector
  * This script injects a floating help button and a dynamic help guide modal
  * into the page. All HTML, CSS, and JavaScript are self-contained.
@@ -8,7 +8,7 @@
 (function() {
     // --- Configuration and Content ---
     const config = {
-        buttonIcon: '<i class="fas fa-question-circle"></i>',
+        buttonIcon: '<i class="ph ph-question"></i>',
         buttonSize: '60px',
         mainColor: '#d4611c',
         backgroundColor: '#1a1a1a',
@@ -17,7 +17,7 @@
         pages: {
             'overview': {
                 title: 'Overview',
-                icon: 'fas fa-tachometer-alt',
+                icon: 'ph ph-gauge',
                 content: `
                     <p class="text-gray-400">The <strong>Overview</strong> tab provides a snapshot of your website's performance. Here you can see key statistics like total visitors and page views, as well as recent activity and quick actions to manage your site. This is your main hub for monitoring your business at a glance.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -29,7 +29,7 @@
             },
             'appearance': {
                 title: 'Appearance',
-                icon: 'fas fa-paint-brush',
+                icon: 'ph ph-paint-brush',
                 content: `
                     <p class="text-gray-400">The <strong>Appearance</strong> tab allows you to customize the look and feel of your website to match your brand. Change colors, fonts, and upload your logo and favicon for a consistent brand identity.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -41,7 +41,7 @@
             },
             'content-media': {
                 title: 'Content & Media',
-                icon: 'fas fa-images',
+                icon: 'ph ph-images',
                 content: `
                     <p class="text-gray-400">The <strong>Content & Media</strong> tab is where you manage your website's content and media files. Upload and organize images, videos, and other assets to use throughout your site.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -53,7 +53,7 @@
             },
             'blog': {
                 title: 'Blog',
-                icon: 'fas fa-blog',
+                icon: 'ph ph-article',
                 content: `
                     <p class="text-gray-400">In the <strong>Blog</strong> tab, you can create and manage all of your blog posts. Write new articles, edit existing ones, and publish them to your website to engage with your audience.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -65,7 +65,7 @@
             },
             'submissions': {
                 title: 'Submissions',
-                icon: 'fas fa-inbox',
+                icon: 'ph ph-tray',
                 content: `
                     <p class="text-gray-400">The <strong>Submissions</strong> tab displays all form submissions from your website, such as contact forms and newsletter sign-ups. You can view, manage, and export all submitted data.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -77,7 +77,7 @@
             },
             'ecommerce': {
                 title: 'E-commerce',
-                icon: 'fas fa-shopping-cart',
+                icon: 'ph ph-shopping-cart',
                 content: `
                     <p class="text-gray-400">The <strong>E-commerce</strong> tab is your control center for your online store. Manage your product catalog, track inventory, and monitor orders and sales.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -89,7 +89,7 @@
             },
             'settings': {
                 title: 'Settings',
-                icon: 'fas fa-cog',
+                icon: 'ph ph-gear',
                 content: `
                     <p class="text-gray-400">The <strong>Settings</strong> tab allows you to configure global settings for your website. This includes general site information, maintenance mode, and SEO settings.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
@@ -101,7 +101,7 @@
             },
             'support': {
                 title: 'Support',
-                icon: 'fas fa-question-circle',
+                icon: 'ph ph-question',
                 content: `
                     <p class="text-gray-400">The <strong>Support</strong> tab is your resource for getting help. You can contact our support team directly or find answers to common questions in our help resources section.</p>
                     <ul class="list-disc list-inside mt-4 text-gray-400 space-y-2">
