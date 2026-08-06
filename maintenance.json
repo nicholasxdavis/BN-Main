@@ -1,7 +1,7 @@
 {
-  "enabled": true,
+  "enabled": false,
   "title": "We'll be right back",
   "message": "Blacnova Development is temporarily offline for improvements. Please check back soon or email nic@blacnova.net.",
   "expectedReturn": "",
-  "updatedAt": "2026-08-06T00:17:59.338Z"
+  "updatedAt": "2026-08-06T00:18:08.601Z"
 }
